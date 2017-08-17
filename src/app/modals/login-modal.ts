@@ -16,12 +16,11 @@ export class CustomTermsModalContext extends BSModalContext {
 }
 
 @Component({
-    moduleId: module.id + ' ',
     templateUrl: '../templates/modals/login-modal.html',
     styleUrls: ['../styles/modals/login-modal.css']
 })
 
-export class LoginModal implements CloseGuard, ModalComponent<CustomTermsModalContext> {
+export class LoginModal implements ModalComponent<CustomTermsModalContext> {
     context: CustomTermsModalContext;
     response : any
     loginMode : string
@@ -37,7 +36,6 @@ export class LoginModal implements CloseGuard, ModalComponent<CustomTermsModalCo
         this.appComponent = appComponent
         this.router = router
         this.context = dialog.context;
-        //dialog.setCloseGuard(this)
     }
 
     signIn(provider : any) {

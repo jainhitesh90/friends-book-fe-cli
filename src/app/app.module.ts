@@ -30,9 +30,12 @@ import { BootstrapModalModule } from 'angular2-modal/plugins/bootstrap'
 import { Angular2SocialLoginModule } from "angular2-social-login";
 import { ShareButtonsModule} from 'ng2-sharebuttons';
 import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
+import { PushNotificationService } from './apiServices/push-notification.service'
 
 @NgModule({
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
     Angular2SocialLoginModule,
     ShareButtonsModule.forRoot(),
     BrowserModule,
@@ -75,7 +78,7 @@ import { environment } from '../environments/environment';
     LoginModal
   ],
   providers: [
-    ApiService
+    ApiService,PushNotificationService
   ],
   bootstrap: [AppComponent],
   entryComponents: [FeedsReactionModal, LoginModal]

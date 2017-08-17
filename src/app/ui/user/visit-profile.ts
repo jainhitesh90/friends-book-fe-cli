@@ -5,16 +5,14 @@ import { ApiService } from '../../apiServices/api.service'
 import { SocialUserModel } from '../../models/social-user-model'
 import { FeedModel } from '../../models/feed.model'
 import { AuthService } from "angular2-social-login";
-import { BaseComponent } from './base-component'
-declare var gapi: any;
+import { Utils } from '../../utils/utils'
 
 @Component({
-	moduleId: module.id,
 	templateUrl: '../../templates/user/visit-profile.html',
 	styleUrls: ['../../styles/user/visit-profile.css']
 })
 
-export class VisitProfileComponent extends BaseComponent implements OnInit {
+export class VisitProfileComponent implements OnInit {
 
 	router: Router
 	appComponent: AppComponent
@@ -26,14 +24,13 @@ export class VisitProfileComponent extends BaseComponent implements OnInit {
 	fetchingFeeds : boolean
 
 	constructor(appComponent: AppComponent, router: Router, private apiService: ApiService, activatedRoute: ActivatedRoute) {
-		super()
 		this.appComponent = appComponent
 		this.router = router
 		this.activatedRoute = activatedRoute
 	}
 
 	ngOnInit(): void {
-		if (super.isTokenAvailable()) {
+		if (new Utils().isTokenAvailable()) {
 			this.activatedRoute.queryParams.subscribe(params => {
 				this.checkQueryParamResponse(params)
 			});

@@ -7,12 +7,11 @@
 		<meta name="theme-color" content="#fff" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
+		<link href="https://bootswatch.com/paper/bootstrap.min.css" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
 		<!-- css -->
-		<link rel="stylesheet" href="css/ng2-material.css">
-		<link rel="stylesheet" href="css/bootstrap-paper.css">
 		<link rel="stylesheet" href="styles.css">
 		<!-- <link rel="manifest" href="manifest.json"> -->
 
@@ -184,12 +183,14 @@
 	</body>
 
 	<!--Registering Service Worker-->
-	<!-- <script>
+	<script>
 		window.addEventListener('load', function () {
+			console.log("register service worker")
 			var deferredPrompt;
 			if ('serviceWorker' in navigator) {
 				navigator.serviceWorker.register('/service-worker.js')
 					.then(function (reg) {
+						console.log("Registered : ", reg)
 						reg.update();
 					}).catch(function (err) {
 						console.log("No it didn't. This happened: ", err)
@@ -198,8 +199,10 @@
 					e.preventDefault();
 					return false;
 				});
+			} else {
+				console.log("failed")
 			}
 		});
-	</script> -->
+	</script>
 
 </html>

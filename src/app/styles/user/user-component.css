@@ -104,7 +104,26 @@ td i {
     padding-bottom : 56px
 }
 
-.icon-colors {
+.icon {
     padding : 16px 8px 16px 8px;
+}
+
+.selected-icon-colors {
     color : #4267b2 !important
+}
+
+.un-selected-icon-colors {
+    color : grey !important
+}
+
+.selected-tab-bg {
+    background-color: white;
+    border-radius : 8px;
+    /* background : grey !important */
+}
+
+.un-selected-tab-bg {
+    background-color: white;
+    border-radius : 8px;
+    background : #e9ebee 
 }

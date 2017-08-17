@@ -28,10 +28,14 @@
     background : #dd4b39 !important
 }
 
-#linkedIn-bg {
-    background : #1c94e0 !important
+#disclaimer {
+    margin : 16px 0px 16px 0px;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%
 }
 
-#disclaimer {
-    margin : 16px 0px 16px 0px
+#disclaimer h6 {
+    margin-top: 12px;
 }

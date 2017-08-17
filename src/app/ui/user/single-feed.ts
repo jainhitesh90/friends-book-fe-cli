@@ -2,16 +2,15 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core'
 import { Router, ActivatedRoute } from '@angular/router'
 import { AppComponent } from '../../app-component'
 import { UserComponent } from './user-component'
-import { BaseComponent } from './base-component'
+import { Utils } from '../../utils/utils'
 import { ApiService } from '../../apiServices/api.service'
-import { FeedModel } from '../../models/Feed.model'
+import { FeedModel } from '../../models/feed.model'
 
 @Component({
-	moduleId: module.id,
 	templateUrl: '../../templates/user/single-feed.html'
 })
 
-export class SingleFeedComponent extends BaseComponent implements OnInit {
+export class SingleFeedComponent implements OnInit {
 
 	router: Router
 	appComponent: AppComponent
@@ -20,13 +19,12 @@ export class SingleFeedComponent extends BaseComponent implements OnInit {
 	feedId: string
 
 	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService, private activatedRoute: ActivatedRoute) {
-		super()
 		this.appComponent = appComponent
 		this.router = router
 	}
 
 	ngOnInit() {
-		if (super.isTokenAvailable()) {
+		if (new Utils().isTokenAvailable()) {
 			this.activatedRoute.queryParams.subscribe(params => {
 				this.checkQueryParamResponse(params)
 			});

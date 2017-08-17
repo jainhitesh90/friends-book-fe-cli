@@ -5,17 +5,15 @@ import { ApiService } from '../../apiServices/api.service'
 import { SocialUserModel } from '../../models/social-user-model'
 import { FeedModel } from '../../models/feed.model'
 import { AuthService } from "angular2-social-login";
-import { BaseComponent } from './base-component'
-
-declare var gapi: any;
+import { Utils } from '../../utils/utils'
+import { UserComponent } from './user-component'
 
 @Component({
-	moduleId: module.id,
 	templateUrl: '../../templates/user/my-profile.html',
 	styleUrls: ['../../styles/user/my-profile.css']
 })
 
-export class MyProfileComponent extends BaseComponent implements OnInit {
+export class MyProfileComponent implements OnInit {
 
 	router: Router
 	appComponent: AppComponent
@@ -26,21 +24,17 @@ export class MyProfileComponent extends BaseComponent implements OnInit {
 	fetchingFeeds: boolean
 	mobileView: boolean
 
-	constructor(appComponent: AppComponent, router: Router, private apiService: ApiService) {
-		super()
+	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService) {
 		this.appComponent = appComponent
 		this.router = router
+		userComponent.setSelectedIconBg(2)
 	}
 
 	ngOnInit() {
-		if (super.isTokenAvailable) {
-			if (screen.width < 737) {
-				this.mobileView = true
+		if (new Utils().isTokenAvailable()) {
+			this.mobileView = new Utils().isMobile()
+			if (this.mobileView)
 				this.getProfile()
-			}
-			else {
-				this.mobileView = false
-			}
 			this.fetchMyFeeds()
 
 		} else {

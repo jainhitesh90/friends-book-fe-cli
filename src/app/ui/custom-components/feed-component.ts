@@ -15,7 +15,7 @@ import { CustomTermsModalContext, FeedsReactionModal } from '../../modals/feeds-
 })
 
 export class CustomFeedComponent implements OnInit {
-	@Input() feedModel: FeedModel
+	@Input() feed : FeedModel
 	@Output() callback: EventEmitter<string> = new EventEmitter();
 
 	router: Router
@@ -28,7 +28,7 @@ export class CustomFeedComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		if (this.feedModel != null && this.feedModel.feedType == 'blog')
+		if (this.feed != null && this.feed.feedType == 'blog')
 			this.likeText = 'Interested'
 		else
 			this.likeText = 'Like'

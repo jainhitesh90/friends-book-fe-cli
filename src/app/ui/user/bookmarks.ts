@@ -4,17 +4,14 @@ import { AppComponent } from '../../app-component'
 import { UserComponent } from './user-component'
 import { ApiService } from '../../apiServices/api.service'
 import { FeedModel } from '../../models/feed.model'
-
-import { BaseComponent } from './base-component'
-declare var gapi: any;
+import { Utils } from '../../utils/utils'
 
 @Component({
-	moduleId: module.id,
 	templateUrl: '../../templates/user/bookmark.html',
 	styleUrls: ['../../styles/user/bookmark.css']
 })
 
-export class BookmarkComponent extends BaseComponent implements OnInit {
+export class BookmarkComponent implements OnInit {
 
 	router: Router
 	appComponent: AppComponent
@@ -24,16 +21,16 @@ export class BookmarkComponent extends BaseComponent implements OnInit {
 	fetchingBookmarks: boolean
 
 	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService) {
-		super()
 		this.appComponent = appComponent
 		this.router = router
+		userComponent.setSelectedIconBg(4)
 	}
 
 	ngOnInit(): void {
-		if (!super.isTokenAvailable()) {
-			this.router.navigate(['/login'])
-		} else {
+		if (new Utils().isTokenAvailable()) {
 			this.fetchBookmarks()
+		} else {
+			this.router.navigate(['/login'])
 		}
 	}
 

@@ -3,9 +3,9 @@ import { AppComponent } from '../../app-component'
 import { Router } from '@angular/router'
 import { ApiService } from '../../apiServices/api.service'
 import { SocialUserModel } from '../../models/social-user-model'
+import { Utils } from '../../utils/utils'
 
 @Component({
-	moduleId: module.id,
     templateUrl: '../../templates/user/user-component.html',
     styleUrls: ['../../styles/user/user-component.css']
 })
@@ -19,16 +19,28 @@ export class UserComponent implements OnInit{
     socialUserModel : SocialUserModel
     mobileView : boolean
 
+    classList = ["selected-icon-colors", "un-selected-icon-colors"]
+    classListDesktop = ["selected-tab-bg", "un-selected-tab-bg"]
+	
+	classIndex1: Number
+    classIndex2: Number
+    classIndex3: Number
+    classIndex4: Number
+    classIndex5: Number
+    classIndex6: Number
+    classIndex7: Number
+    classIndex8: Number
+    classIndex9: Number
+    classIndex10: Number
+
     constructor(appComponent : AppComponent, router: Router) {
         this.appComponent = appComponent
         this.router = router
     }
 
     ngOnInit() {
-        if (screen.width < 737)
-            this.mobileView = true
-        else
-            this.mobileView = false
+        this.mobileView = new Utils().isMobile()
+        this.unselectAllIcons()
         this.getUsersDetail()
         this.updateBookmarkCount()
     }
@@ -47,23 +59,28 @@ export class UserComponent implements OnInit{
 	}
 
     showFeeds() {
+        this.unselectAllIcons()
         this.router.navigate(['/home/feeds'])
     }
 
     showProfile() {
+        this.unselectAllIcons()
         this.router.navigate(['/home/profile'])
     }
 
-    showNotifications() {
-        this.router.navigate(['/home/notifications'])
+    showFriends() {
+        this.unselectAllIcons()
+        this.router.navigate(['/home/friends'])
     }
-    
+
     openBookmarks(){
+        this.unselectAllIcons()
 		this.router.navigate(['/home/bookmarks'])
     }
-    
-    showFriends() {
-        this.router.navigate(['/home/friends'])
+
+    showNotifications() {
+        this.unselectAllIcons()
+        this.router.navigate(['/home/notifications'])
     }
 
     showSearchPage() {
@@ -76,5 +93,43 @@ export class UserComponent implements OnInit{
     logout() {
 		localStorage.clear()
 		this.router.navigate(['/login'])
+    }
+
+    setSelectedIconBg(pos : Number) {
+        switch(pos) {
+            case 1 : 
+                this.classIndex1 = 0
+                this.classIndex6 = 0
+                break;
+            case 2 : 
+                this.classIndex2 = 0
+                this.classIndex7 = 0
+                break;
+            case 3 : 
+                this.classIndex3 = 0
+                this.classIndex8 = 0
+                break;
+            case 4 : 
+                this.classIndex4 = 0
+                this.classIndex9 = 0
+                break;
+            case 5 : 
+                this.classIndex5 = 0
+                this.classIndex10 = 0
+                break;
+        }
+    }
+
+    unselectAllIcons(){
+        this.classIndex1 = 1
+        this.classIndex2 = 1
+        this.classIndex3 = 1
+        this.classIndex4 = 1
+        this.classIndex5 = 1
+        this.classIndex6 = 1
+        this.classIndex7 = 1
+        this.classIndex8 = 1
+        this.classIndex9 = 1
+        this.classIndex10 = 1
     }
 }
