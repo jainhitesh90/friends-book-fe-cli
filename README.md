@@ -1,12 +1,4 @@
-# NodeJS News App
-
-This project extracts top 20 Node.js news everyday using Hacker News API.
+# Angular CLI app 'FriendsBook'
 
 ## APP Link
-
-View live app Here(https://nodejs-news.herokuapp.com/)
-
-## Tutorial
-
-Read how this app was built here (link coming soon)
-
+View live app Here(https://friends-book-cli-test.herokuapp.com/)
