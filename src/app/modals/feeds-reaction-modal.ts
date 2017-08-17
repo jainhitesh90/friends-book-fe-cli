@@ -11,7 +11,6 @@ export class CustomTermsModalContext extends BSModalContext {
 }
 
 @Component({
-    moduleId: module.id + ' ',
     templateUrl: '../templates/modals/feeds-reaction-modal.html',
     styleUrls: ['../styles/modals/feeds-reaction-modal.css']
 })

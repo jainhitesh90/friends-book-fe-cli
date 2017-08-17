@@ -16,7 +16,6 @@ export class CustomTermsModalContext extends BSModalContext {
 }
 
 @Component({
-    moduleId: module.id + ' ',
     templateUrl: '../templates/modals/login-modal.html',
     styleUrls: ['../styles/modals/login-modal.css']
 })

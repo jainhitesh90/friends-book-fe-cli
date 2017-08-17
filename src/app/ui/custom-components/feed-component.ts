@@ -8,7 +8,7 @@ import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap'
 import { CustomTermsModalContext, FeedsReactionModal } from '../../modals/feeds-reaction-modal'
 
 @Component({
-	inputs: ['feed'],
+	// inputs: ['feed'],
 	selector: 'feed-component',
 	templateUrl: '../../templates/custom-components/feed-component.html',
 	styleUrls: ['../../styles/custom-components/feed-component.css']
