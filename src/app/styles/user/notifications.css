@@ -1,0 +1,38 @@
+#no-notifications {
+    padding : 48px;
+    font-weight: 600
+}
+
+#no-notifications div{
+    padding : 48px
+}
+
+#notifications-list {
+      padding : 16px 0px 16px 0px; 
+}
+
+#single-notification {
+    box-shadow: 0px 1px 9px #ccc; 
+    padding : 8px; 
+    margin : 8px; 
+    background : white; 
+    cursor : pointer
+}
+
+#notification-time {
+    float : left; 
+    margin-right : 24px;
+    color : #4267b2
+}
+
+#notification-date {
+    float : left; 
+    margin-right : 4px;
+    color : #4267b2
+}
+
+#notification-content {
+    float : left; 
+    cursor : pointer;
+    font-weight : 600
+}

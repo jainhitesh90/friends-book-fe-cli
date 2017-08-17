@@ -1,0 +1,19 @@
+#parent {
+    padding : 12px; background : white;
+}
+
+#feed-title {
+    font-size : 18px; line-height : 1.2; color : black; float:left; text-align : left; font-weight : 400; 
+}
+
+.like {
+    font-size : 12px;
+}
+
+#id {
+    font-size : 12px; margin : 4px 0px 4px 0px
+}
+
+#user-image {
+    width : 24px; height : auto; margin-right : 12px
+}

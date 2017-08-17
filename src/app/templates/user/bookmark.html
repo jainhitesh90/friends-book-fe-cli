@@ -1,0 +1,20 @@
+<div align="center">
+    <div *ngIf="fetchingBookmarks" class="loading-center-page">
+        <custom-spinner [loadingText]="Fetching"> </custom-spinner>
+    </div>
+    <div *ngIf="!fetchingBookmarks">
+        <div align="center" *ngIf="feeds==null || feeds.length == 0">
+            <h1 id="no-bookmark"> No saved bookmarks </h1>
+        </div>
+        <div *ngIf="feeds!=null">
+            <div *ngIf="fetchingBookmarks">
+                <label id="fetching-bookmarks"> Fetching saved bookmarks </label>
+            </div>
+            <div *ngIf="feeds.length > 0">
+                <div *ngFor="let feed of feeds; let i=index">
+                    <feed-component (callback)="childComponentResponse($event)" [feed]="feed"> </feed-component>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

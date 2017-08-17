@@ -1,0 +1,50 @@
+#new-post{
+    box-shadow: 0px 1px 9px #ccc; margin : 16px 8px 16px 8px; background : white
+}
+
+#div-post {
+    padding-bottom : 48px
+}
+
+#new-post textarea {
+    width : 100%; padding : 8px 16px 8px 16px; margin-bottom : 16px
+}
+
+#div-post-input {
+    float : left; margin-left : 16px
+}
+
+#text-photos {
+    font-size : 12px; cursor : pointer; background : #DCDCDC; border-radius: 24px; border: 2px solid #DCDCDC; font-size : 12px; padding : 4px 8px 4px 8px
+}
+
+#green-text {
+    color:green; margin-left : 8px
+}
+
+#span-file-input {
+    cursor : pointer
+}
+
+#div-post-button {
+    float : right; margin-right : 16px
+}
+
+#post-button {
+    font-size : 16px; padding : 2px 16px 2px 16px
+}
+
+#no-feeds {
+    padding : 48px;
+    font-weight: 600
+}
+
+#first-time-alert {
+    margin : 0px 12px 8px 12px
+}
+
+#feedCategory {
+    float: right;
+    padding: 4px;
+    margin: 0px 8px 0px 0px;
+}

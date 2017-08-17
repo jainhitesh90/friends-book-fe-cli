@@ -1,0 +1,21 @@
+ <div id="parent">
+     <div *ngIf="feed == null || !showDetails">
+        <custom-spinner [loadingText]="Fetching"> </custom-spinner>
+    </div> 
+    <div *ngIf="feed != null && showDetails">
+        <h3 *ngIf="feed.title != null" id="feed-title"> {{feed.title}} </h3>
+        <div style="clear:both"> </div>
+        <br />
+        <div *ngIf="feed.likesList!=null && feed.likesList.length > 0">
+            <h4 *ngIf="feed.likesList.length == 1" class="like"> <b> {{feed.likesList[0]['name']}} </b> liked the feed</h4>
+            <h4 *ngIf="feed.likesList.length > 1" class="like"> <b> {{feed.likesList[0]['name']}} </b> and <b> {{feed.likesList.length-1}} </b> others liked the feed</h4>
+        </div>
+        <hr />
+        <div *ngIf="feed.commentsList!=null && feed.commentsList.length > 0">
+            <div *ngFor="let comment of feed.commentsList; let i=index">
+                <h4 id="comment"> <span> <img src="{{comment['image']}}" class='circle-picture user-image' /> </span> <b> {{comment['name']}} </b> {{comment['content']}}  </h4>
+            </div>
+        </div>
+        <div style="clear : both"> </div>
+    </div>
+</div> 

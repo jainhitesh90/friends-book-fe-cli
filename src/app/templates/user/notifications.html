@@ -1,0 +1,21 @@
+<div *ngIf="fetchingNotifications" class="loading-center-page">
+    <custom-spinner [loadingText]="Fetching"> </custom-spinner>
+</div>
+<div *ngIf="!fetchingNotifications">
+    <div *ngIf="notifications!=null">
+        <div align="center" *ngIf="notifications.length == 0" id="no-notifications">
+            <h1> No Notifications yet </h1>
+        </div>
+        <div *ngIf="notifications.length > 0" id="notifications-list">
+            <div *ngFor="let notification of notifications; let i=index">
+                <div id="single-notification" (click)="openNotification(notification)">
+                    <h4 id="notification-content" *ngIf="notification.content != null"> {{notification.content}} </h4>
+                    <br />
+                    <h6 id="notification-date"> {{notification.createdAt | date: 'MMM dd'}} </h6>
+                    <span> <h6 id="notification-time"> at {{notification.createdAt | date: 'shortTime'}} </h6> </span>
+                    <div style="clear : both"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

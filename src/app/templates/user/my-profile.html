@@ -1,0 +1,21 @@
+<div *ngIf="fetchingProfile" class="loading-center-page">
+    <custom-spinner [loadingText]="Fetching"> </custom-spinner>
+</div>
+<div align="center" *ngIf="!fetchingProfile">
+    <div *ngIf="socialUserModel!=null" id="profile">
+        <img src="{{socialUserModel.image}}" class='circle-picture' id='dp'>
+        <br />
+        <h1 id="user-name"> {{socialUserModel.name}} </h1>
+        <h4 id="user-email"> {{socialUserModel.email}}</h4>
+    </div>
+</div>
+<div *ngIf="fetchingFeeds" class="loading-center-page">
+    <custom-spinner [loadingText]="Fetching"> </custom-spinner>
+</div>
+<div *ngIf="!fetchingFeeds">
+    <div align="left" *ngIf="feeds!=null" id="feeds-list">
+        <div *ngFor="let feed of feeds; let i=index">
+            <feed-component [feed]="feed"> </feed-component>
+        </div>
+    </div>
+</div>

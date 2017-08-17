@@ -1,0 +1,69 @@
+.title {
+    text-align: left;
+    margin: 16px 8px 16px 8px;
+    font-weight : 700
+}
+
+#no-friends {
+    padding : 48px;
+    font-weight: 600
+}
+
+#no-suggestions {
+    padding : 48px;
+    font-weight: 600
+}
+
+#div-parent {
+    /* padding : 16px */
+}
+
+#div-friends {
+    /* padding : 8px; 
+    margin : 8px */
+}
+
+#div-others {
+    /* padding : 8px; 
+    margin : 8px */
+}
+
+.outer-div {
+    /* margin-top : -24px */
+}
+
+.friends{
+    font-weight: 600
+}
+
+.div-friends-bg {
+    box-shadow: 0px 1px 9px #ccc; padding : 8px; margin : 8px; background : white;
+}
+
+.list-div {
+    padding : 16px
+}
+
+.friend-img {
+    width : 48px; height : 48px; float : left;
+}
+
+.friend-name {
+    font-size : 16px; float : left;color : black; margin-left : 16px; font-weight : 700; cursor : pointer; padding : 12px 0px 12px 0px
+}
+
+.friends-action-button{
+    background: #e9ebee !important;
+    border: #004e98;
+    color : #004e98;
+    padding : 4px 16px 4px 16px;
+    font-size: 12px;
+    font-family : Roboto ; 
+    text-align: center;
+    height: auto;
+    border-radius : 4px; 
+    outline: none;
+    text-transform: capitalize;
+    float : right; 
+    margin : 8px 16px 4px 0px
+}

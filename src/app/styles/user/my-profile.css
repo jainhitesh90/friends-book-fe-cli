@@ -1,0 +1,20 @@
+#profile {
+    margin : 24px 0px 0px 0px
+}
+
+#dp {
+    width : 96px; height : 96px;
+}
+
+#user-name {
+     margin : 16px 0px 8px 0px;
+     font-weight : 700
+}
+
+#user-email {
+    margin-bottom : 12px
+}
+
+#feeds-list {
+    padding : 16px 0px 16px 0px;
+}

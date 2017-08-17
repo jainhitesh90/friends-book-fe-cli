@@ -1,15 +1,14 @@
 {
-  "name": "angular2-app",
-  "version": "0.0.0",
+  "name": "friends-book",
+  "version": "1.0.0",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
-    "start": "node Server.js",
+    "start": "ng serve",
     "test": "ng test",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
-    "e2e": "protractor",
-    "postinstall": "ng build --aot -prod"
+    "e2e": "protractor"
   },
   "private": true,
   "dependencies": {
@@ -26,7 +25,15 @@
     "express": "^4.14.1",
     "rxjs": "^5.0.1",
     "ts-helpers": "^1.1.1",
-    "zone.js": "^0.7.2"
+    "zone.js": "^0.7.2",
+    "angular-google-signin": "^0.1.5",
+    "angular2-modal": "^2.0.1",
+    "angular2-social-login": "^3.1.1",
+    "bootstrap": "^3.3.7",
+    "moment": "^2.18.1",
+    "ng2-cookies": "^1.0.3",
+    "ng2-sharebuttons": "^2.1.2",
+    "typescript": "2.3.4"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^2.3.1",

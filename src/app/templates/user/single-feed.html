@@ -1,0 +1,6 @@
+<div *ngIf="fetchingFeed" class="loading-center-page">
+    <custom-spinner [loadingText]="Fetching"> </custom-spinner>
+</div>
+<div *ngIf="!fetchingFeed && feed !=null" style="margin-top : 16px">
+    <feed-component (callback)="childFeedComponentResponse()" [feed]="feed"> </feed-component>
+</div>

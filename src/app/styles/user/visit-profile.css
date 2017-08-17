@@ -1,0 +1,15 @@
+#user-image {
+    width : 96px; height : 96px; margin : 8px 0px 8px 0px 
+}
+
+#user-name {
+    margin-top : 16px
+}
+
+#feed-container {
+    padding : 16px;
+}
+
+.spinner-div {
+    margin : 16px
+}

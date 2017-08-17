@@ -1,0 +1,59 @@
+<div id="parent">
+    <!-- Web view -->
+    <div *ngIf="!mobileView">
+        <div id="fixed-header">
+            <div style="width : 100%" id="search-bar-div">
+                <input style="width : 80%" placeholder="Search" id="searchText" [(ngModel)]="searchText" name="searchText" type="text" />
+                <span class="fa fa-search searchIcon" (click)="showSearchPage()"></span>
+                <div style="clear : both"> </div>
+            </div>
+        </div>
+        <div id="left-container">
+            <div *ngIf="socialUserModel!=null" id="user-div">
+                <img src="{{socialUserModel.image}}" class='circle-picture' id='dp'>
+                <br />
+                <h1 id="user-name"> {{socialUserModel.name}} </h1>
+                <h4 id="user-email"> {{socialUserModel.email}}</h4>
+            </div>
+            <h2 class="nav-items" (click)="showFeeds()"> <i class="fa fa-home nav-icon" style="color : #990000" aria-hidden="true"> </i> Feeds </h2>
+            <h2 class="nav-items" (click)="showProfile()"> <i class="fa fa-user-circle nav-icon" style="color : #00CC00" aria-hidden="true"> </i> My Posts </h2>
+            <h2 class="nav-items" (click)="showFriends()"> <i class="fa fa-users nav-icon" style="color : #CCCC00" aria-hidden="true"> </i> Friends </h2>
+            <h2 class="nav-items" *ngIf="bookmarkItems!=null" (click)="openBookmarks()"> <i class="fa fa-bookmark nav-icon" style="color : #FF007F" aria-hidden="true"> </i> Saved <span id="bookmark-count"> ({{bookmarkItems.length}}) </span>                </h2>
+            <h2 class="nav-items" (click)="showNotifications()"> <i class="fa fa-bell nav-icon" style="color : #00EFFF" aria-hidden="true"> </i> Notifications </h2>
+        </div>
+        <div id="center-container">
+            <div id="main-content-web">
+                <router-outlet (callback)="updateSavedBookmarkCount($event)"></router-outlet>
+            </div>
+        </div>
+        <div style="clear:both"> </div>
+    </div>
+
+    <!-- Mobile view -->
+    <div *ngIf="mobileView">
+        <div id="floating-header">
+            <div style="width : 100%" id="search-bar-div">
+                <input style="width : 80%" placeholder="Search" id="searchText" [(ngModel)]="searchText" name="searchText" type="text" />
+                <span class="fa fa-search searchIcon" (click)="showSearchPage()"></span>
+                <div style="clear : both"> </div>
+            </div>
+        </div>
+        <div align="center">
+            <div id="main-content-mobile">
+                <router-outlet (callback)="updateSavedBookmarkCount($event)"></router-outlet>
+            </div>
+        </div>
+        <div style="clear:both"> </div>
+        <div align="center" id="new-footer">
+            <table style="width : 100%">
+                <tr>
+                    <td align="center" (click)="showFeeds()"> <i class="fa fa-home icon-colors" aria-hidden="true"> </i> </td>
+                    <td align="center" (click)="showProfile()"> <i class="fa fa-user-circle icon-colors" aria-hidden="true"></i> </td>
+                    <td align="center" (click)="showFriends()"> <i class="fa fa-users icon-colors" aria-hidden="true"> </i> </td>
+                    <td align="center" (click)="openBookmarks()"> <i class="fa fa-bookmark icon-colors"> </i> </td>
+                    <td align="center" (click)="showNotifications()"> <i class="fa fa-bell icon-colors"> </i> </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+#wrapper {
+  min-height:100%;
+  position:relative;
+}
+
+#progress-bar-holder-div {
+margin-bottom: -8px !important;
+}
+
+#progress-bar-style {
+width: 100%;
+margin-top: 0px !important;
+}
+
+.display-msg {
+ z-index : 9999999; 
+ padding-left: 8px; 
+ padding-right : 8px; 
+ padding-bottom : 0px; 
+ position: absolute;  
+ right: 0;
+ top: 0;
+ left: 0;
+}
+
+.display-msg label {
+ font-size: 14px; 
+ color : #ffffff; 
+ margin : 8px;
+}
+
+.display-msg img {
+width : 24px;
+height : 24px; 
+margin-right : 8px;
+}
+
+#success-toast {
+ background-color : #4F8A10; 
+ text-align: center
+}
+
+#error-toast {
+ background-color : #D8000C; 
+ text-align: center
+}
