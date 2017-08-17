@@ -5,6 +5,7 @@ import { ApiService } from '../../apiServices/api.service'
 import { NotificationModel } from '../../models/notification-model'
 import { AuthService } from "angular2-social-login";
 import { Utils } from '../../utils/utils'
+import { UserComponent } from './user-component'
 
 @Component({
 	templateUrl: '../../templates/user/notifications.html',
@@ -20,9 +21,10 @@ export class NotificationsComponent implements OnInit {
 	notifications: NotificationModel[]
 	fetchingNotifications: boolean
 
-	constructor(appComponent: AppComponent, router: Router, private apiService: ApiService) {
+	constructor(appComponent: AppComponent, private userComponent : UserComponent,  router: Router, private apiService: ApiService) {
 		this.appComponent = appComponent
 		this.router = router
+		userComponent.setSelectedIconBg(5)
 	}
 
 	ngOnInit() {

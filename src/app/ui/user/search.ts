@@ -28,13 +28,13 @@ export class SearchComponent implements OnInit {
 
 	ngOnInit(): void {
 		if (new Utils().isTokenAvailable()) {
-			this.router.navigate(['/login'])
-		} else {
 			this.activatedRoute.queryParams.subscribe(params => {
 				this.searchText = params['search']
 				if (this.searchText != null && this.searchText.length != 0)
 					this.search()
 			});
+		} else {
+			this.router.navigate(['/login'])
 		}
 	}
 

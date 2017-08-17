@@ -6,6 +6,7 @@ import { SocialUserModel } from '../../models/social-user-model'
 import { FeedModel } from '../../models/feed.model'
 import { AuthService } from "angular2-social-login";
 import { Utils } from '../../utils/utils'
+import { UserComponent } from './user-component'
 
 @Component({
 	templateUrl: '../../templates/user/my-profile.html',
@@ -23,20 +24,17 @@ export class MyProfileComponent implements OnInit {
 	fetchingFeeds: boolean
 	mobileView: boolean
 
-	constructor(appComponent: AppComponent, router: Router, private apiService: ApiService) {
+	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService) {
 		this.appComponent = appComponent
 		this.router = router
+		userComponent.setSelectedIconBg(2)
 	}
 
 	ngOnInit() {
 		if (new Utils().isTokenAvailable()) {
-			if (screen.width < 737) {
-				this.mobileView = true
+			this.mobileView = new Utils().isMobile()
+			if (this.mobileView)
 				this.getProfile()
-			}
-			else {
-				this.mobileView = false
-			}
 			this.fetchMyFeeds()
 
 		} else {

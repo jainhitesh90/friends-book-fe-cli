@@ -10,7 +10,7 @@ export class SocialUserModel {
     newUser : boolean
 
     /* Friends */
-    friendStatus : boolean
+    friendStatus : string
 }
 
 export class pendingFriendRequest {

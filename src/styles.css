@@ -369,11 +369,6 @@ textarea:focus{
     padding : 12px;
 }
 
-.nav-items:hover {
-    background-color: white;
-    border-radius : 8px; 
-}
-
 .nav-items i {
     margin-right : 4px
 }

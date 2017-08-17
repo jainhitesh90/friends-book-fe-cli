@@ -23,13 +23,14 @@ export class BookmarkComponent implements OnInit {
 	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService) {
 		this.appComponent = appComponent
 		this.router = router
+		userComponent.setSelectedIconBg(4)
 	}
 
 	ngOnInit(): void {
 		if (new Utils().isTokenAvailable()) {
-			this.router.navigate(['/login'])
-		} else {
 			this.fetchBookmarks()
+		} else {
+			this.router.navigate(['/login'])
 		}
 	}
 

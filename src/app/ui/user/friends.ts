@@ -6,6 +6,7 @@ import { NotificationModel } from '../../models/notification-model'
 import { AuthService } from "angular2-social-login";
 import { Utils } from '../../utils/utils'
 import {SocialUserModel} from '../../models/social-user-model'
+import { UserComponent } from './user-component'
 
 @Component({
 	templateUrl: '../../templates/user/friends.html',
@@ -21,9 +22,10 @@ export class FriendsComponent implements OnInit {
 	loadingFriends : boolean
 	fetchingSuggestions : boolean
 
-	constructor(appComponent: AppComponent, router: Router, private apiService: ApiService) {
+	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService) {
 		this.appComponent = appComponent
 		this.router = router
+		userComponent.setSelectedIconBg(3)
 	}
 
 	ngOnInit() {
@@ -60,62 +62,55 @@ export class FriendsComponent implements OnInit {
 	}
 
 	addFriend(friend : SocialUserModel){
-		var thisObject = this
-		this.appComponent.showCircularProgressBar()
-		this.apiService.addFriend(friend)
-			.then(response => this.addFriendResponse(response,friend))
-			.catch(function (e) {
-				thisObject.appComponent.hideCircularProgressBar()
-				thisObject.appComponent.showErrorMessage(e)
-			})
-	}
-
-	addFriendResponse(response : any, friend : SocialUserModel){
 		/* Remove from user's list*/
 		var index = this.users.indexOf(friend)
 		if (index != -1)
 		this.users.splice(index, 1)
 
-		this.appComponent.hideCircularProgressBar()
+		/* Add to friends list and Change status to Friends */
+		friend.friendStatus = 'Sent'
+		this.friends.push(friend)
+
+		var thisObject = this
+		this.apiService.addFriend(friend)
+			.then(response => console.log(response))
+			.catch(function (e) {
+				thisObject.appComponent.hideCircularProgressBar()
+				thisObject.appComponent.showErrorMessage(e)
+			})
 	}
 
 	acceptFriend(friend : SocialUserModel){
-		var thisObject = this
-		this.appComponent.showCircularProgressBar()
-		this.apiService.acceptFriend(friend)
-			.then(response => this.acceptFriendResponse(response,friend))
-			.catch(function (e) {
-				thisObject.appComponent.hideCircularProgressBar()
-				thisObject.appComponent.showErrorMessage(e)
-			})
-	}
-
-	acceptFriendResponse(response : any, friend : SocialUserModel){
 		/* Remove from user's list*/
 		var index = this.users.indexOf(friend)
 		if (index != -1)
 		this.users.splice(index, 1)
 
-		this.appComponent.hideCircularProgressBar()
-	}
+		/* Change status to Friends */
+		friend.friendStatus = 'Friends'
 
-	unFriend(friend : SocialUserModel){
 		var thisObject = this
-		this.appComponent.showCircularProgressBar()
-		this.apiService.unFriend(friend)
-			.then(response => this.unFriendResponse(response, friend))
+		this.apiService.acceptFriend(friend)
+			.then(response => console.log(response))
 			.catch(function (e) {
-				thisObject.appComponent.hideCircularProgressBar()
 				thisObject.appComponent.showErrorMessage(e)
 			})
 	}
 
-	unFriendResponse(response : any, friend : SocialUserModel){
+	unFriend(friend : SocialUserModel){
 		/* Remove from friend's suggestion list*/
 		var index = this.friends.indexOf(friend)
 		if (index != -1)
 		this.friends.splice(index, 1)
-		this.appComponent.hideCircularProgressBar()
+
+		/* Add to users list */
+		this.users.push(friend)
+
+		var thisObject = this
+		this.apiService.unFriend(friend)
+			.then(response => console.log(response))
+			.catch(function (e) {
+				thisObject.appComponent.showErrorMessage(e)
+			})
 	}
 }
-

@@ -41,6 +41,7 @@ export class FeedsComponent implements OnInit {
 	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService, private pushNotificationService: PushNotificationService) {
 		this.appComponent = appComponent
 		this.router = router
+		userComponent.setSelectedIconBg(1)
 	}
 
 	ngOnInit() {
