@@ -12,6 +12,12 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import "node_modules/bootstrap/fonts/glyphicons-halflings-regular.eot";
+@import "node_modules/bootstrap/fonts/glyphicons-halflings-regular.svg";
+@import "node_modules/bootstrap/fonts/glyphicons-halflings-regular.ttf";
+@import "node_modules/bootstrap/fonts/glyphicons-halflings-regular.woff";
+@import "node_modules/bootstrap/fonts/glyphicons-halflings-regular.woff2";
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
