@@ -18,7 +18,9 @@
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "styles": [
-        "styles.css"
+        "styles.css",
+        "css/bootstrap-paper.css",
+        "css/ng2-material.css"
       ],
       "scripts": [],
       "environments": {
