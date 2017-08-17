@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core'
 import { Router } from '@angular/router'
 import { AppComponent } from '../../app-component'
 import { UserComponent } from './user-component'
-import { BaseComponent } from './base-component'
+import { Utils } from '../../utils/utils'
 import { ApiService } from '../../apiServices/api.service'
 import { FeedModel } from '../../models/Feed.model'
 
@@ -11,7 +11,7 @@ import { FeedModel } from '../../models/Feed.model'
 	styleUrls: ['../../styles/user/feeds.css']
 })
 
-export class FeedsComponent extends BaseComponent implements OnInit {
+export class FeedsComponent implements OnInit {
 
 	@ViewChild('imageFileInput') imageFileInput: ElementRef
 	@ViewChild('videoFileInput') videoFileInput: ElementRef
@@ -38,13 +38,12 @@ export class FeedsComponent extends BaseComponent implements OnInit {
 	}
 
 	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService) {
-		super()
 		this.appComponent = appComponent
 		this.router = router
 	}
 
 	ngOnInit() {
-		if (super.isTokenAvailable()) {
+		if (new Utils().isTokenAvailable()) {
 			this.newFeed = new FeedModel()
 			this.fetchAllFeeds()
 			if (localStorage.getItem('newUser') == 'true')

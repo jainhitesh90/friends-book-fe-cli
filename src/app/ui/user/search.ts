@@ -4,16 +4,14 @@ import { AppComponent } from '../../app-component'
 import { ApiService } from '../../apiServices/api.service'
 import { FeedModel } from '../../models/feed.model'
 import { AuthService } from "angular2-social-login";
-
-import { BaseComponent } from './base-component'
-declare var gapi: any;
+import { Utils } from '../../utils/utils'
 
 @Component({
 	moduleId: module.id,
 	templateUrl: '../../templates/user/search-page.html'
 })
 
-export class SearchComponent extends BaseComponent implements OnInit {
+export class SearchComponent implements OnInit {
 
 	router: Router
 	appComponent: AppComponent
@@ -24,14 +22,13 @@ export class SearchComponent extends BaseComponent implements OnInit {
 	fetchingSearchResult: boolean
 
 	constructor(appComponent: AppComponent, router: Router, private apiService: ApiService, activatedRoute: ActivatedRoute) {
-		super()
 		this.appComponent = appComponent
 		this.router = router
 		this.activatedRoute = activatedRoute
 	}
 
 	ngOnInit(): void {
-		if (!super.isTokenAvailable()) {
+		if (new Utils().isTokenAvailable()) {
 			this.router.navigate(['/login'])
 		} else {
 			this.activatedRoute.queryParams.subscribe(params => {

@@ -5,9 +5,7 @@ import { ApiService } from '../../apiServices/api.service'
 import { SocialUserModel } from '../../models/social-user-model'
 import { FeedModel } from '../../models/feed.model'
 import { AuthService } from "angular2-social-login";
-import { BaseComponent } from './base-component'
-
-declare var gapi: any;
+import { Utils } from '../../utils/utils'
 
 @Component({
 	moduleId: module.id,
@@ -15,7 +13,7 @@ declare var gapi: any;
 	styleUrls: ['../../styles/user/my-profile.css']
 })
 
-export class MyProfileComponent extends BaseComponent implements OnInit {
+export class MyProfileComponent implements OnInit {
 
 	router: Router
 	appComponent: AppComponent
@@ -27,13 +25,12 @@ export class MyProfileComponent extends BaseComponent implements OnInit {
 	mobileView: boolean
 
 	constructor(appComponent: AppComponent, router: Router, private apiService: ApiService) {
-		super()
 		this.appComponent = appComponent
 		this.router = router
 	}
 
 	ngOnInit() {
-		if (super.isTokenAvailable) {
+		if (new Utils().isTokenAvailable()) {
 			if (screen.width < 737) {
 				this.mobileView = true
 				this.getProfile()

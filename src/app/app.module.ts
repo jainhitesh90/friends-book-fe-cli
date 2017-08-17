@@ -7,7 +7,6 @@ import { HttpModule } from '@angular/http'
 
 // User
 import { UserComponent } from './ui/user/user-component'
-import { BaseComponent } from './ui/user/base-component'
 import { LoginComponent } from './ui/user/login-component'
 import { FeedsComponent } from './ui/user/feeds'
 import { SingleFeedComponent } from './ui/user/single-feed'
@@ -61,7 +60,6 @@ import { environment } from '../environments/environment';
   declarations: [
     AppComponent,
     UserComponent,
-    BaseComponent,
     LoginComponent,
     SingleFeedComponent,
     FeedsComponent,
