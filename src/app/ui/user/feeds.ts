@@ -5,6 +5,7 @@ import { UserComponent } from './user-component'
 import { Utils } from '../../utils/utils'
 import { ApiService } from '../../apiServices/api.service'
 import { FeedModel } from '../../models/feed.model'
+import { PushNotificationService } from '../../apiServices/push-notification.service'
 
 @Component({
 	templateUrl: '../../templates/user/feeds.html',
@@ -37,7 +38,7 @@ export class FeedsComponent implements OnInit {
 		}
 	}
 
-	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService) {
+	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService, private pushNotificationService: PushNotificationService) {
 		this.appComponent = appComponent
 		this.router = router
 	}
@@ -46,6 +47,7 @@ export class FeedsComponent implements OnInit {
 		if (new Utils().isTokenAvailable()) {
 			this.newFeed = new FeedModel()
 			this.fetchAllFeeds()
+			this.pushNotificationService.requestNotificationPermission();
 			if (localStorage.getItem('newUser') == 'true')
 				this.newUser = true
 		} else {

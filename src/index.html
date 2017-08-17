@@ -183,12 +183,14 @@
 	</body>
 
 	<!--Registering Service Worker-->
-	<!-- <script>
+	<script>
 		window.addEventListener('load', function () {
+			console.log("register service worker")
 			var deferredPrompt;
 			if ('serviceWorker' in navigator) {
 				navigator.serviceWorker.register('/service-worker.js')
 					.then(function (reg) {
+						console.log("Registered : ", reg)
 						reg.update();
 					}).catch(function (err) {
 						console.log("No it didn't. This happened: ", err)
@@ -197,8 +199,10 @@
 					e.preventDefault();
 					return false;
 				});
+			} else {
+				console.log("failed")
 			}
 		});
-	</script> -->
+	</script>
 
 </html>
