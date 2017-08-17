@@ -7,7 +7,6 @@ import { FeedModel } from '../../models/feed.model'
 import { Utils } from '../../utils/utils'
 
 @Component({
-	moduleId: module.id,
 	templateUrl: '../../templates/user/bookmark.html',
 	styleUrls: ['../../styles/user/bookmark.css']
 })

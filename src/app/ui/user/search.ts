@@ -7,7 +7,6 @@ import { AuthService } from "angular2-social-login";
 import { Utils } from '../../utils/utils'
 
 @Component({
-	moduleId: module.id,
 	templateUrl: '../../templates/user/search-page.html'
 })
 

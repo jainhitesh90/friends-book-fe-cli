@@ -5,7 +5,6 @@ import { ApiService } from '../../apiServices/api.service'
 import { SocialUserModel } from '../../models/social-user-model'
 
 @Component({
-	moduleId: module.id,
     templateUrl: '../../templates/user/user-component.html',
     styleUrls: ['../../styles/user/user-component.css']
 })

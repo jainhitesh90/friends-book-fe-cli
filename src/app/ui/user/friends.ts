@@ -8,7 +8,6 @@ import { Utils } from '../../utils/utils'
 import {SocialUserModel} from '../../models/social-user-model'
 
 @Component({
-	moduleId: module.id,
 	templateUrl: '../../templates/user/friends.html',
 	styleUrls: ['../../styles/user/friends.css']
 })

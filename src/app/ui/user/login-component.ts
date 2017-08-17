@@ -5,7 +5,6 @@ import { Modal, BSModalContext } from 'angular2-modal/plugins/bootstrap'
 import { CustomTermsModalContext, LoginModal } from '../../modals/login-modal'
 
 @Component({
-    moduleId: module.id,
     templateUrl: '../../templates/user/login.html',
     styleUrls: ['../../styles/user/login.css']
 })

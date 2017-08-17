@@ -4,10 +4,9 @@ import { AppComponent } from '../../app-component'
 import { UserComponent } from './user-component'
 import { Utils } from '../../utils/utils'
 import { ApiService } from '../../apiServices/api.service'
-import { FeedModel } from '../../models/Feed.model'
+import { FeedModel } from '../../models/feed.model'
 
 @Component({
-	moduleId: module.id,
 	templateUrl: '../../templates/user/single-feed.html'
 })
 
