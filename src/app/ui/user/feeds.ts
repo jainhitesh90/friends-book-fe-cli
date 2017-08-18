@@ -154,7 +154,7 @@ export class FeedsComponent implements OnInit {
 
 	appendNewItems(newFeeds: FeedModel[]) {
 		var newFeedlength = newFeeds.length
-		if (newFeedlength < 5)
+		if (newFeedlength < 10)
 			this.lastFeeds = true
 		for (var i = 0; i < newFeedlength; i++) {
 			this.feeds.push(newFeeds[i])
