@@ -1,7 +1,7 @@
 <div *ngIf="fetchingSearchResult" class="loading-center-page">
     <custom-spinner [loadingText]="Searhing"> </custom-spinner>
 </div>
-<div *ngIf="!fetchingSearchResult">
+<div *ngIf="!fetchingSearchResult" id="parent">
     <div align="center">
         <div *ngIf="feeds !=null">
             <div *ngFor="let feed of feeds; let i=index">

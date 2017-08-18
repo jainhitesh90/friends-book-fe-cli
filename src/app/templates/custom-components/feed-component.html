@@ -7,7 +7,7 @@
             <div style="clear : both"> </div>
             <div>
                 <div style="margin : 8px 0px 8px 0px">
-                    <label *ngIf="feed.title != null" style="font-size : 18px; line-height : 1.2; color : black; float:left; text-align : left; margin-bottom : 16px; font-weight : 400"> {{feed.title}} </label>
+                    <label *ngIf="feed.title != null" style="font-size : 18px; line-height : 1.2; color : black; float:left; text-align : left; margin-bottom : 16px; font-weight : 400; max-width : 90%"> {{feed.title}} </label>
                     <div *ngIf="feed.feedType=='event' || feed.feedType=='blog'" style="float:right; width : 10%">
                         <i *ngIf="feed.bookmarked" class="fa fa-bookmark fa-2x" style="margin-right : 16px; float : right;cursor : pointer; color : blue"
                             aria-hidden="true" (click)="toogleBookmark(feed)"></i>
@@ -15,7 +15,7 @@
                             (click)="toogleBookmark(feed)"></i>
                     </div>
                 </div>
-                <img *ngIf="feed.image!=null" src="{{feed.image}}" class='circle-picture' style="width : 100%; vertical-align: middle; margin : 16px 0px 8px 0px">
+                <img *ngIf="feed.image!=null" src="{{feed.image}}" style="width : 100%; vertical-align: middle; margin : 16px 0px 8px 0px">
                 <label *ngIf="feed.description != null" style="font-size : 14px; text-align : left; line-height : 1.2; margin : 8px 0px 8px 0px"> {{feed.description}} </label>
                 <div align="center" *ngIf="feed.contentType != null">
                     <img *ngIf="feed.contentType == 'image'" src="{{feed.contentUrl}}" style="width : 100%; vertical-align: middle; margin-bottom : 12px"
@@ -27,7 +27,7 @@
             </div>
             <label *ngIf="feed.venue != null" style="font-size : 16px; text-align : left; float : left; line-height : 1.2"> <b style="color : black"> Venue : </b> {{feed.venue}} </label>
             <label *ngIf="feed.price != null" style="font-size : 16px; text-align : left; float : left; line-height : 1.2"> <b style="color : black"> Price : </b> {{feed.price}} </label>
-            <label *ngIf="feed.url != null" style="font-size : 14px; float : right; margin-right : 16px; color : blue; cursor : pointer" (click) = "openFeedUrl(feed)"> More </label>
+            <label *ngIf="feed.url != null" style="font-size : 14px; float : right; margin-right : 16px; color : blue; cursor : pointer" (click) = "openFeedUrl(feed)"> Read More </label>
             <div style="clear : both"> </div>
         </div>
         <div>
@@ -49,6 +49,7 @@
                     <share-buttons [url]="feed.url" [showCount]="true"></share-buttons>
                 </div>
             </div>
+            <br />
             <div *ngIf="feed.disableComment" align="center" style="margin : 8px 0px 8px 0px">
                 <input style="float:left;" id="new-comment" [(ngModel)]="feed.newComment" placeholder="Comment here" />
                 <p style="font-size : 16px; cursor : pointer; color : black; float:right; width : 10%" (click)="addComment(feed)"> Add </p>

@@ -15,7 +15,7 @@ export class CustomTermsModalContext extends BSModalContext {
     styleUrls: ['../styles/modals/feeds-reaction-modal.css']
 })
 
-export class FeedsReactionModal implements CloseGuard, ModalComponent<CustomTermsModalContext> {
+export class FeedsReactionModal implements ModalComponent<CustomTermsModalContext> {
     context: CustomTermsModalContext;
     feed: FeedModel
     showDetails: boolean
@@ -28,9 +28,7 @@ export class FeedsReactionModal implements CloseGuard, ModalComponent<CustomTerm
             this.getDetails()
         else
             this.showDetails = true
-        dialog.setCloseGuard(this)
     }
-
 
     getDetails() {
         var thisObject = this
@@ -51,5 +49,4 @@ export class FeedsReactionModal implements CloseGuard, ModalComponent<CustomTerm
     closeModal() {
         this.dialog.close(true)
     }
-
 }

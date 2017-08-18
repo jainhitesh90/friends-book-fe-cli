@@ -82,12 +82,18 @@ export class FeedsComponent implements OnInit {
 		this.newFeed.feedType = "post"
 		this.uploadingFeed = true
 		this.apiService.addFeed(this.newFeed)
-			.then(response => this.uploadingFeed = false)
-			.then(response => this.appComponent.showSuccessMessage('Posted successfully!'))
+			.then(response => this.uploadFeedResponse())
 			.catch(function (e) {
 				thisObject.appComponent.showErrorMessage(e)
 				thisObject.uploadingFeed = false
 			})
+	}
+
+	uploadFeedResponse() {
+		this.uploadingFeed = false
+		this.appComponent.showSuccessMessage('Posted successfully!')
+		this.newFeed.title = ''
+		this.fileName = null
 	}
 
 	friendsFeeds() {

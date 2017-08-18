@@ -7,7 +7,8 @@ import { AuthService } from "angular2-social-login";
 import { Utils } from '../../utils/utils'
 
 @Component({
-	templateUrl: '../../templates/user/search-page.html'
+	templateUrl: '../../templates/user/search-page.html',
+	styleUrls: ['../../styles/user/search-page.css']
 })
 
 export class SearchComponent implements OnInit {

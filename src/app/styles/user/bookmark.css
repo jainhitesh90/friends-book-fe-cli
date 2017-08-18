@@ -1,3 +1,7 @@
+#parent {
+    padding-top : 8px
+}
+
 #no-bookmark {
     padding : 48px;
     font-weight: 600

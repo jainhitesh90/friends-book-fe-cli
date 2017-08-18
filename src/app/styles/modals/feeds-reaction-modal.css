@@ -14,6 +14,23 @@
     font-size : 12px; margin : 4px 0px 4px 0px
 }
 
-#user-image {
-    width : 24px; height : auto; margin-right : 12px
+.user-image {
+    width : 32px; height : 32px; margin-right : 12px
+}
+
+#comment {
+    margin-bottom: 8px
+}
+
+#like-section {
+    margin-top : 24px
+}
+
+#comment-section {
+    margin-top : 12px
+}
+
+#close-dialog{
+    float: right;
+    cursor: pointer;
 }

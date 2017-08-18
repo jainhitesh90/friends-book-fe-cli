@@ -31,7 +31,7 @@ export class FriendsComponent implements OnInit {
 	ngOnInit() {
 		if (new Utils().isTokenAvailable()) {
 			this.getFriendsList()
-			this.getAllUsers()
+			this.getFriendSuggestions()
 		} else {
 			this.router.navigate(['/login'])
 		}
@@ -49,10 +49,10 @@ export class FriendsComponent implements OnInit {
 			})
 	}
 
-	getAllUsers() {
+	getFriendSuggestions() {
 		var thisObject = this
 		this.fetchingSuggestions = true
-		this.apiService.getAllUsers()
+		this.apiService.getFriendSuggestions()
 			.then(response => this.users = response)
 			.then(response => this.fetchingSuggestions = false)
 			.catch(function (e) {

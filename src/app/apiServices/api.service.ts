@@ -61,16 +61,16 @@ export class ApiService {
     }
 
     /* Get all users */
-    getAllUsers(): Promise<SocialUserModel[]> {
-        var url = this.baseUrl + 'users/list'
+    getFriendSuggestions(): Promise<SocialUserModel[]> {
+        var url = this.baseUrl + 'users/friends-suggestion'
         return this.http
             .get(url, this.userOption())
             .toPromise()
-            .then(this.getAllUsersResponse)
+            .then(this.getFriendSuggestionsResponse)
             .catch(this.handleError)
     }
 
-    private getAllUsersResponse(res: Response) {
+    private getFriendSuggestionsResponse(res: Response) {
         if (res.status == 200) {
             var responseStatus = res.json().success as boolean
             if (responseStatus) {

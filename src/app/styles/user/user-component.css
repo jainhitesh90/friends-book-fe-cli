@@ -27,12 +27,17 @@
     color : white
 }
 
+input:focus {
+    outline: none;
+}
+
 .searchIcon {
     float: right;
     margin-right: 16px;
     margin-top: 8px;
     position: relative;
     color: white;
+    cursor: pointer;
 }
 
 #dp {
