@@ -331,9 +331,10 @@ export class ApiService {
     private getSingleFeedByIdResponse(res: Response) {
         if (res.status == 200) {
             var responseStatus = res.json().success as boolean
-            let data = res.json().data as FeedModel
+            let data = res.json().data as FeedModel[]
+            let singleFeed = data[0]
             if (responseStatus) {
-                return data || {}
+                return singleFeed || {}
             } else {
                 return Promise.reject(data)
             }

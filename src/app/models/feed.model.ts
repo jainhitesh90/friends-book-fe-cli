@@ -38,6 +38,10 @@ export class FeedModel {
     likesList: string[]
     commentsList: string[]
 
+    /* Likes and comments 2 */
+    likes: number[]
+    comments: commentOwner
+
     /* Bookmark */
     bookmarked : boolean
 }
@@ -46,4 +50,9 @@ export class feedOwner {
     userId: string
     name: string
     image: string
+}
+
+export class commentOwner {
+    userId: number
+    comment: string
 }

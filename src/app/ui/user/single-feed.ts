@@ -47,6 +47,7 @@ export class SingleFeedComponent implements OnInit {
 		this.fetchingFeed = true
 		this.apiService.getSingleFeedsById(this.feedId)
 			.then(response => this.feed = response)
+			.then(response => console.log(JSON.stringify(this.feed)))
 			.then(response => this.fetchingFeed = false)
 			.catch(function (e) {
 				thisObject.fetchingFeed = false
