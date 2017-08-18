@@ -30,6 +30,7 @@ export class VisitProfileComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		window.scrollTo(0,0)
 		if (new Utils().isTokenAvailable()) {
 			this.activatedRoute.queryParams.subscribe(params => {
 				this.checkQueryParamResponse(params)

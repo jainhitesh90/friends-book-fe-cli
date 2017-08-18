@@ -24,33 +24,31 @@
         <div style="clear:both"> </div>
     </div>
 
-    <div align="center" class="center-hor-loader" *ngIf="fetchingFeeds">
-        <custom-spinner [loadingText]="Fetching"> </custom-spinner>
-    </div>
-
-     <div *ngIf="!fetchingFeeds">
-        <div align="left" *ngIf="feeds!=null">
-            <div *ngIf="feeds.length == 0">
-                <h1 id="no-feeds "> No Feeds </h1>
-            </div>
-            <div *ngIf="feeds.length > 0">
-                <div *ngIf="newUser" class="alert alert-dismissible alert-success" id="first-time-alert">
-                    <button type="button" class="close" data-dismiss="alert" (click)="dismissAlert()">&times;
+    <div align="left" *ngIf="feeds!=null">
+        <div *ngIf="feeds.length == 0">
+            <h1 id="no-feeds "> No Feeds </h1>
+        </div>
+        <div *ngIf="feeds.length > 0">
+            <div *ngIf="newUser" class="alert alert-dismissible alert-success" id="first-time-alert">
+                <button type="button" class="close" data-dismiss="alert" (click)="dismissAlert()">&times;
                     </button> You are seeing feeds from everyone.
-                </div>
-                <div>
-                    <div class="select-style" id="feedCategory">
-                        <select [(ngModel)]="selectedFeedCategory" (ngModelChange)="onChange($event)">
+            </div>
+            <div>
+                <div class="select-style" id="feedCategory">
+                    <select [(ngModel)]="selectedFeedCategory" (ngModelChange)="onChange($event)">
                             <option value="friendsFeeds" [ngValue]="friends"> Friends Feeds </option>
                             <option value="allFeeds" [ngValue]="all"> All Feeds </option>
                         </select>
-                    </div>
-                    <div style="clear:both"> </div>
                 </div>
-                <div *ngFor="let feed of feeds; let i=index">
-                    <feed-component (callback)="childFeedComponentResponse()" [feed]="feed"> </feed-component>
-                </div>
+                <div style="clear:both"> </div>
+            </div>
+            <div *ngFor="let feed of feeds; let i=index">
+                <feed-component (callback)="childFeedComponentResponse()" [feed]="feed"> </feed-component>
             </div>
         </div>
-    </div> 
+    </div>
+
+    <div align="center" class="center-hor-loader" *ngIf="fetchingFeeds">
+        <custom-spinner [loadingText]="Fetching"> </custom-spinner>
+    </div>
 </div>

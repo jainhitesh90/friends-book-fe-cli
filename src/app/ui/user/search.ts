@@ -28,6 +28,7 @@ export class SearchComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		window.scrollTo(0,0)
 		if (new Utils().isTokenAvailable()) {
 			this.activatedRoute.queryParams.subscribe(params => {
 				this.searchText = params['search']

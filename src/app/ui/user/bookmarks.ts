@@ -27,6 +27,7 @@ export class BookmarkComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		window.scrollTo(0,0)
 		if (new Utils().isTokenAvailable()) {
 			this.fetchBookmarks()
 		} else {

@@ -32,9 +32,11 @@ import { ShareButtonsModule} from 'ng2-sharebuttons';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { PushNotificationService } from './apiServices/push-notification.service'
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   imports: [
+    NgxPaginationModule,
     AngularFireModule.initializeApp(environment.firebase),
     Angular2SocialLoginModule,
     ShareButtonsModule.forRoot(),

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core'
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core'
 import { Router } from '@angular/router'
 import { AppComponent } from '../../app-component'
 import { UserComponent } from './user-component'
@@ -19,20 +19,27 @@ export class FeedsComponent implements OnInit {
 
 	router: Router
 	appComponent: AppComponent
+
+	/* new Post */
 	newFeed: FeedModel
+	uploadingFeed: boolean
+	fileName: string
+	posting: boolean
+
+	/* Feeds list */
 	feeds: FeedModel[]
+	pageNumber: number
 	fetchingFeeds: boolean
 	newUser: boolean
-	uploadingFeed : boolean
-	fileName : string
-	posting : boolean
-
+	lastFeeds : boolean
+	
 	selectedFeedCategory = 'allFeeds'
 
 	onChange(selectedItem: any) {
+		this.reInitialize()
 		switch (selectedItem) {
 			case 'friendsFeeds':
-				this.friendsFeeds()
+				this.fetchFriendsFeeds()
 				break;
 			case 'allFeeds':
 				this.fetchAllFeeds()
@@ -44,9 +51,24 @@ export class FeedsComponent implements OnInit {
 		this.appComponent = appComponent
 		this.router = router
 		userComponent.setSelectedIconBg(1)
+		this.pageNumber = -1
+		this.lastFeeds = false
+		window.onscroll = () => {
+			let windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
+			let body = document.body, html = document.documentElement;
+			let docHeight = Math.max(body.scrollHeight,
+				body.offsetHeight, html.clientHeight,
+				html.scrollHeight, html.offsetHeight);
+			let windowBottom = windowHeight + window.pageYOffset;
+			if (windowBottom >= docHeight) {
+				if(!this.lastFeeds)
+					this.fetchAllFeeds()
+			}
+		};
 	}
 
 	ngOnInit() {
+		window.scrollTo(0,0)
 		if (new Utils().isTokenAvailable()) {
 			this.newFeed = new FeedModel()
 			this.fetchAllFeeds()
@@ -96,10 +118,11 @@ export class FeedsComponent implements OnInit {
 		this.fileName = null
 	}
 
-	friendsFeeds() {
+	fetchAllFeeds() {
+		this.pageNumber  = this.pageNumber + 1
 		var thisObject = this
 		this.fetchingFeeds = true
-		this.apiService.getMyFriendsFeeds()
+		this.apiService.getAllFeeds(this.pageNumber)
 			.then(response => this.feedResponse(response))
 			.catch(function (e) {
 				thisObject.fetchingFeeds = false
@@ -107,10 +130,11 @@ export class FeedsComponent implements OnInit {
 			})
 	}
 
-	fetchAllFeeds() {
+	fetchFriendsFeeds() {
+		this.pageNumber  = this.pageNumber + 1
 		var thisObject = this
 		this.fetchingFeeds = true
-		this.apiService.getAllFeeds()
+		this.apiService.getMyFriendsFeeds(this.pageNumber)
 			.then(response => this.feedResponse(response))
 			.catch(function (e) {
 				thisObject.fetchingFeeds = false
@@ -119,17 +143,28 @@ export class FeedsComponent implements OnInit {
 	}
 
 	feedResponse(response: any) {
-		this.feeds = response
-		this.retrieveBookmarkArray()
-		this.fetchingFeeds = false
+		if (this.feeds == null)
+			this.feeds = response
+		else
+			this.appendNewItems(response)
+		this.retrieveBookmarkArray(this.feeds)
 	}
 
-	retrieveBookmarkArray() {
+	appendNewItems(newFeeds: FeedModel[]) {
+		var len = newFeeds.length
+		if (len < 5)
+			this.lastFeeds = true
+		for (var i = 0; i < length; i++) {
+			this.feeds.push(newFeeds[i])
+		}
+	}
+
+	retrieveBookmarkArray(feeds: FeedModel[]) {
 		var bookmarkItems = JSON.parse(localStorage.getItem("bookmarkList"))
 		if (bookmarkItems != null)
-			for (var i = 0; i < this.feeds.length; i++) {
-				if (bookmarkItems.indexOf(this.feeds[i]._id) > -1)
-					this.feeds[i].bookmarked = true
+			for (var i = 0; i < feeds.length; i++) {
+				if (bookmarkItems.indexOf(feeds[i]._id) > -1)
+					feeds[i].bookmarked = true
 			}
 	}
 
@@ -140,5 +175,11 @@ export class FeedsComponent implements OnInit {
 	dismissAlert() {
 		this.newUser = false
 		localStorage.removeItem('newUser')
+	}
+
+	reInitialize(){
+		this.feeds = null
+		this.pageNumber = -1
+		this.lastFeeds = false
 	}
 }

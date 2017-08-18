@@ -28,6 +28,7 @@ export class NotificationsComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		window.scrollTo(0,0)
 		if (new Utils().isTokenAvailable()) {
 			this.getNotifications()
 		} else {

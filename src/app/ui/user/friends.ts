@@ -29,6 +29,7 @@ export class FriendsComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		window.scrollTo(0,0)
 		if (new Utils().isTokenAvailable()) {
 			this.getFriendsList()
 			this.getFriendSuggestions()

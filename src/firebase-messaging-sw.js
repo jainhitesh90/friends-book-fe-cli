@@ -16,7 +16,6 @@ firebase.initializeApp({
 const messaging = firebase.messaging();
 
 messaging.setBackgroundMessageHandler(function (payload) {
-  console.log('Received background message ', payload);
   // Customize notification here
   const notificationTitle = payload.notification.title;
   const notificationOptions = {
@@ -25,11 +24,9 @@ messaging.setBackgroundMessageHandler(function (payload) {
     icon: payload.notification.icon,
     click_action : payload.notification.click_action
   };
-  console.log("sending notif")
   return self.registration.showNotification(notificationTitle, notificationOptions);
 });
 
 self.addEventListener('notificationclick', function (event) {
-  console.log("Notification clicked!!!");
   event.notification.close();
 });

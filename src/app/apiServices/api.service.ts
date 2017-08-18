@@ -411,8 +411,8 @@ export class ApiService {
         }
     }
 
-    getAllFeeds(): Promise<FeedModel[]> {
-        var url = this.baseUrl + 'feed/list'
+    getAllFeeds(pageNumber : number): Promise<FeedModel[]> {
+        var url = this.baseUrl + 'feed/list/' + pageNumber
         return this.http
             .get(url, this.userOption())
             .toPromise()
@@ -434,8 +434,8 @@ export class ApiService {
         }
     }
 
-    getMyFriendsFeeds(): Promise<FeedModel[]> {
-        var url = this.baseUrl + 'feed/friends'
+    getMyFriendsFeeds(pageNumber : number): Promise<FeedModel[]> {
+        var url = this.baseUrl + 'feed/friends/' + pageNumber
         return this.http
             .get(url, this.userOption())
             .toPromise()

@@ -39,7 +39,6 @@ export class LoginModal implements ModalComponent<CustomTermsModalContext> {
     }
 
     signIn(provider : any) {
-        console.log(provider)
         this.sub = this._auth.login(provider).subscribe(
             (data) => {
                 var thisObject = this
@@ -51,8 +50,6 @@ export class LoginModal implements ModalComponent<CustomTermsModalContext> {
                 socialUserModel.provider = provider
                 socialUserModel.socialLoginToken = data['token']
                 socialUserModel.uid = data['uid']
-                console.log("data : " + JSON.stringify(data))
-                console.log("socialUserModel : " + JSON.stringify(socialUserModel))
                 this.saveUserDetailsLocally(socialUserModel)
                 this.apiService.socialLogin(socialUserModel)
                     .then(response => this.navigateToHome(response))
