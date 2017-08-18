@@ -96,28 +96,30 @@ export class UserComponent implements OnInit{
     }
 
     setSelectedIconBg(pos : Number) {
-        switch(pos) {
-            case 1 : 
-                this.classIndex1 = 0
-                this.classIndex6 = 0
-                break;
-            case 2 : 
-                this.classIndex2 = 0
-                this.classIndex7 = 0
-                break;
-            case 3 : 
-                this.classIndex3 = 0
-                this.classIndex8 = 0
-                break;
-            case 4 : 
-                this.classIndex4 = 0
-                this.classIndex9 = 0
-                break;
-            case 5 : 
-                this.classIndex5 = 0
-                this.classIndex10 = 0
-                break;
-        }
+        setTimeout(() => { 
+            switch(pos) {
+                case 1 : 
+                    this.classIndex1 = 0
+                    this.classIndex6 = 0
+                    break;
+                case 2 : 
+                    this.classIndex2 = 0
+                    this.classIndex7 = 0
+                    break;
+                case 3 : 
+                    this.classIndex3 = 0
+                    this.classIndex8 = 0
+                    break;
+                case 4 : 
+                    this.classIndex4 = 0
+                    this.classIndex9 = 0
+                    break;
+                case 5 : 
+                    this.classIndex5 = 0
+                    this.classIndex10 = 0
+                    break;
+            }
+         }, 200)
     }
 
     unselectAllIcons(){

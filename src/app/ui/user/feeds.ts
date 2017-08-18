@@ -36,7 +36,7 @@ export class FeedsComponent implements OnInit {
 	selectedFeedCategory = 'allFeeds'
 
 	onChange(selectedItem: any) {
-		this.reInitialize()
+		this.initialize()
 		switch (selectedItem) {
 			case 'friendsFeeds':
 				this.fetchFriendsFeeds()
@@ -50,9 +50,7 @@ export class FeedsComponent implements OnInit {
 	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService, private pushNotificationService: PushNotificationService) {
 		this.appComponent = appComponent
 		this.router = router
-		userComponent.setSelectedIconBg(1)
-		this.pageNumber = -1
-		this.lastFeeds = false
+		this.initialize()
 		window.onscroll = () => {
 			let windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
 			let body = document.body, html = document.documentElement;
@@ -65,6 +63,10 @@ export class FeedsComponent implements OnInit {
 					this.fetchAllFeeds()
 			}
 		};
+	}
+
+	ngAfterViewInit() {
+		this.userComponent.setSelectedIconBg(1)
 	}
 
 	ngOnInit() {
@@ -151,12 +153,13 @@ export class FeedsComponent implements OnInit {
 	}
 
 	appendNewItems(newFeeds: FeedModel[]) {
-		var len = newFeeds.length
-		if (len < 5)
+		var newFeedlength = newFeeds.length
+		if (newFeedlength < 5)
 			this.lastFeeds = true
-		for (var i = 0; i < length; i++) {
+		for (var i = 0; i < newFeedlength; i++) {
 			this.feeds.push(newFeeds[i])
 		}
+		this.fetchingFeeds = false
 	}
 
 	retrieveBookmarkArray(feeds: FeedModel[]) {
@@ -177,7 +180,7 @@ export class FeedsComponent implements OnInit {
 		localStorage.removeItem('newUser')
 	}
 
-	reInitialize(){
+	initialize(){
 		this.feeds = null
 		this.pageNumber = -1
 		this.lastFeeds = false

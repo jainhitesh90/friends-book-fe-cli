@@ -25,7 +25,6 @@ export class FriendsComponent implements OnInit {
 	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService) {
 		this.appComponent = appComponent
 		this.router = router
-		userComponent.setSelectedIconBg(3)
 	}
 
 	ngOnInit() {
@@ -36,6 +35,10 @@ export class FriendsComponent implements OnInit {
 		} else {
 			this.router.navigate(['/login'])
 		}
+	}
+
+	ngAfterViewInit() {
+		this.userComponent.setSelectedIconBg(3)
 	}
 
 	getFriendsList() {
