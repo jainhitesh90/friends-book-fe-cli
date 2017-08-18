@@ -1,9 +1,11 @@
-#profile {
-    margin : 24px 0px 0px 0px
+#bg {
+    height : 96px;
+    width: 100%;
 }
 
 #dp {
-    width : 96px; height : 96px;
+    width : 144px; height : 144px;
+    margin-top : -72px
 }
 
 #user-name {
@@ -17,4 +19,8 @@
 
 #feeds-list {
     padding : 16px 0px 16px 0px;
+}
+
+#detail {
+    background : #e9ebee
 }

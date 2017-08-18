@@ -2,11 +2,15 @@
     <custom-spinner [loadingText]="Fetching"> </custom-spinner>
 </div>
 <div align="center" *ngIf="!fetchingProfile">
-    <div *ngIf="socialUserModel!=null" id="profile">
+    <div *ngIf="socialUserModel!=null" >
+        <!-- <div id="bg"> <img src="./images/bg">  </div> -->
+        <img src="./images/dp-bg.jpg" id="bg">
         <img src="{{socialUserModel.image}}" class='circle-picture' id='dp'>
         <br />
-        <h1 id="user-name"> {{socialUserModel.name}} </h1>
-        <h4 id="user-email"> {{socialUserModel.email}}</h4>
+        <div id="detail">
+            <h1 id="user-name"> {{socialUserModel.name}} </h1>
+            <h4 id="user-email"> {{socialUserModel.email}}</h4>
+        </div>
     </div>
 </div>
 <div *ngIf="fetchingFeeds" class="loading-center-page">
