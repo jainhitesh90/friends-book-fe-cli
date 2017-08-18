@@ -30,6 +30,10 @@
     float : right; margin-right : 16px
 }
 
+#div-post-spinner {
+    float : right; margin-right : 4px;
+}
+
 #post-button {
     font-size : 16px; padding : 2px 16px 2px 16px
 }
@@ -45,6 +49,27 @@
 
 #feedCategory {
     float: right;
-    padding: 4px;
     margin: 0px 8px 0px 0px;
+}
+
+/* select options */
+.select-style {
+    border: 1px solid #ccc;
+    width: 120px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.select-style select {
+    padding: 5px 8px;
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.select-style select:focus {
+    outline: none;
 }

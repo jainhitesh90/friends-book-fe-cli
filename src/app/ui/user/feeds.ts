@@ -24,6 +24,8 @@ export class FeedsComponent implements OnInit {
 	fetchingFeeds: boolean
 	newUser: boolean
 	uploadingFeed : boolean
+	fileName : string
+	posting : boolean
 
 	selectedFeedCategory = 'allFeeds'
 
@@ -56,8 +58,10 @@ export class FeedsComponent implements OnInit {
 		}
 	}
 
-	fileAdded(event: any) {
-		this.appComponent.showSuccessMessage("File uploaded")
+	fileAdded() {
+		var file = this.imageFileInput.nativeElement.files[0]
+		if (file != null)
+			this.fileName = file.name
 	}
 
 	uploadFeed() {
@@ -76,14 +80,11 @@ export class FeedsComponent implements OnInit {
 			this.newFeed.contentType = "text"
 		}
 		this.newFeed.feedType = "post"
-		this.appComponent.showCircularProgressBar()
 		this.uploadingFeed = true
 		this.apiService.addFeed(this.newFeed)
-			.then(response => this.appComponent.hideCircularProgressBar())
 			.then(response => this.uploadingFeed = false)
 			.then(response => this.appComponent.showSuccessMessage('Posted successfully!'))
 			.catch(function (e) {
-				thisObject.appComponent.hideCircularProgressBar()
 				thisObject.appComponent.showErrorMessage(e)
 				thisObject.uploadingFeed = false
 			})

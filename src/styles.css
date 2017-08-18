@@ -367,10 +367,15 @@ textarea:focus{
     white-space: nowrap;
     cursor : pointer;
     padding : 12px;
+    border-radius : 2px;
 }
 
 .nav-items i {
     margin-right : 4px
+}
+
+.nav-items:hover {
+    background: #BDBDBD !important;
 }
 
 .nav-icon{

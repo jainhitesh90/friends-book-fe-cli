@@ -7,14 +7,18 @@
                     <span> 
                         <i class="fa fa-picture-o" id="green-text" aria-hidden="true"> 
                             <span id="span-file-input">
-                                <input #imageFileInput type="file" accept="image/*, video/mp4,video/x-m4v,video/*" name="Image" (change)="fileAdded($event)"/>
+                                <input #imageFileInput type="file" accept="image/*, video/mp4,video/x-m4v,video/*" name="Image" (change)="fileAdded()"/>
                             </span> 
                         </i> 
                     </span>
                 </label>
+                <label *ngIf="fileName != null" style="font-size : 12px"> {{fileName}} </label>
             </div>
             <div id="div-post-button">
                 <button [disabled]="uploadingFeed" (click)="uploadFeed()" id="post-button"> Post </button>
+            </div>
+            <div id="div-post-spinner">
+                <custom-spinner [size]="small" *ngIf="uploadingFeed"> </custom-spinner>
             </div>
         </div>
         <div style="clear:both"> </div>
@@ -35,10 +39,12 @@
                     </button> You are seeing feeds from everyone.
                 </div>
                 <div>
-                    <select id="feedCategory" [(ngModel)]="selectedFeedCategory" (ngModelChange)="onChange($event)" >
-                        <option value="friendsFeeds" [ngValue]="friends"> Friends Feeds </option>
-                        <option value="allFeeds" [ngValue]="all"> All Feeds </option>
-                    </select>
+                    <div class="select-style" id="feedCategory">
+                        <select [(ngModel)]="selectedFeedCategory" (ngModelChange)="onChange($event)">
+                            <option value="friendsFeeds" [ngValue]="friends"> Friends Feeds </option>
+                            <option value="allFeeds" [ngValue]="all"> All Feeds </option>
+                        </select>
+                    </div>
                     <div style="clear:both"> </div>
                 </div>
                 <div *ngFor="let feed of feeds; let i=index">

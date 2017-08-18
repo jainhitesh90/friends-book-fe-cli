@@ -2,7 +2,7 @@ import { EventEmitter, ViewChild, Component, ViewContainerRef, ViewEncapsulation
 import { AppComponent } from '../../app-component'
 
 @Component({
-	inputs: ['loadingText'],
+	inputs: ['loadingText', 'size'],
     selector: 'custom-spinner',
 	templateUrl: '../../templates/custom-components/custom-spinner.html'
 })
@@ -11,6 +11,10 @@ export class CustomSpinner {
 
 	appComponent: AppComponent
 	loadingText : string
+	size : string
+
+	classList = ["small", "medium", "large"]
+	classIndex : Number
 	
     constructor(appComponent: AppComponent) {
 		this.appComponent = appComponent

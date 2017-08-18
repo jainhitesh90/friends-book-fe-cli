@@ -118,12 +118,8 @@ td i {
 
 .selected-tab-bg {
     background-color: white;
-    border-radius : 8px;
-    /* background : grey !important */
 }
 
 .un-selected-tab-bg {
-    background-color: white;
-    border-radius : 8px;
     background : #e9ebee 
 }
