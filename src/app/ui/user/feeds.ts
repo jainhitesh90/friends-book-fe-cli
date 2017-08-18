@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core'
+import { Component, OnInit, Input, ViewChild, ElementRef, NgZone } from '@angular/core'
 import { Router } from '@angular/router'
 import { AppComponent } from '../../app-component'
 import { UserComponent } from './user-component'
@@ -47,7 +47,7 @@ export class FeedsComponent implements OnInit {
 		}
 	}
 
-	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService, private pushNotificationService: PushNotificationService) {
+	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService, private pushNotificationService: PushNotificationService, private zone : NgZone) {
 		this.appComponent = appComponent
 		this.router = router
 		this.initialize()
@@ -125,7 +125,7 @@ export class FeedsComponent implements OnInit {
 		var thisObject = this
 		this.fetchingFeeds = true
 		this.apiService.getAllFeeds(this.pageNumber)
-			.then(response => this.feedResponse(response))
+			.then(response => this.zone.run(() => { this.feedResponse(response) }))
 			.catch(function (e) {
 				thisObject.fetchingFeeds = false
 				thisObject.appComponent.showErrorMessage(e)
@@ -137,7 +137,7 @@ export class FeedsComponent implements OnInit {
 		var thisObject = this
 		this.fetchingFeeds = true
 		this.apiService.getMyFriendsFeeds(this.pageNumber)
-			.then(response => this.feedResponse(response))
+			.then(response => this.zone.run(() => { this.feedResponse(response) }))
 			.catch(function (e) {
 				thisObject.fetchingFeeds = false
 				thisObject.appComponent.showErrorMessage(e)
@@ -149,17 +149,18 @@ export class FeedsComponent implements OnInit {
 			this.feeds = response
 		else
 			this.appendNewItems(response)
-		this.retrieveBookmarkArray(this.feeds)
 	}
 
 	appendNewItems(newFeeds: FeedModel[]) {
 		var newFeedlength = newFeeds.length
-		if (newFeedlength < 10)
+		if (newFeedlength < 5) {
 			this.lastFeeds = true
+			this.fetchingFeeds = false
+		}
 		for (var i = 0; i < newFeedlength; i++) {
 			this.feeds.push(newFeeds[i])
 		}
-		this.fetchingFeeds = false
+		this.retrieveBookmarkArray(this.feeds)
 	}
 
 	retrieveBookmarkArray(feeds: FeedModel[]) {
