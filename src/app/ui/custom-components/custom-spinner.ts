@@ -14,7 +14,7 @@ export class CustomSpinner {
 	size : string
 
 	classList = ["small", "medium", "large"]
-	classIndex : Number
+	classIndex : number
 	
     constructor(appComponent: AppComponent) {
 		this.appComponent = appComponent
