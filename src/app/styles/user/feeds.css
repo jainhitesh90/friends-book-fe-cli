@@ -1,5 +1,5 @@
 #new-post{
-    box-shadow: 0px 1px 9px #ccc; margin : 16px 8px 16px 8px; background : white
+    box-shadow: 0px 1px 9px #ccc; background : white
 }
 
 #div-post {
@@ -44,12 +44,12 @@
 }
 
 #first-time-alert {
-    margin : 0px 12px 8px 12px
+    /* margin : 0px 12px 8px 12px */
 }
 
 #feedCategory {
     float: right;
-    margin: 0px 8px 0px 0px;
+    margin: 12px 8px 0px 0px;
 }
 
 /* select options */
@@ -58,6 +58,7 @@
     width: 120px;
     border-radius: 4px;
     overflow: hidden;
+    text-align: center
 }
 
 .select-style select {

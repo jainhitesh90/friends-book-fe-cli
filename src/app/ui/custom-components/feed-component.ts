@@ -55,23 +55,26 @@ export class CustomFeedComponent implements OnInit {
 		feedModel.hasLiked = !feedModel.hasLiked //toggle in FE
 	}
 
-	toggleCommentButton(feedModel: FeedModel) {
-		feedModel.disableComment = !feedModel.disableComment //toggle in FE
-	}
-
 	addComment(feedModel: FeedModel) {
 		if (feedModel.newComment != null && feedModel.newComment != '') {
 			var thisObject = this
-			++feedModel.commentsCount
+			feedModel.addingComment = true
 			this.apiService.commentFeed(feedModel)
-				.then(response => feedModel.newComment == '')
+				.then(response => feedModel.newComment = '')
+				.then(response => ++feedModel.commentsCount)
+				.then(response => feedModel.addingComment = false)
 				.then(response => this.toggleCommentButton(feedModel))
 				.catch(function (e) {
 					console.log("Error : " + e)
+					feedModel.addingComment = false
 				})
 		} else {
 			this.appComponent.showErrorMessage('Comment cant be empty')
 		}
+	}
+
+	toggleCommentButton(feedModel: FeedModel) {
+		feedModel.disableComment = !feedModel.disableComment //toggle in FE
 	}
 
 	toggleFeedDetail(feedModel: FeedModel) {

@@ -5,12 +5,12 @@
     </div> 
     <div *ngIf="feed != null && showDetails">
         <div *ngIf="feed.likesList!=null && feed.likesList.length > 0" id="like-section">
-            <h4 *ngIf="feed.likesList.length == 1" class="like"> <b> {{feed.likesList[0]['name']}} </b> liked the feed</h4>
-            <h4 *ngIf="feed.likesList.length > 1" class="like"> <b> {{feed.likesList[0]['name']}} </b> and <b> {{feed.likesList.length-1}} </b> others liked the feed</h4>
+            <h4 *ngIf="feed.likesList.length == 1" class="like"> <b> {{feed.likesList[0]['feedOwner']['name']}} </b> liked the feed</h4>
+            <h4 *ngIf="feed.likesList.length > 1" class="like"> <b> {{feed.likesList[0]['feedOwner']['name']}} </b> and <b> {{feed.likesList.length-1}} </b> others liked the feed</h4>
         </div>
         <div *ngIf="feed.commentsList!=null && feed.commentsList.length > 0" id="comment-section">
             <div *ngFor="let comment of feed.commentsList">
-                <h4 id="comment"> <span> <img src="{{comment['image']}}" class='circle-picture user-image' /> </span> <b> {{comment['name']}} </b> {{comment['content']}}  </h4>
+                <h4 id="comment"> <span> <img src="{{comment['feedOwner']['image']}}" class='circle-picture user-image' /> </span> <b> {{comment['feedOwner']['name']}} </b> {{comment['comment']}}  </h4>
             </div>
         </div>
         <div style="clear : both"> </div>

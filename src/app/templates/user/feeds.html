@@ -1,24 +1,24 @@
 <div>
     <div align="center" *ngIf="newFeed!=null" id="new-post">
+        <div class="progress progress-striped active" *ngIf="uploadingFeed" id="progress-bar-holder-div">
+            <div class="progress-bar" id="progress-bar-style" style="background-color : #43b049"></div>
+        </div>
         <textarea placeholder="What's on your mind" id="description" [(ngModel)]="newFeed.title" name="description" type="text"> </textarea>
         <div id="div-post">
             <div id="div-post-input">
-                <label id="text-photos"> Photo/Video 
-                    <span> 
-                        <i class="fa fa-picture-o" id="green-text" aria-hidden="true"> 
-                            <span id="span-file-input">
-                                <input #imageFileInput type="file" accept="image/*, video/mp4,video/x-m4v,video/*" name="Image" (change)="fileAdded()"/>
-                            </span> 
-                        </i> 
-                    </span>
-                </label>
+                <label id="text-photos"> Photo/Video
+        <span>
+        <i class="fa fa-picture-o" id="green-text" aria-hidden="true">
+        <span id="span-file-input">
+        <input #imageFileInput type="file" accept="image/*, video/mp4,video/x-m4v,video/*" name="Image" (change)="fileAdded()"/>
+        </span>
+        </i>
+        </span>
+        </label>
                 <label *ngIf="fileName != null" style="font-size : 12px"> {{fileName}} </label>
             </div>
             <div id="div-post-button">
                 <button [disabled]="uploadingFeed" (click)="uploadFeed()" id="post-button"> Post </button>
-            </div>
-            <div id="div-post-spinner">
-                <custom-spinner [size]="small" *ngIf="uploadingFeed"> </custom-spinner>
             </div>
         </div>
         <div style="clear:both"> </div>
@@ -31,14 +31,14 @@
         <div *ngIf="feeds.length > 0">
             <div *ngIf="newUser" class="alert alert-dismissible alert-success" id="first-time-alert">
                 <button type="button" class="close" data-dismiss="alert" (click)="dismissAlert()">&times;
-                    </button> You are seeing feeds from everyone.
+        </button> <strong> You are seeing feeds from everyone. </strong>
             </div>
             <div>
                 <div class="select-style" id="feedCategory">
                     <select [(ngModel)]="selectedFeedCategory" (ngModelChange)="onChange($event)">
-                        <option value="friendsFeeds" [ngValue]="friends"> Friends Feeds </option>
-                        <option value="allFeeds" [ngValue]="all"> All Feeds </option>
-                    </select>
+        <option value="friendsFeeds" [ngValue]="friends"> Friends Feeds </option>
+        <option value="allFeeds" [ngValue]="all"> All Feeds </option>
+        </select>
                 </div>
                 <div style="clear:both"> </div>
             </div>

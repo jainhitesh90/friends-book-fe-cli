@@ -13,9 +13,13 @@ body {
 }
 
 /* Texts and Labels */
-h1,h2,h3,h4,h5,h6,label,p,button,div, hr {
+h1,h2,h3,h4,h5,h6,label,p,button,div,hr {
     margin : 0px; 
     padding: 0px;
+}
+
+.alert {
+    margin : 0px
 }
 
 h1 { 

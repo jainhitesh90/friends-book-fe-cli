@@ -40,10 +40,12 @@ export class FeedModel {
 
     /* Likes and comments 2 */
     likes: number[]
-    comments: commentOwner
+    comments: commentOwner[]
 
     /* Bookmark */
     bookmarked : boolean
+
+	addingComment : boolean
 }
 
 export class feedOwner {

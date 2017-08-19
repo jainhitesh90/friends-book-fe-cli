@@ -1,4 +1,4 @@
-<div *ngIf="feed!=null" style="border-radius: 4px; border: 2px solid #DCDCDC; background : white; padding : 8px; margin : 8px">
+<div *ngIf="feed!=null" style="background : white; padding : 12px; margin-top : 16px">
     <div>
         <div>
             <div *ngIf="feed.feedOwner!=null" style="float : left">
@@ -16,7 +16,7 @@
                             (click)="toogleBookmark(feed)"></i>
                     </div>
                 </div>
-                <img *ngIf="feed.image!=null" src="{{feed.image}}" style="width : 100%; vertical-align: middle; margin : 16px 0px 8px 0px">
+                <img *ngIf="feed.image!=null" src="{{feed.image}}" style="width : 100%; vertical-align: middle">
                 <label *ngIf="feed.description != null" style="font-size : 14px; text-align : left; line-height : 1.2; margin : 8px 0px 8px 0px"> {{feed.description}} </label>
                 <div align="center" *ngIf="feed.contentType != null">
                     <img *ngIf="feed.contentType == 'image'" src="{{feed.contentUrl}}" style="width : 100%; vertical-align: middle; margin-bottom : 12px"
@@ -34,8 +34,8 @@
         </div>
         <div>
             <div style="float : right; margin-right : 16px;" (click)="toggleFeedDetail(feed)">
-                <label *ngIf="feed.likesCount != null && feed.likesCount > 0" style="font-size : 12px; color : blue; float : left; cursor : pointer;"> <b> {{feed.likesCount}} </b> Likes </label>
-                <label *ngIf="feed.commentsCount != null && feed.commentsCount > 0" style="font-size : 12px; color : blue; float : left; margin-left : 8px; cursor : pointer;"> <b> {{feed.commentsCount}} </b> Comments </label>
+                <label *ngIf="feed.likesCount > 0" style="font-size : 12px; color : blue; float : left; cursor : pointer;"> <b> {{feed.likesCount}} </b> Likes </label>
+                <label *ngIf="feed.commentsCount > 0" style="font-size : 12px; color : blue; float : left; margin-left : 8px; cursor : pointer;"> <b> {{feed.commentsCount}} </b> Comments </label>
                 <div style="clear : both"> </div>
             </div>
             <hr style="margin : 0px; width : 100%">
@@ -54,7 +54,10 @@
             <br />
             <div *ngIf="feed.disableComment" align="center" style="margin : 8px 0px 8px 0px">
                 <input style="float:left;" id="new-comment" [(ngModel)]="feed.newComment" placeholder="Comment here" />
-                <p style="font-size : 16px; cursor : pointer; color : black; float:right; width : 10%" (click)="addComment(feed)"> Add </p>
+                 <div *ngIf="feed.addingComment" style="float : right; margin-right : 4px; max-width : 48px">
+                    <custom-spinner [size]="small"> </custom-spinner>
+                </div>
+                <p *ngIf="!feed.addingComment" style="font-size : 16px; cursor : pointer; color : black; float:right; width : 10%" (click)="addComment(feed)"> Add </p>
                 <div style="clear : both"> </div>
             </div>
         </div>
