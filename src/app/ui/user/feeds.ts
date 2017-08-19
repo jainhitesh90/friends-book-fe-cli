@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, NgZone } from '@angular/core'
+import { Component, OnInit, OnDestroy, Input, ViewChild, ElementRef, NgZone } from '@angular/core'
 import { Router } from '@angular/router'
 import { AppComponent } from '../../app-component'
 import { UserComponent } from './user-component'
@@ -12,7 +12,7 @@ import { PushNotificationService } from '../../apiServices/push-notification.ser
 	styleUrls: ['../../styles/user/feeds.css']
 })
 
-export class FeedsComponent implements OnInit {
+export class FeedsComponent implements OnInit, OnDestroy {
 
 	@ViewChild('imageFileInput') imageFileInput: ElementRef
 	@ViewChild('videoFileInput') videoFileInput: ElementRef
@@ -37,14 +37,8 @@ export class FeedsComponent implements OnInit {
 
 	onChange(selectedItem: any) {
 		this.initialize()
-		switch (selectedItem) {
-			case 'friendsFeeds':
-				this.fetchFriendsFeeds()
-				break;
-			case 'allFeeds':
-				this.fetchAllFeeds()
-				break;
-		}
+		this.selectedFeedCategory = selectedItem
+		this.refreshFeeds()
 	}
 
 	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService, private pushNotificationService: PushNotificationService, private zone : NgZone) {
@@ -54,15 +48,24 @@ export class FeedsComponent implements OnInit {
 		window.onscroll = () => {
 			let windowHeight = "innerHeight" in window ? window.innerHeight : document.documentElement.offsetHeight;
 			let body = document.body, html = document.documentElement;
-			let docHeight = Math.max(body.scrollHeight,
-				body.offsetHeight, html.clientHeight,
-				html.scrollHeight, html.offsetHeight);
+			let docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
 			let windowBottom = windowHeight + window.pageYOffset;
 			if (windowBottom >= docHeight) {
 				if(!this.lastFeeds)
-					this.fetchAllFeeds()
+					this.refreshFeeds()
 			}
 		};
+	}
+
+	refreshFeeds(){
+		switch (this.selectedFeedCategory) {
+			case 'friendsFeeds':
+				this.fetchFriendsFeeds()
+				break;
+			case 'allFeeds':
+				this.fetchAllFeeds()
+				break;
+		}
 	}
 
 	ngAfterViewInit() {
@@ -121,6 +124,7 @@ export class FeedsComponent implements OnInit {
 	}
 
 	fetchAllFeeds() {
+		console.log("Fetching all feeds : " + this.pageNumber)
 		this.pageNumber  = this.pageNumber + 1
 		var thisObject = this
 		this.fetchingFeeds = true
@@ -133,6 +137,7 @@ export class FeedsComponent implements OnInit {
 	}
 
 	fetchFriendsFeeds() {
+		console.log("Fetching friends feeds : " + this.pageNumber)
 		this.pageNumber  = this.pageNumber + 1
 		var thisObject = this
 		this.fetchingFeeds = true
@@ -185,5 +190,11 @@ export class FeedsComponent implements OnInit {
 		this.feeds = null
 		this.pageNumber = -1
 		this.lastFeeds = false
+	}
+
+	ngOnDestroy(){
+		window.onscroll = () => {
+			//empty function to over ride pagination when destroyed
+		}
 	}
 }

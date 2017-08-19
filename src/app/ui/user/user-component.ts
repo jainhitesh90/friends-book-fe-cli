@@ -59,27 +59,22 @@ export class UserComponent implements OnInit{
 	}
 
     showFeeds() {
-        this.unselectAllIcons()
         this.router.navigate(['/home/feeds'])
     }
 
     showProfile() {
-        this.unselectAllIcons()
         this.router.navigate(['/home/profile'])
     }
 
     showFriends() {
-        this.unselectAllIcons()
         this.router.navigate(['/home/friends'])
     }
 
     openBookmarks(){
-        this.unselectAllIcons()
 		this.router.navigate(['/home/bookmarks'])
     }
 
     showNotifications() {
-        this.unselectAllIcons()
         this.router.navigate(['/home/notifications'])
     }
 
@@ -96,6 +91,7 @@ export class UserComponent implements OnInit{
     }
 
     setSelectedIconBg(pos : Number) {
+        this.unselectAllIcons()
         setTimeout(() => { 
             switch(pos) {
                 case 1 : 
@@ -119,7 +115,7 @@ export class UserComponent implements OnInit{
                     this.classIndex10 = 0
                     break;
             }
-         }, 200)
+         }, 500)
     }
 
     unselectAllIcons(){

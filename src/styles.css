@@ -380,6 +380,7 @@ textarea:focus{
 
 .nav-items:hover {
     background: #BDBDBD !important;
+    border: 1px solid grey;
 }
 
 .nav-icon{
