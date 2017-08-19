@@ -67,3 +67,16 @@
     float : right; 
     margin : 8px 16px 4px 0px
 }
+
+#no-suggestions-section {
+    left: 20%; margin-top : 48px
+}
+
+#no-suggestions-section img {
+    max-width : 144px; margin: auto; height: auto
+}
+
+#no-suggestions-section h1 {
+    padding : 24px;
+    font-weight: 600;
+}

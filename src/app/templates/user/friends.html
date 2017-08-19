@@ -1,14 +1,11 @@
 <div id="div-parent">
     <div id="div-friends">
-        <h2 class="title"> My Friends </h2>
         <div align="center" class="center-hor-loader" *ngIf="loadingFriends">
             <custom-spinner [loadingText]="Fetching"> </custom-spinner>
         </div>
         <div *ngIf="!loadingFriends" class="outer-div">
-            <div align="center" *ngIf="friends==null || friends.length == 0">
-                <h4 id="no-friends"> You dont have any friends here </h4>
-            </div>
             <div *ngIf="friends!=null && friends.length > 0">
+                <h2 class="title"> My Friends </h2>
                 <div *ngFor="let friend of friends;">
                     <div class="div-friends-bg" *ngIf="friend!=null">
                         <img src="{{friend.image}}" class='circle-picture friend-img'>
@@ -30,8 +27,9 @@
             <custom-spinner [loadingText]="Fetching"> </custom-spinner>
         </div>
         <div *ngIf="!fetchingSuggestions" class="outer-div">
-            <div align="center" *ngIf="users==null || users.length == 0">
-                <h4 id="no-suggestions"> We dont have any suggestions right now</h4>
+            <div align="center" *ngIf="users==null || users.length == 0" id="no-suggestions-section">
+                <img src="./images/sad-smiley.svg" height="auto">
+                <h1> Awww, we dont have any friends suggestions for you right now</h1>
             </div>
             <div *ngIf="users!=null && users.length > 0">
                 <div *ngFor="let user of users;">
