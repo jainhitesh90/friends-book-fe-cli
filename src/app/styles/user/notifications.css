@@ -1,10 +1,14 @@
-#no-notification{
-    padding : 48px;
-    font-weight: 600
+#no-notification-section {
+    position: absolute; top: 25%;left: 20%;
 }
 
-#no-notifications div{
-    padding : 48px
+#no-notification-section img {
+    max-width : 144px; margin: auto; height: auto
+}
+
+#no-notification-section h1 {
+    padding : 24px;
+    font-weight: 600;
 }
 
 #single-notification {

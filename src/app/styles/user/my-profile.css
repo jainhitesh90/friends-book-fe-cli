@@ -29,3 +29,21 @@
 #detail {
     background : #e9ebee
 }
+
+#no-post-section {
+    left: 20%; margin-top : 48px
+}
+
+#no-post-section img {
+    max-width : 144px; margin: auto; height: auto
+}
+
+#no-post-section h1 {
+    padding : 24px;
+    font-weight: 600;
+}
+
+#share-now {
+    cursor: pointer;
+    color: #004e98
+}

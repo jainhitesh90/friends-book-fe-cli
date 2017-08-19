@@ -66,4 +66,8 @@ export class MyProfileComponent implements OnInit {
 				thisObject.appComponent.showErrorMessage(e)
 			})
 	}
+
+	navigateToHome() {
+		this.router.navigate(['/home/feeds'])
+	}
 }

@@ -29,8 +29,9 @@
     </div>
 
     <div *ngIf="!fetchingFeeds">
-        <div align="center" *ngIf="feeds == null || feeds.length == 0">
-            <h1 id="no-feeds"> No Feeds </h1>
+        <div align="center" *ngIf="feeds == null" id="no-post-section">
+            <img src="./images/sad-smiley.svg" height="auto">
+            <h1> Awww, we dont have any Feeds right now</h1>
         </div>
         <div align="left" *ngIf="feeds!=null">
             <div *ngIf="feeds.length > 0">

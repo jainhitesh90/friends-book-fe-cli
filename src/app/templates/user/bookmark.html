@@ -3,8 +3,9 @@
         <custom-spinner [loadingText]="Fetching"> </custom-spinner>
     </div>
     <div *ngIf="!fetchingBookmarks">
-        <div align="center" *ngIf="feeds==null || feeds.length == 0">
-            <h1 id="no-bookmark"> No saved bookmarks </h1>
+        <div align="center"  *ngIf="feeds==null || feeds.length == 0" id="no-bookmark-section">
+            <img src="./images/no-bookmark.png" height="auto">
+            <h1> No saved bookmarks </h1>
         </div>
         <div *ngIf="feeds!=null">
             <div *ngIf="fetchingBookmarks">

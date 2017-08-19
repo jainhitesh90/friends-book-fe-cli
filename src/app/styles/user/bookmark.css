@@ -1,10 +1,14 @@
-#parent {
-    /* padding-top : 8px */
+#no-bookmark-section {
+    position: absolute; top: 25%;left: 20%;
 }
 
-#no-bookmark {
-    padding : 48px;
-    font-weight: 600
+#no-bookmark-section img {
+    max-width : 144px; margin: auto; height: auto
+}
+
+#no-bookmark-section h1 {
+    padding : 24px;
+    font-weight: 600;
 }
 
 #fetching-bookmarks {

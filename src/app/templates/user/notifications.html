@@ -3,8 +3,9 @@
 </div>
 <div *ngIf="!fetchingNotifications">
     <div *ngIf="notifications!=null">
-        <div align="center" *ngIf="notifications.length == 0">
-            <h1 id="no-notification"> No Notifications yet </h1>
+        <div align="center" *ngIf="notifications.length == 0" id="no-notification-section">
+            <img src="./images/no-notifications.png" height="auto">
+            <h1> No Notifications yet </h1>
         </div>
         <div *ngIf="notifications.length > 0" id="notifications-list">
             <div *ngFor="let notification of notifications; let i=index">
