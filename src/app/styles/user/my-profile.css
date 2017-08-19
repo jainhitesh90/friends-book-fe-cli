@@ -17,8 +17,13 @@
     margin-bottom : 12px
 }
 
+#no-posts{
+    padding : 48px;
+    font-weight: 600
+}
+
 #feeds-list {
-    padding : 16px 0px 16px 0px;
+    /* padding : 16px 0px 16px 0px; */
 }
 
 #detail {

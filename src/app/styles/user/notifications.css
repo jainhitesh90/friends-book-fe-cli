@@ -1,14 +1,10 @@
-#no-notifications {
+#no-notification{
     padding : 48px;
     font-weight: 600
 }
 
 #no-notifications div{
     padding : 48px
-}
-
-#notifications-list {
-    /* padding : 16px 0px 16px 0px;  */
 }
 
 #single-notification {

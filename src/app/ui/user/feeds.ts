@@ -124,7 +124,6 @@ export class FeedsComponent implements OnInit, OnDestroy {
 	}
 
 	fetchAllFeeds() {
-		console.log("Fetching all feeds : " + this.pageNumber)
 		this.pageNumber  = this.pageNumber + 1
 		var thisObject = this
 		this.fetchingFeeds = true
@@ -137,7 +136,6 @@ export class FeedsComponent implements OnInit, OnDestroy {
 	}
 
 	fetchFriendsFeeds() {
-		console.log("Fetching friends feeds : " + this.pageNumber)
 		this.pageNumber  = this.pageNumber + 1
 		var thisObject = this
 		this.fetchingFeeds = true
@@ -150,22 +148,17 @@ export class FeedsComponent implements OnInit, OnDestroy {
 	}
 
 	feedResponse(response: any) {
-		if (this.feeds == null)
-			this.feeds = response
-		else
-			this.appendNewItems(response)
-	}
-
-	appendNewItems(newFeeds: FeedModel[]) {
-		var newFeedlength = newFeeds.length
+		var newFeedlength = response.length
 		if (newFeedlength < 5) {
 			this.lastFeeds = true
-			this.fetchingFeeds = false
 		}
+		if (this.feeds == null) 
+			this.feeds = new Array()
 		for (var i = 0; i < newFeedlength; i++) {
-			this.feeds.push(newFeeds[i])
+			this.feeds.push(response[i])
 		}
 		this.retrieveBookmarkArray(this.feeds)
+		this.fetchingFeeds = false
 	}
 
 	retrieveBookmarkArray(feeds: FeedModel[]) {

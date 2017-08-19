@@ -3,7 +3,6 @@
 </div>
 <div align="center" *ngIf="!fetchingProfile">
     <div *ngIf="socialUserModel!=null" >
-        <!-- <div id="bg"> <img src="./images/bg">  </div> -->
         <img src="./images/dp-bg.jpg" id="bg">
         <img src="{{socialUserModel.image}}" class='circle-picture' id='dp'>
         <br />
@@ -17,6 +16,9 @@
     <custom-spinner [loadingText]="Fetching"> </custom-spinner>
 </div>
 <div *ngIf="!fetchingFeeds">
+    <div align="center" *ngIf="feeds == null">
+        <h1 id="no-posts"> You haven't posted anything yet </h1>
+    </div>
     <div align="left" *ngIf="feeds!=null" id="feeds-list">
         <div *ngFor="let feed of feeds; let i=index">
             <feed-component [feed]="feed"> </feed-component>
