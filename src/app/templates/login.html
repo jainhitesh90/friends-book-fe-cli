@@ -1,8 +1,7 @@
 <div id="parent">
-    
     <div align="center"> 
-        <label style="color : white; font-size : 32px; margin-top : 24px; font-weight : 700"> Friendsbook <img src="./images/favicon.png" width="24px"> </label>
-        <h3 style="color : white; font-size : 18px; margin : 0px 0px 0px 16px"> <b> Make the most of your social life </b> </h3>
+        <label id="login-title"> Friendsbook <img src="./images/favicon.png" width="24px"> </label>
+        <h3 id="login-sub-title"> <b> Make the most of your social life </b> </h3>
     </div>
     
     <div id="modal-parent" align="center">
@@ -13,12 +12,12 @@
         <div align="center" id="disclaimer">
             <custom-spinner *ngIf="logging" [loadingText]="Fetching"> </custom-spinner>
             <hr />
-            <h6> By clicking Continue, you agree to the <b style="cursor : pointer" (click)="openTnC()"> FriendsBook User Agreement and Privacy Policy </b>. </h6>
+            <h6> By clicking Continue, you agree to the <b id="tnc" (click)="openTnC()"> FriendsBook User Agreement and Privacy Policy </b>. </h6>
         </div>
     </div>
 
     <div align="center">
-        <label style="color:white"> Friendsbook Corporation © 2017 </label>
+        <label id="trademark"> Friendsbook Corporation © 2017 </label>
     </div>
     
 </div>

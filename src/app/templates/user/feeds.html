@@ -1,7 +1,7 @@
 <div>
     <div align="center" *ngIf="newFeed!=null" id="new-post">
         <div class="progress progress-striped active" *ngIf="uploadingFeed" id="progress-bar-holder-div">
-            <div class="progress-bar" id="progress-bar-style" style="background-color : #43b049"></div>
+            <div class="progress-bar" id="progress-bar-style"></div>
         </div>
         <textarea placeholder="What's on your mind" id="description" [(ngModel)]="newFeed.description" name="description" type="text"> </textarea>
         <div id="div-post">
@@ -14,7 +14,7 @@
         </span>
         </span>
         </label>
-                <label *ngIf="fileName != null" style="font-size : 12px"> {{fileName}} </label>
+                <label *ngIf="fileName != null" id="file-name"> {{fileName}} </label>
             </div>
             <div id="div-post-button">
                 <button [disabled]="uploadingFeed" (click)="uploadFeed()" id="post-button"> Post </button>

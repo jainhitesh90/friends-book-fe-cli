@@ -13,14 +13,21 @@
     align-items: center; 
 }
 
-#search-bar-div {
-    float : left
+#search-bar-div-web {
+    float : left;
+    width : 40%
 }
 
-#search-bar-div input {
+#search-bar-div-mob {
+    float : left;
+    width : 100%
+}
+
+.search-input {
     margin : 0px 16px 0px 16px; 
     padding-left : 16px;
-    max-width: 480px
+    max-width: 480px;
+    width : 80%
 }
 
 #search-icon {
@@ -50,7 +57,7 @@ input:focus {
 }
 
 #dp {
-    width : 80px; height : 80px; margin : 0px 0px 0px 8px
+    width : 88px; height : 88px; margin : 0px 0px 0px 8px
 }
 
 #user-name {
@@ -136,4 +143,36 @@ td span {
 
 .un-selected-tab-bg {
     background : #e9ebee 
+}
+
+#side-drawer {
+    margin-top : 32px
+}
+
+table {
+    width : 100%
+}
+
+.web-side-icons {
+    margin-right : 8px
+}
+
+#feeds-color {
+    color : #990000 !important;
+}
+
+#friends-color {
+    color : #CCCC00 !important;
+}
+
+#profile-color {
+    color : #00CC00 !important;
+}
+
+#bookmark-color {
+    color : #FF007F !important;
+}
+
+#notifications-color {
+    color : #00EFFF !important;
 }

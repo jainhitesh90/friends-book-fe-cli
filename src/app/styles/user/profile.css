@@ -57,6 +57,10 @@
     color: #004e98
 }
 
+#logout {
+    color : red; cursor : pointer
+}
+
 @media (max-width: 767px) {
     #no-post-section {
         margin-top : 24px

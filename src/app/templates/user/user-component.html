@@ -2,8 +2,8 @@
     <!-- Web view -->
     <div *ngIf="!mobileView" (window:resize)="onResize($event)">
         <div id="fixed-header">
-            <div style="width : 40%" id="search-bar-div">
-                <input style="width : 80%" placeholder="Search" id="searchText" [(ngModel)]="searchText" name="searchText" type="text" />
+            <div id="search-bar-div-web">
+                <input class="search-input" placeholder="Search" id="searchText" [(ngModel)]="searchText" name="searchText" type="text" />
                 <span class="glyphicon glyphicon-search" id="search-icon" (click)="showSearchPage()"></span>
                 <div style="clear : both"> </div>
             </div>
@@ -14,12 +14,12 @@
                 <!-- <label id="user-name"> {{socialUserModel.name}} </label> -->
             </div>
             <div style="clear:both"> </div>
-            <div style="margin-top : 32px">
-                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex6]" (click)="showFeeds()"> <span class="glyphicon glyphicon-home" style="color : #990000; margin-right : 8px"> </span> Feeds </h2>
-                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex8]" (click)="showFriends()"> <span class="fa fa-users" style="color : #CCCC00; margin-right : 8px"> </span> Friends </h2>
-                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex7]" (click)="showProfile()"> <span class="glyphicon glyphicon-user" style="color : #00CC00; margin-right : 8px"> </span> My Profile </h2>
-                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex9]" *ngIf="bookmarkItems!=null" (click)="openBookmarks()"> <span class="glyphicon glyphicon-book" style="color : #FF007F; margin-right : 8px"> </span> Saved <span id="bookmark-count"> ({{bookmarkItems.length}}) </span>                    </h2>
-                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex10]" (click)="showNotifications()"> <span class="glyphicon glyphicon-bell" style="color : #00EFFF; margin-right : 8px"></span> Notifications </h2>
+            <div id="side-drawer">
+                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex6]" (click)="showFeeds()"> <span class="glyphicon glyphicon-home web-side-icons" id="feeds-color"> </span> Feeds </h2>
+                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex8]" (click)="showFriends()"> <span class="fa fa-users web-side-icons" id="friends-color"> </span> Friends </h2>
+                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex7]" (click)="showProfile()"> <span class="glyphicon glyphicon-user web-side-icons" id="profile-color"> </span> My Profile </h2>
+                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex9]" *ngIf="bookmarkItems!=null" (click)="openBookmarks()"> <span class="glyphicon glyphicon-book web-side-icons" id="bookmark-color"> </span> Saved <span id="bookmark-count"> ({{bookmarkItems.length}}) </span>                    </h2>
+                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex10]" (click)="showNotifications()"> <span class="glyphicon glyphicon-bell web-side-icons" id="notifications-color"></span> Notifications </h2>
             </div>
         </div>
         <div id="center-container">
@@ -33,8 +33,8 @@
     <!-- Mobile view -->
     <div *ngIf="mobileView" (window:resize)="onResize($event)">
         <div id="floating-header">
-            <div style="width : 100%" id="search-bar-div">
-                <input style="width : 80%" placeholder="Search" id="searchText" [(ngModel)]="searchText" name="searchText" type="text" />
+            <div id="search-bar-div-mob">
+                <input class="search-input" placeholder="Search" id="searchText" [(ngModel)]="searchText" name="searchText" type="text" />
                 <span class="glyphicon glyphicon-search" id="search-icon" (click)="showSearchPage()"></span>
                 <div style="clear : both"> </div>
             </div>
@@ -46,7 +46,7 @@
         </div>
         <div style="clear:both"> </div>
         <div align="center" id="new-footer">
-            <table style="width : 100%">
+            <table>
                 <tr>
                     <td align="center" (click)="showFeeds()"> <span [ngClass]="classList[classIndex1]" class="glyphicon glyphicon-home"> </span> </td>
                     <td align="center" (click)="showFriends()"> <span [ngClass]="classList[classIndex3]" class="fa fa-users"> </span> </td>

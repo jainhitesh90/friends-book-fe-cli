@@ -8,8 +8,9 @@ margin-bottom: -8px !important;
 }
 
 #progress-bar-style {
-width: 100%;
-margin-top: 0px !important;
+  width: 100%;
+  margin-top: 0px !important;
+  color : green !important
 }
 
 .display-msg {
@@ -43,4 +44,8 @@ margin-right : 8px;
 #error-toast {
  background-color : #D8000C; 
  text-align: center
+}
+
+.icon-msg {
+  margin-right : 8px
 }

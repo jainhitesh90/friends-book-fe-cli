@@ -1,10 +1,10 @@
 <div id="wrapper">
   <div class="display-msg" id="success-toast" *ngIf="showSuccessToast && message!=null">
-    <label align="center"><span class="glyphicon glyphicon-thumbs-up" style="margin-right : 8px"></span> {{message}} </label>
+    <label align="center"><span class="glyphicon glyphicon-thumbs-up icon-msg"></span> {{message}} </label>
   </div>
 
   <div class="display-msg" id="error-toast" *ngIf="showErrorToast && message!=null">
-    <label align="center"><span class="glyphicon glyphicon-exclamation-sign" style="margin-right : 8px"></span> {{message}} </label>
+    <label align="center"><span class="glyphicon glyphicon-exclamation-sign icon-msg"></span> {{message}} </label>
   </div>
 
   <div *ngIf="loadingData" class="loading-center-page">
