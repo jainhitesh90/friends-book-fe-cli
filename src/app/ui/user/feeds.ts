@@ -31,8 +31,8 @@ export class FeedsComponent implements OnInit, OnDestroy {
 	pageNumber: number
 	fetchingFeeds: boolean
 	newUser: boolean
-	lastFeeds : boolean
-	
+	lastFeeds: boolean
+
 	selectedFeedCategory = 'allFeeds'
 
 	onChange(selectedItem: any) {
@@ -41,7 +41,7 @@ export class FeedsComponent implements OnInit, OnDestroy {
 		this.refreshFeeds()
 	}
 
-	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService, private pushNotificationService: PushNotificationService, private zone : NgZone) {
+	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService, private pushNotificationService: PushNotificationService, private zone: NgZone) {
 		this.appComponent = appComponent
 		this.router = router
 		this.initialize()
@@ -51,13 +51,13 @@ export class FeedsComponent implements OnInit, OnDestroy {
 			let docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
 			let windowBottom = windowHeight + window.pageYOffset;
 			if (windowBottom >= docHeight) {
-				if(!this.lastFeeds)
+				if (!this.lastFeeds)
 					this.refreshFeeds()
 			}
 		};
 	}
 
-	refreshFeeds(){
+	refreshFeeds() {
 		switch (this.selectedFeedCategory) {
 			case 'friendsFeeds':
 				this.fetchFriendsFeeds()
@@ -73,7 +73,7 @@ export class FeedsComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit() {
-		window.scrollTo(0,0)
+		window.scrollTo(0, 0)
 		if (new Utils().isTokenAvailable()) {
 			this.newFeed = new FeedModel()
 			this.fetchAllFeeds()
@@ -124,24 +124,26 @@ export class FeedsComponent implements OnInit, OnDestroy {
 	}
 
 	fetchAllFeeds() {
-		this.pageNumber  = this.pageNumber + 1
+		this.pageNumber = this.pageNumber + 1
 		var thisObject = this
 		this.fetchingFeeds = true
 		this.apiService.getAllFeeds(this.pageNumber)
 			.then(response => this.zone.run(() => { this.feedResponse(response) }))
 			.catch(function (e) {
+				thisObject.lastFeeds = true
 				thisObject.fetchingFeeds = false
 				thisObject.appComponent.showErrorMessage(e)
 			})
 	}
 
 	fetchFriendsFeeds() {
-		this.pageNumber  = this.pageNumber + 1
+		this.pageNumber = this.pageNumber + 1
 		var thisObject = this
 		this.fetchingFeeds = true
 		this.apiService.getMyFriendsFeeds(this.pageNumber)
 			.then(response => this.zone.run(() => { this.feedResponse(response) }))
 			.catch(function (e) {
+				thisObject.lastFeeds = true
 				thisObject.fetchingFeeds = false
 				thisObject.appComponent.showErrorMessage(e)
 			})
@@ -152,7 +154,7 @@ export class FeedsComponent implements OnInit, OnDestroy {
 		if (newFeedlength < 5) {
 			this.lastFeeds = true
 		}
-		if (this.feeds == null) 
+		if (this.feeds == null)
 			this.feeds = new Array()
 		for (var i = 0; i < newFeedlength; i++) {
 			this.feeds.push(response[i])
@@ -179,13 +181,13 @@ export class FeedsComponent implements OnInit, OnDestroy {
 		localStorage.removeItem('newUser')
 	}
 
-	initialize(){
+	initialize() {
 		this.feeds = null
 		this.pageNumber = -1
 		this.lastFeeds = false
 	}
 
-	ngOnDestroy(){
+	ngOnDestroy() {
 		window.onscroll = () => {
 			//empty function to over ride pagination when destroyed
 		}

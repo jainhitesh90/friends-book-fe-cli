@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core'
+import { Component,OnInit, NgZone } from '@angular/core'
 import { AppComponent } from '../../app-component'
 import { Router } from '@angular/router'
 import { ApiService } from '../../apiServices/api.service'
@@ -33,7 +33,7 @@ export class UserComponent implements OnInit{
     classIndex9: Number
     classIndex10: Number
 
-    constructor(appComponent : AppComponent, router: Router) {
+    constructor(appComponent : AppComponent, router: Router, private zone: NgZone) {
         this.appComponent = appComponent
         this.router = router
     }
@@ -50,6 +50,15 @@ export class UserComponent implements OnInit{
         this.socialUserModel.name = localStorage.getItem('name')
         this.socialUserModel.image = localStorage.getItem('profile-pic')
         this.socialUserModel.email = localStorage.getItem('email')
+    }
+
+    onResize(event) {
+        const w = event.target.innerWidth;
+        if (w >= 768) {
+            this.mobileView = false;
+        } else {
+            this.mobileView = true;
+        }
     }
     
     public updateBookmarkCount(){
