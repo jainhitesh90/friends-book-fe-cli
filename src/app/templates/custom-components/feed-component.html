@@ -34,8 +34,10 @@
         </div>
         <div>
             <div style="float : right; margin-right : 16px;" (click)="toggleFeedDetail(feed)">
-                <label *ngIf="feed.likesCount > 0" style="font-size : 12px; color : blue; float : left; cursor : pointer;"> <b> {{feed.likesCount}} </b> Likes </label>
-                <label *ngIf="feed.commentsCount > 0" style="font-size : 12px; color : blue; float : left; margin-left : 8px; cursor : pointer;"> <b> {{feed.commentsCount}} </b> Comments </label>
+                <label *ngIf="feed.likesCount == 1" style="font-size : 12px; color : blue; float : left; cursor : pointer;"> <b> {{feed.likesCount}} </b> Like </label>
+                <label *ngIf="feed.likesCount > 1" style="font-size : 12px; color : blue; float : left; cursor : pointer;"> <b> {{feed.likesCount}} </b> Likes </label>
+                <label *ngIf="feed.commentsCount == 1" style="font-size : 12px; color : blue; float : left; margin-left : 8px; cursor : pointer;"> <b> {{feed.commentsCount}} </b> Comment </label>
+                <label *ngIf="feed.commentsCount > 1" style="font-size : 12px; color : blue; float : left; margin-left : 8px; cursor : pointer;"> <b> {{feed.commentsCount}} </b> Comments </label>
                 <div style="clear : both"> </div>
             </div>
             <hr style="margin : 0px; width : 100%">

@@ -53,7 +53,7 @@ export class UserComponent implements OnInit {
     }
 
     onResize(event) {
-        if (event.target.innerWidth >= 768) {
+        if (event.target.innerWidth >= new Utils().mobileWidth) {
             this.mobileView = false;
         } else {
             this.mobileView = true;

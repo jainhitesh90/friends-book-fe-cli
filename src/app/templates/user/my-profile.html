@@ -16,13 +16,14 @@
 <div *ngIf="fetchingFeeds" class="loading-center-page">
     <custom-spinner [loadingText]="Fetching"> </custom-spinner>
 </div>
-<div *ngIf="!fetchingFeeds">
+<div *ngIf="!fetchingFeeds" id="my-post-section">
+    <h1 id="my-post-title"> My Posts </h1>
+    <div style="clear:both"> </div>
     <div align="center" *ngIf="feeds == null" id="no-post-section">
-        <!-- <img src="./images/sad-smiley.svg" height="auto"> -->
-        <h1> You haven't posted anything yet, <u id="share-now" (click)="navigateToHome()">Share Now</u> </h1>
+        <h3> You haven't posted anything yet </h3>
+        <i id="share-now" (click)="navigateToHome()">Post Now</i>
     </div>
     <div align="left" *ngIf="feeds!=null" id="feeds-list">
-        <h2> My Posts </h2>
         <div *ngFor="let feed of feeds; let i=index">
             <feed-component [feed]="feed"> </feed-component>
         </div>

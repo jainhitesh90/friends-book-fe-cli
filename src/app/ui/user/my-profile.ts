@@ -33,11 +33,8 @@ export class MyProfileComponent implements OnInit {
 	ngOnInit() {
 		window.scrollTo(0,0)
 		if (new Utils().isTokenAvailable()) {
-			this.mobileView = new Utils().isMobile()
-			//if (this.mobileView)
-				this.getProfile()
+			this.getProfile()
 			this.fetchMyFeeds()
-
 		} else {
 			this.router.navigate(['/login'])
 		}

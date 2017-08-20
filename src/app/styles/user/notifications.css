@@ -1,5 +1,5 @@
 #no-notification-section {
-    position: absolute; top: 25%; left : 0; right : 0; bottom : 0; margin : auto
+    position: absolute; top: 25%; left : 20%;  margin : auto
 }
 
 #no-notification-section img {
@@ -9,6 +9,10 @@
 #no-notification-section h1 {
     padding : 24px;
     font-weight: 600;
+}
+
+#notifications-list{
+    margin-top : 64px
 }
 
 #single-notification {
@@ -35,4 +39,15 @@
     float : left; 
     cursor : pointer;
     font-weight : 600
+}
+
+@media (max-width: 767px) {
+
+    #notifications-list{
+        margin-top : 0px
+    }
+
+    #no-notification-section {
+        position: absolute; top: 25%; left : 0; right : 0; bottom : 0; margin : auto
+    }
 }

@@ -19,8 +19,7 @@
 }
 
 #div-friends {
-    /* padding : 8px; 
-    margin : 8px */
+    margin-top : 64px
 }
 
 #div-others {
@@ -85,4 +84,10 @@
 #no-suggestions-section h1 {
     padding : 24px;
     font-weight: 600;
+}
+
+@media (max-width: 767px) {
+    #div-friends {
+        margin-top : 0px;
+    }
 }

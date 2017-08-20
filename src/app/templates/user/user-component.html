@@ -9,15 +9,15 @@
             </div>
         </div>
         <div id="left-container">
-            <div *ngIf="socialUserModel!=null" id="user-div" (click)="showProfile()" style="display : inline-block">
-                    <img src="{{socialUserModel.image}}" id='dp'>
-                    <label id="user-name"> {{socialUserModel.name}} </label>
+            <div *ngIf="socialUserModel!=null" id="user-div" (click)="showProfile()">
+                <img src="{{socialUserModel.image}}" class='circle-picture' id='dp'>
+                <label id="user-name"> {{socialUserModel.name}} </label>
             </div>
             <div style="clear:both"> </div>
             <div style="margin-top : 32px">
                 <h2 class="nav-items" [ngClass]="classListDesktop[classIndex6]" (click)="showFeeds()"> <i class="fa fa-home nav-icon" style="color : #990000" aria-hidden="true"> </i> Feeds </h2>
-                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex7]" (click)="showProfile()"> <i class="fa fa-user-circle nav-icon" style="color : #00CC00" aria-hidden="true"> </i> My Profile </h2>
                 <h2 class="nav-items" [ngClass]="classListDesktop[classIndex8]" (click)="showFriends()"> <i class="fa fa-users nav-icon" style="color : #CCCC00" aria-hidden="true"> </i> Friends </h2>
+                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex7]" (click)="showProfile()"> <i class="fa fa-user-circle nav-icon" style="color : #00CC00" aria-hidden="true"> </i> My Profile </h2>
                 <h2 class="nav-items" [ngClass]="classListDesktop[classIndex9]" *ngIf="bookmarkItems!=null" (click)="openBookmarks()"> <i class="fa fa-bookmark nav-icon" style="color : #FF007F" aria-hidden="true"> </i> Saved <span id="bookmark-count"> ({{bookmarkItems.length}}) </span>                    </h2>
                 <h2 class="nav-items" [ngClass]="classListDesktop[classIndex10]" (click)="showNotifications()"> <i class="fa fa-bell nav-icon" style="color : #00EFFF" aria-hidden="true"> </i> Notifications </h2>
             </div>

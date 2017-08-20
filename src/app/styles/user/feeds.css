@@ -1,5 +1,5 @@
 #new-post{
-    box-shadow: 0px 1px 9px #ccc; background : white
+    box-shadow: 0px 1px 9px #ccc; background : white; margin-top : 64px;
 }
 
 #div-post {
@@ -86,4 +86,10 @@
 #no-post-section h1 {
     padding : 24px;
     font-weight: 600;
+}
+
+@media (max-width: 767px) {
+    #new-post {
+        margin-top : 0px;
+    }
 }

@@ -1,5 +1,5 @@
 #no-bookmark-section {
-    position: absolute; top: 25%; left : 0; right : 0; bottom : 0; margin : auto
+    position: absolute; top: 25%; left : 20%;  margin : auto
 }
 
 #no-bookmark-section img {
@@ -11,7 +11,22 @@
     font-weight: 600;
 }
 
+#bookmark-list {
+    margin-top : 64px
+}
+
 #fetching-bookmarks {
     padding : 48px;
     font-weight: 500
+}
+
+@media (max-width: 767px) {
+
+    #bookmark-list {
+        margin-top : 0px
+    }
+
+    #no-bookmark-section {
+        position: absolute; top: 25%; left : 0; right : 0; bottom : 0; margin : auto
+    }
 }

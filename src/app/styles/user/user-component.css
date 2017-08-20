@@ -41,7 +41,8 @@ input:focus {
 }
 
 #user-div  {
-    margin-top : 64px; cursor: pointer;
+    margin : 88px 0px 24px 0px; 
+    cursor: pointer;
 }
 
 #user-detail {
@@ -49,7 +50,7 @@ input:focus {
 }
 
 #dp {
-    width : 64px; height : 64px; margin : 0px 0px 0px 8px
+    width : 80px; height : 80px; margin : 0px 0px 0px 8px
 }
 
 #user-name {
@@ -65,7 +66,7 @@ input:focus {
 #main-content-web {
     max-width : 760px; 
     margin-top : 48px; 
-    padding : 16px 8px 16px 8px; 
+    padding : 0px 8px 16px 8px; 
     height : 100%; 
     min-height : 100vh;
 }
