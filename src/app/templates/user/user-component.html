@@ -1,6 +1,6 @@
 <div id="parent">
     <!-- Web view -->
-    <div *ngIf="!mobileView">
+    <div *ngIf="!mobileView" (window:resize)="onResize($event)">
         <div id="fixed-header">
             <div style="width : 40%" id="search-bar-div">
                 <input style="width : 80%" placeholder="Search" id="searchText" [(ngModel)]="searchText" name="searchText" type="text" />
@@ -30,7 +30,7 @@
     </div>
 
     <!-- Mobile view -->
-    <div *ngIf="mobileView">
+    <div *ngIf="mobileView" (window:resize)="onResize($event)">
         <div id="floating-header">
             <div style="width : 100%" id="search-bar-div">
                 <input style="width : 80%" placeholder="Search" id="searchText" [(ngModel)]="searchText" name="searchText" type="text" />
@@ -49,7 +49,7 @@
                 <tr>
                     <td align="center" (click)="showFeeds()"> <i [ngClass]="classList[classIndex1]" class="fa fa-home icon" aria-hidden="true"> </i> </td>
                     <td align="center" (click)="showProfile()"> <i [ngClass]="classList[classIndex2]" class="fa fa-user-circle icon" aria-hidden="true"></i> </td>
-                    <td align="center" (click)="showFriends()"> <i  [ngClass]="classList[classIndex3]" class="fa fa-users icon" aria-hidden="true"> </i> </td>
+                    <td align="center" (click)="showFriends()"> <i [ngClass]="classList[classIndex3]" class="fa fa-users icon" aria-hidden="true"> </i> </td>
                     <td align="center" (click)="openBookmarks()"> <i [ngClass]="classList[classIndex4]" class="fa fa-bookmark icon" aria-hidden="true"> </i> </td>
                     <td align="center" (click)="showNotifications()"> <i [ngClass]="classList[classIndex5]" class="fa fa-bell icon" aria-hidden="true"> </i> </td>
                 </tr>
