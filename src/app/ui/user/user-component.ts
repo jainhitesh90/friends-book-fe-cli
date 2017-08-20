@@ -1,4 +1,4 @@
-import { Component,OnInit, NgZone } from '@angular/core'
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core'
 import { AppComponent } from '../../app-component'
 import { Router } from '@angular/router'
 import { ApiService } from '../../apiServices/api.service'
@@ -10,19 +10,19 @@ import { Utils } from '../../utils/utils'
     styleUrls: ['../../styles/user/user-component.css']
 })
 
-export class UserComponent implements OnInit{
+export class UserComponent implements OnInit {
 
-    public appComponent : AppComponent
+    public appComponent: AppComponent
     router: Router
-    searchText : string
-    bookmarkItems : string []
-    socialUserModel : SocialUserModel
-    mobileView : boolean
+    searchText: string
+    bookmarkItems: string[]
+    socialUserModel: SocialUserModel
+    mobileView: boolean
 
     classList = ["selected-icon-colors", "un-selected-icon-colors"]
     classListDesktop = ["selected-tab-bg", "un-selected-tab-bg"]
-	
-	classIndex1: Number
+
+    classIndex1: Number
     classIndex2: Number
     classIndex3: Number
     classIndex4: Number
@@ -33,7 +33,7 @@ export class UserComponent implements OnInit{
     classIndex9: Number
     classIndex10: Number
 
-    constructor(appComponent : AppComponent, router: Router, private zone: NgZone) {
+    constructor(appComponent: AppComponent, router: Router, private cdr: ChangeDetectorRef) {
         this.appComponent = appComponent
         this.router = router
     }
@@ -60,12 +60,12 @@ export class UserComponent implements OnInit{
             this.mobileView = true;
         }
     }
-    
-    public updateBookmarkCount(){
+
+    public updateBookmarkCount() {
         this.bookmarkItems = JSON.parse(localStorage.getItem("bookmarkList"))
         if (this.bookmarkItems == null)
             this.bookmarkItems = []
-	}
+    }
 
     showFeeds() {
         this.router.navigate(['/home/feeds'])
@@ -79,8 +79,8 @@ export class UserComponent implements OnInit{
         this.router.navigate(['/home/friends'])
     }
 
-    openBookmarks(){
-		this.router.navigate(['/home/bookmarks'])
+    openBookmarks() {
+        this.router.navigate(['/home/bookmarks'])
     }
 
     showNotifications() {
@@ -88,46 +88,45 @@ export class UserComponent implements OnInit{
     }
 
     showSearchPage() {
-        if (this.searchText!=null && this.searchText.length > 0)
-            this.router.navigate(['/home/search'], { queryParams: { search : this.searchText } })
-        else 
+        if (this.searchText != null && this.searchText.length > 0)
+            this.router.navigate(['/home/search'], { queryParams: { search: this.searchText } })
+        else
             this.appComponent.showErrorMessage("Please enter some text to search")
     }
 
     logout() {
-		localStorage.clear()
-		this.router.navigate(['/login'])
+        localStorage.clear()
+        this.router.navigate(['/login'])
     }
 
-    setSelectedIconBg(pos : Number) {
+    setSelectedIconBg(pos: Number) {
         this.unselectAllIcons()
-        setTimeout(() => { 
-            switch(pos) {
-                case 1 : 
-                    this.classIndex1 = 0
-                    this.classIndex6 = 0
-                    break;
-                case 2 : 
-                    this.classIndex2 = 0
-                    this.classIndex7 = 0
-                    break;
-                case 3 : 
-                    this.classIndex3 = 0
-                    this.classIndex8 = 0
-                    break;
-                case 4 : 
-                    this.classIndex4 = 0
-                    this.classIndex9 = 0
-                    break;
-                case 5 : 
-                    this.classIndex5 = 0
-                    this.classIndex10 = 0
-                    break;
-            }
-         }, 500)
+        switch (pos) {
+            case 1:
+                this.classIndex1 = 0
+                this.classIndex6 = 0
+                break;
+            case 2:
+                this.classIndex2 = 0
+                this.classIndex7 = 0
+                break;
+            case 3:
+                this.classIndex3 = 0
+                this.classIndex8 = 0
+                break;
+            case 4:
+                this.classIndex4 = 0
+                this.classIndex9 = 0
+                break;
+            case 5:
+                this.classIndex5 = 0
+                this.classIndex10 = 0
+                break;
+        }
+        this.cdr.detectChanges();
     }
 
-    unselectAllIcons(){
+    unselectAllIcons() {
         this.classIndex1 = 1
         this.classIndex2 = 1
         this.classIndex3 = 1

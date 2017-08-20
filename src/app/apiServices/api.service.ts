@@ -640,8 +640,8 @@ export class ApiService {
     }
 
     /* Error handling */
-    private handleError(error: any) {
-        console.error('An error occurred in apiService  ', error)
+    private handleError(error : any) {
+        console.error('Error fetching api response : ', error)
         return Promise.reject(error)
     }
 }
