@@ -58,6 +58,14 @@ hr {
     margin : 8px 0px 8px 0px
 }
 
+.theme-color {
+    color : #004e98 !important;
+}
+
+.theme-gray-color {
+    color : #90949c !important;
+}
+
 /* Buttons style */
 button {
     font-family : Roboto ; 
@@ -335,14 +343,6 @@ textarea:focus{
     width:100%;
     position: fixed;
     top: 0;
-}
-
-.selected-tab {
-    color : blue
-}
-
-.un-selected-tab {
-    color:black
 }
 
 #left-container {

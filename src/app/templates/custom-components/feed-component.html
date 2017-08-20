@@ -1,62 +1,61 @@
-<div *ngIf="feed!=null" style="background : white; padding : 12px; margin-top : 16px">
+<div *ngIf="feed!=null" id="parent">
     <div>
         <div>
-            <div *ngIf="feed.feedOwner!=null" style="float : left">
-                <img src="{{feed.feedOwner.image}}" class='circle-picture' style="width : 40px; height : 40px; margin : 0px 8px 8px 0px"
-                /> <span> <label *ngIf="feed.feedOwner.name!=null" style="font-size : 20px; font-weight : 700; cursor : pointer" (click) = "openProfile(feed.feedOwner.userId)"> {{feed.feedOwner.name}}</label> </span>                <br />
+            <div *ngIf="feed.feedOwner!=null" id="feed-owner-div">
+                <img src="{{feed.feedOwner.image}}" class='circle-picture' /> <span> <label *ngIf="feed.feedOwner.name!=null" (click) = "openProfile(feed.feedOwner.userId)"> {{feed.feedOwner.name}}</label> </span>                <br />
             </div>
             <div style="clear : both"> </div>
             <div>
-                <div style="margin : 8px 0px 8px 0px">
-                    <div *ngIf="feed.feedType=='event' || feed.feedType=='blog'" style="float:right; width : 10%">
-                        <span *ngIf="feed.bookmarked" class="glyphicon glyphicon-book" style="margin-right : 16px; float : right;cursor : pointer; color : blue" (click)="toogleBookmark(feed)"></span>
-                        <span *ngIf="!feed.bookmarked" class="glyphicon glyphicon-book" style="margin-right : 16px; float : right;cursor : pointer;" (click)="toogleBookmark(feed)"></span>
+                <div id="bookmark-icon-div">
+                    <div *ngIf="feed.feedType=='event' || feed.feedType=='blog'">
+                        <span class="glyphicon glyphicon-book bookmark-icon" [ngClass]="class[feedBookmarkedIndex]" (click)="toogleBookmark(feed)"></span>
                     </div>
                 </div>
-                <img *ngIf="feed.image!=null" src="{{feed.image}}" style="width : 100%; vertical-align: middle">
-                <label *ngIf="feed.description != null" style="font-size : 14px; text-align : left; line-height : 1.2; margin : 8px 0px 8px 0px"> {{feed.description}} </label>
+                <img *ngIf="feed.image!=null" src="{{feed.image}}" id="feed-image">
+                <label *ngIf="feed.description != null" id="feed-description"> {{feed.description}} </label>
                 <div align="center" *ngIf="feed.contentType != null">
-                    <img *ngIf="feed.contentType == 'image'" src="{{feed.contentUrl}}" style="width : 100%; vertical-align: middle; margin-bottom : 12px"
-                    />
+                    <img *ngIf="feed.contentType == 'image'" src="{{feed.contentUrl}}" id="content-image" />
                     <video *ngIf="feed.contentType == 'video'" width="300" height="180" controls>
                         <source src="{{feed.contentUrl}}" type="video/mp4"> Your browser does not support the video tag.
                     </video>
                 </div>
             </div>
-            <label *ngIf="feed.venue != null" style="font-size : 16px; text-align : left; float : left; line-height : 1.2"> <b style="color : black"> Venue : </b> {{feed.venue}} </label>
-            <label *ngIf="feed.price != null" style="font-size : 16px; text-align : left; float : left; line-height : 1.2"> <b style="color : black"> Price : </b> {{feed.price}} </label>
-            <label *ngIf="feed.url != null" style="font-size : 14px; float : right; margin-right : 16px; color : blue; cursor : pointer"
-                (click)="openFeedUrl(feed)"> Read More </label>
+            <label *ngIf="feed.venue != null" id="title"> <b id="value"> Venue : </b> {{feed.venue}} </label>
+            <label *ngIf="feed.price != null" id="title"> <b id="value"> Price : </b> {{feed.price}} </label>
+            <label *ngIf="feed.url != null" id="read-more" class="theme-color" (click)="openFeedUrl(feed)"> Read More </label>
             <div style="clear : both"> </div>
         </div>
         <div>
-            <div style="float : right; margin-right : 16px;" (click)="toggleFeedDetail(feed)">
-                <label *ngIf="feed.likesCount == 1" style="font-size : 12px; color : blue; float : left; cursor : pointer;"> <b> {{feed.likesCount}} </b> Like </label>
-                <label *ngIf="feed.likesCount > 1" style="font-size : 12px; color : blue; float : left; cursor : pointer;"> <b> {{feed.likesCount}} </b> Likes </label>
-                <label *ngIf="feed.commentsCount == 1" style="font-size : 12px; color : blue; float : left; margin-left : 8px; cursor : pointer;"> <b> {{feed.commentsCount}} </b> Comment </label>
-                <label *ngIf="feed.commentsCount > 1" style="font-size : 12px; color : blue; float : left; margin-left : 8px; cursor : pointer;"> <b> {{feed.commentsCount}} </b> Comments </label>
+            <div id="feed-detail-div" (click)="toggleFeedDetail(feed)">
+                <label *ngIf="feed.likesCount == 1" class="like-count theme-color"> <b> {{feed.likesCount}} </b> Like </label>
+                <label *ngIf="feed.likesCount > 1" class="like-count theme-color"> <b> {{feed.likesCount}} </b> Likes </label>
+                <label *ngIf="feed.commentsCount == 1" class="comment-count theme-color"> <b> {{feed.commentsCount}} </b> Comment </label>
+                <label *ngIf="feed.commentsCount > 1" class="comment-count theme-color"> <b> {{feed.commentsCount}} </b> Comments </label>
                 <div style="clear : both"> </div>
             </div>
-            <hr style="margin : 0px; width : 100%">
+            <hr>
             <div>
-                <div style="margin-top : 4px">
-                    <label *ngIf="feed.hasLiked" style="font-size : 16px; float : left; cursor : pointer; color : blue" (click)="toggelLike(feed)"> <span class="glyphicon glyphicon-thumbs-up"></span> Like </label>
-                    <label *ngIf="!feed.hasLiked" style="font-size : 16px; float : left; cursor : pointer; color : #90949c" (click)="toggelLike(feed)"> <span class="glyphicon glyphicon-thumbs-up"></span> Like </label>
-                    <label style="font-size : 16px; float : left; cursor : pointer; color : #90949c; margin-left : 8px" (click)="toggleCommentButton(feed)"> <span class="glyphicon glyphicon-comment"></span> Comment </label>
-                    <label *ngIf="feed.url != null" style="font-size : 16px; cursor : pointer; color : #90949c; margin-right : 16px; float : right"
-                        (click)="share(feed)"> <span class="glyphicon glyphicon-share"></span> Share </label>
+                <div id="like-comment-buttons-section">
+                    <div *ngIf="feed.feedType!='post'">
+                        <label class="action-button one-third" [ngClass]="class[feedLikedIndex]" (click)="toggelLike(feed)"> <span class="glyphicon glyphicon-thumbs-up"></span> Like </label>
+                        <label class="action-button one-third" (click)="toggleCommentButton(feed)"> <span class="glyphicon glyphicon-comment"></span> Comment </label>
+                        <label class="action-button one-third" (click)="share(feed)"> <span class="glyphicon glyphicon-share"></span> Share </label>
+                    </div>
+                    <div *ngIf="feed.feedType=='post'">
+                        <label class="action-button half" [ngClass]="class[feedLikedIndex]" (click)="toggelLike(feed)"> <span class="glyphicon glyphicon-thumbs-up"></span> Like </label>
+                        <label class="action-button half" (click)="toggleCommentButton(feed)"> <span class="glyphicon glyphicon-comment"></span> Comment </label>
+                    </div>
                 </div>
-                <div align="center" *ngIf="feed.showShareOptions && feed.url!= null" style="padding: 8px;margin: 8px;">
+                <div align="center" *ngIf="feed.showShareOptions && feed.url!= null" id="share-options">
                     <share-buttons [url]="feed.url" [showCount]="true"></share-buttons>
                 </div>
             </div>
-            <br />
-            <div *ngIf="feed.disableComment" align="center" style="margin : 8px 0px 8px 0px">
-                <input style="float:left;" id="new-comment" [(ngModel)]="feed.newComment" placeholder="Comment here" />
-                 <div *ngIf="feed.addingComment" style="float : right; margin-right : 4px; max-width : 48px">
+            <div *ngIf="feed.disableComment" align="center" id="dis-comment-section">
+                <input id="new-comment" [(ngModel)]="feed.newComment" placeholder="Comment here" />
+                <div *ngIf="feed.addingComment" id="spinner">
                     <custom-spinner [size]="small"> </custom-spinner>
                 </div>
-                <p *ngIf="!feed.addingComment" style="font-size : 16px; cursor : pointer; color : black; float:right; width : 10%" (click)="addComment(feed)"> Add </p>
+                <p *ngIf="!feed.addingComment" id="add-button" (click)="addComment(feed)"> Add </p>
                 <div style="clear : both"> </div>
             </div>
         </div>

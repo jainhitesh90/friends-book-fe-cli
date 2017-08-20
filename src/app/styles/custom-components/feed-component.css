@@ -1,3 +1,111 @@
+#parent {
+    background : white; padding : 12px; margin-top : 16px
+}
+
 #new-comment {
     width : 80%
+}
+
+#feed-owner-div {
+    float : left
+}
+
+#feed-owner-div label{
+    font-size : 20px; font-weight : 700; cursor : pointer
+}
+
+#feed-owner-div img{
+    width : 40px; height : 40px; margin : 0px 8px 8px 0px
+}
+
+#bookmark-icon-div {
+    margin : 8px 0px 8px 0px;
+    float:right; width : 10%
+}
+
+.bookmark-icon {
+    margin-right : 16px; float : right;cursor : pointer; 
+}
+
+#feed-image {
+    width : 100%; vertical-align: middle
+}
+
+#feed-description {
+    font-size : 14px; text-align : left; line-height : 1.2; margin : 8px 0px 8px 0px; float : left
+}
+
+#title {
+    font-size : 16px; text-align : left; float : left; line-height : 1.2
+}
+
+#value {
+    color : black;
+    font-weight: 700
+}
+
+#content-image {
+    width : 100%; vertical-align: middle; margin-bottom : 12px
+}
+
+#read-more {
+    font-size : 14px; float : right; margin-right : 16px; cursor : pointer
+}
+
+#feed-detail-div {
+    float : right; margin-right : 16px;
+}
+
+.like-count {
+    font-size : 12px; float : left; cursor : pointer;
+}
+
+.comment-count {
+    font-size : 12px; float : left; margin-left : 8px; cursor : pointer;
+}
+
+hr {
+    margin : 0px; width : 100%
+}
+
+#like-comment-buttons-section {
+    margin-top : 8px
+}
+
+#share-options {
+    padding: 8px;margin: 8px;
+}
+
+/* #dis-comment-section {
+    margin : 8px 0px 0px 0px
+} */
+
+#dis-comment-section input{
+    float:left;
+}
+
+#spinner {
+    float : right; margin-right : 4px; max-width : 20px; margin-top : -4px
+}
+
+#add-button {
+    font-size : 16px; cursor : pointer; color : black; float:right; width : 10%
+}
+
+.action-button {
+    margin-right : 16px; font-size : 16px; cursor : pointer; color : #90949c; text-align : center
+}
+
+@media (max-width: 767px) {
+    .half {
+        width : 45%
+    }
+    
+    .one-third {
+        width : 30%
+    }
+
+    .action-button{
+        margin-right : 8px;
+    }
 }
