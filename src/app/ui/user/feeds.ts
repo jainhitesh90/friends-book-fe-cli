@@ -119,7 +119,7 @@ export class FeedsComponent implements OnInit, OnDestroy {
 	uploadFeedResponse() {
 		this.uploadingFeed = false
 		this.appComponent.showSuccessMessage('Posted successfully!')
-		this.newFeed.title = ''
+		this.newFeed.description = ''
 		this.fileName = null
 	}
 

@@ -1,8 +1,8 @@
-<div *ngIf="fetchingProfile" class="loading-center-page">
+<div *ngIf="fetchingProfile" class="center-hor-loader">
     <custom-spinner [loadingText]="Fetching"> </custom-spinner>
 </div>
 <div align="center" *ngIf="!fetchingProfile">
-    <div *ngIf="socialUserModel!=null" >
+    <div *ngIf="socialUserModel!=null">
         <img src="./images/dp-bg.jpg" id="bg">
         <img src="{{socialUserModel.image}}" class='circle-picture' id='dp'>
         <br />
@@ -13,7 +13,7 @@
         </div>
     </div>
 </div>
-<div *ngIf="fetchingFeeds" class="loading-center-page">
+<div *ngIf="fetchingFeeds" class="center-hor-loader">
     <custom-spinner [loadingText]="Fetching"> </custom-spinner>
 </div>
 <div *ngIf="!fetchingFeeds" id="my-post-section">

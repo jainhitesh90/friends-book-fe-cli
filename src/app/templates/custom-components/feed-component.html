@@ -8,7 +8,6 @@
             <div style="clear : both"> </div>
             <div>
                 <div style="margin : 8px 0px 8px 0px">
-                    <label *ngIf="feed.title != null" style="font-size : 18px; line-height : 1.2; color : black; float:left; text-align : left; margin-bottom : 16px; font-weight : 400; max-width : 90%"> {{feed.title}} </label>
                     <div *ngIf="feed.feedType=='event' || feed.feedType=='blog'" style="float:right; width : 10%">
                         <i *ngIf="feed.bookmarked" class="fa fa-bookmark fa-2x" style="margin-right : 16px; float : right;cursor : pointer; color : blue"
                             aria-hidden="true" (click)="toogleBookmark(feed)"></i>

@@ -463,9 +463,9 @@ export class ApiService {
         let input = new FormData();
         var header = new Headers();
         header.append('authToken', localStorage.getItem('authToken'))
+        input.append("description", feedModel.description);
         input.append("feedType", feedModel.feedType);
         input.append("content", feedModel.content);
-        input.append("title", feedModel.title);
         input.append("contentType", feedModel.contentType);
         return this.http
             .post(loginUrl, input, { headers: header })

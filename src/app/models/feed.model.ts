@@ -4,7 +4,6 @@ export class FeedModel {
     feedType: string
 
     /* generic fields */
-    title: string
     description: string
     image: string
     url: string
