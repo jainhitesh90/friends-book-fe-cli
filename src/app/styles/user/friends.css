@@ -68,6 +68,12 @@
     margin : 8px 16px 4px 0px
 }
 
+#no-friends-text {
+    padding : 24px;
+    font-weight: 600;
+    margin-bottom: 26px
+}
+
 #no-suggestions-section {
     left: 20%; margin-top : 48px
 }

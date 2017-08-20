@@ -1,13 +1,13 @@
 #no-bookmark-section {
-    position: absolute; top: 25%;left: 20%;
+    position: absolute; top: 25%; left : 0; right : 0; bottom : 0; margin : auto
 }
 
 #no-bookmark-section img {
-    max-width : 144px; margin: auto; height: auto
+    max-width : 96px; margin: auto; height: auto
 }
 
 #no-bookmark-section h1 {
-    padding : 24px;
+    padding : 0px 24px 0px 24px;
     font-weight: 600;
 }
 

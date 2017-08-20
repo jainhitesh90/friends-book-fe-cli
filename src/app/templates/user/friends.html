@@ -1,11 +1,14 @@
 <div id="div-parent">
     <div id="div-friends">
+        <h2 class="title"> My Friends </h2>
         <div align="center" class="center-hor-loader" *ngIf="loadingFriends">
             <custom-spinner [loadingText]="Fetching"> </custom-spinner>
         </div>
         <div *ngIf="!loadingFriends" class="outer-div">
+            <div align="center" *ngIf="friends==null || friends.length == 0">
+                <h1 id="no-friends-text"> Friend list is empty </h1>
+            </div>
             <div *ngIf="friends!=null && friends.length > 0">
-                <h2 class="title"> My Friends </h2>
                 <div *ngFor="let friend of friends;">
                     <div class="div-friends-bg" *ngIf="friend!=null">
                         <img src="{{friend.image}}" class='circle-picture friend-img'>

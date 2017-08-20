@@ -9,17 +9,18 @@
             </div>
         </div>
         <div id="left-container">
-            <div *ngIf="socialUserModel!=null" id="user-div">
-                <img src="{{socialUserModel.image}}" class='circle-picture' id='dp'>
-                <br />
-                <h1 id="user-name"> {{socialUserModel.name}} </h1>
-                <h4 id="user-email"> {{socialUserModel.email}}</h4>
+            <div *ngIf="socialUserModel!=null" id="user-div" (click)="showProfile()" style="display : inline-block">
+                    <img src="{{socialUserModel.image}}" id='dp'>
+                    <label id="user-name"> {{socialUserModel.name}} </label>
             </div>
-            <h2 class="nav-items" [ngClass]="classListDesktop[classIndex6]" (click)="showFeeds()"> <i class="fa fa-home nav-icon" style="color : #990000" aria-hidden="true"> </i> Feeds </h2>
-            <h2 class="nav-items" [ngClass]="classListDesktop[classIndex7]" (click)="showProfile()"> <i class="fa fa-user-circle nav-icon" style="color : #00CC00" aria-hidden="true"> </i> My Posts </h2>
-            <h2 class="nav-items" [ngClass]="classListDesktop[classIndex8]" (click)="showFriends()"> <i class="fa fa-users nav-icon" style="color : #CCCC00" aria-hidden="true"> </i> Friends </h2>
-            <h2 class="nav-items" [ngClass]="classListDesktop[classIndex9]" *ngIf="bookmarkItems!=null" (click)="openBookmarks()"> <i class="fa fa-bookmark nav-icon" style="color : #FF007F" aria-hidden="true"> </i> Saved <span id="bookmark-count"> ({{bookmarkItems.length}}) </span>                </h2>
-            <h2 class="nav-items" [ngClass]="classListDesktop[classIndex10]" (click)="showNotifications()"> <i class="fa fa-bell nav-icon" style="color : #00EFFF" aria-hidden="true"> </i> Notifications </h2>
+            <div style="clear:both"> </div>
+            <div style="margin-top : 32px">
+                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex6]" (click)="showFeeds()"> <i class="fa fa-home nav-icon" style="color : #990000" aria-hidden="true"> </i> Feeds </h2>
+                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex7]" (click)="showProfile()"> <i class="fa fa-user-circle nav-icon" style="color : #00CC00" aria-hidden="true"> </i> My Profile </h2>
+                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex8]" (click)="showFriends()"> <i class="fa fa-users nav-icon" style="color : #CCCC00" aria-hidden="true"> </i> Friends </h2>
+                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex9]" *ngIf="bookmarkItems!=null" (click)="openBookmarks()"> <i class="fa fa-bookmark nav-icon" style="color : #FF007F" aria-hidden="true"> </i> Saved <span id="bookmark-count"> ({{bookmarkItems.length}}) </span>                    </h2>
+                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex10]" (click)="showNotifications()"> <i class="fa fa-bell nav-icon" style="color : #00EFFF" aria-hidden="true"> </i> Notifications </h2>
+            </div>
         </div>
         <div id="center-container">
             <div id="main-content-web">
@@ -48,8 +49,8 @@
             <table style="width : 100%">
                 <tr>
                     <td align="center" (click)="showFeeds()"> <i [ngClass]="classList[classIndex1]" class="fa fa-home icon" aria-hidden="true"> </i> </td>
-                    <td align="center" (click)="showProfile()"> <i [ngClass]="classList[classIndex2]" class="fa fa-user-circle icon" aria-hidden="true"></i> </td>
                     <td align="center" (click)="showFriends()"> <i [ngClass]="classList[classIndex3]" class="fa fa-users icon" aria-hidden="true"> </i> </td>
+                    <td align="center" (click)="showProfile()"> <i [ngClass]="classList[classIndex2]" class="fa fa-user-circle icon" aria-hidden="true"></i> </td>
                     <td align="center" (click)="openBookmarks()"> <i [ngClass]="classList[classIndex4]" class="fa fa-bookmark icon" aria-hidden="true"> </i> </td>
                     <td align="center" (click)="showNotifications()"> <i [ngClass]="classList[classIndex5]" class="fa fa-bell icon" aria-hidden="true"> </i> </td>
                 </tr>

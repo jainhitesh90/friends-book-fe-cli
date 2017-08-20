@@ -34,7 +34,7 @@ export class MyProfileComponent implements OnInit {
 		window.scrollTo(0,0)
 		if (new Utils().isTokenAvailable()) {
 			this.mobileView = new Utils().isMobile()
-			if (this.mobileView)
+			//if (this.mobileView)
 				this.getProfile()
 			this.fetchMyFeeds()
 
@@ -70,4 +70,9 @@ export class MyProfileComponent implements OnInit {
 	navigateToHome() {
 		this.router.navigate(['/home/feeds'])
 	}
+
+	logout() {
+        localStorage.clear()
+        this.router.navigate(['/login'])
+    }
 }

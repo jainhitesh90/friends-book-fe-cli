@@ -53,8 +53,7 @@ export class UserComponent implements OnInit {
     }
 
     onResize(event) {
-        const w = event.target.innerWidth;
-        if (w >= 768) {
+        if (event.target.innerWidth >= 768) {
             this.mobileView = false;
         } else {
             this.mobileView = true;
@@ -92,11 +91,6 @@ export class UserComponent implements OnInit {
             this.router.navigate(['/home/search'], { queryParams: { search: this.searchText } })
         else
             this.appComponent.showErrorMessage("Please enter some text to search")
-    }
-
-    logout() {
-        localStorage.clear()
-        this.router.navigate(['/login'])
     }
 
     setSelectedIconBg(pos: Number) {
