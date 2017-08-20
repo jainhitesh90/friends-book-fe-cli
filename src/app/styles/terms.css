@@ -1,0 +1,9 @@
+#parent {
+    padding : 16px;
+    background: white
+}
+
+#title {
+    margin-bottom: 32px;
+    font-weight : 700
+}

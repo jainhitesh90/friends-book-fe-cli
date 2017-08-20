@@ -58,3 +58,7 @@
         </div>
     </div>
 </div>
+
+<div *ngIf="loadingData" class="loading-center-page">
+    <custom-spinner [loadingText]="Fetching"> </custom-spinner>
+</div>

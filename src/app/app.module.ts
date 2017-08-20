@@ -6,8 +6,9 @@ import { RouterModule } from '@angular/router'
 import { HttpModule } from '@angular/http'
 
 // User
+import { TermsComponent } from './ui/terms'
 import { UserComponent } from './ui/user/user-component'
-import { LoginComponent } from './ui/user/login-component'
+import { LoginComponent } from './ui/login'
 import { FeedsComponent } from './ui/user/feeds'
 import { SingleFeedComponent } from './ui/user/single-feed'
 import { MyProfileComponent } from './ui/user/my-profile'
@@ -22,7 +23,6 @@ import { CustomSpinner } from './ui/custom-components/custom-spinner'
 import { AppComponent } from './app-component'
 import { ApiService } from './apiServices/api.service'
 import { FeedsReactionModal } from './modals/feeds-reaction-modal'
-import { LoginModal } from './modals/login-modal'
 
 // 3rd party libraries
 import { ModalModule } from 'angular2-modal'
@@ -48,6 +48,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     RouterModule.forRoot([
       { path: '', redirectTo: '/home/feeds', pathMatch: 'full' }, 
       { path: 'login', component: LoginComponent },
+      { path: 'terms', component: TermsComponent },
       { path: 'home', component: UserComponent,
         children: [
           { path: 'profile', component: MyProfileComponent },
@@ -64,6 +65,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
   ],
   declarations: [
     AppComponent,
+    TermsComponent,
     UserComponent,
     LoginComponent,
     SingleFeedComponent,
@@ -76,14 +78,13 @@ import {NgxPaginationModule} from 'ngx-pagination';
     BookmarkComponent,
     CustomFeedComponent,
     CustomSpinner,
-    FeedsReactionModal,
-    LoginModal
+    FeedsReactionModal
   ],
   providers: [
     ApiService,PushNotificationService
   ],
   bootstrap: [AppComponent],
-  entryComponents: [FeedsReactionModal, LoginModal]
+  entryComponents: [FeedsReactionModal]
 })
 
 export class AppModule { }

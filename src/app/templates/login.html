@@ -1,0 +1,24 @@
+<div id="parent">
+    
+    <div align="center"> 
+        <label style="color : white; font-size : 32px; margin-top : 24px; font-weight : 700"> Friendsbook <img src="./images/favicon.png" width="24px"> </label>
+        <h3 style="color : white; font-size : 18px; margin : 0px 0px 0px 16px"> <b> Make the most of your social life </b> </h3>
+    </div>
+    
+    <div id="modal-parent" align="center">
+        <h5 id="title"> Friendsbook helps you connect and share with the people in your life </h5>
+        <hr />
+        <button class="login-button" id="fb-bg" (click)="signIn('facebook')"> Continue with Facebook </button>
+        <button class="login-button" id="gplus-bg" (click)="signIn('google')"> Continue with Google </button>
+        <div align="center" id="disclaimer">
+            <custom-spinner *ngIf="logging" [loadingText]="Fetching"> </custom-spinner>
+            <hr />
+            <h6> By clicking Continue, you agree to the <b style="cursor : pointer" (click)="openTnC()"> FriendsBook User Agreement and Privacy Policy </b>. </h6>
+        </div>
+    </div>
+
+    <div align="center">
+        <label style="color:white"> Friendsbook Corporation © 2017 </label>
+    </div>
+    
+</div>

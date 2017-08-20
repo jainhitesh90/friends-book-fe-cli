@@ -33,24 +33,27 @@
             <img src="./images/sad-smiley.svg" height="auto">
             <h1> Awww, we dont have any Feeds right now</h1>
         </div>
+        <div *ngIf="newUser" class="alert alert-dismissible alert-success" id="first-time-alert">
+            <button type="button" class="close" data-dismiss="alert" (click)="dismissAlert()">&times; </button> <strong> You are seeing feeds from everyone. </strong>
+        </div>
+        <div>
+            <div class="select-style" id="feedCategory">
+                <select [(ngModel)]="selectedFeedCategory" (ngModelChange)="onChange($event)">
+                        <option value="friendsFeeds" [ngValue]="friends"> Friends Feeds </option>
+                        <option value="allFeeds" [ngValue]="all"> All Feeds </option>
+                </select>
+            </div>
+            <div style="clear:both"> </div>
+        </div>
         <div align="left" *ngIf="feeds!=null">
             <div *ngIf="feeds.length > 0">
-                <div *ngIf="newUser" class="alert alert-dismissible alert-success" id="first-time-alert">
-                    <button type="button" class="close" data-dismiss="alert" (click)="dismissAlert()">&times; </button> <strong> You are seeing feeds from everyone. </strong>
-                </div>
-                <div>
-                    <div class="select-style" id="feedCategory">
-                        <select [(ngModel)]="selectedFeedCategory" (ngModelChange)="onChange($event)">
-                                <option value="friendsFeeds" [ngValue]="friends"> Friends Feeds </option>
-                                <option value="allFeeds" [ngValue]="all"> All Feeds </option>
-                            </select>
-                    </div>
-                    <div style="clear:both"> </div>
-                </div>
                 <div *ngFor="let feed of feeds; let i=index">
                     <feed-component (callback)="childFeedComponentResponse()" [feed]="feed"> </feed-component>
                 </div>
             </div>
+        </div>
+        <div align="center" *ngIf="feeds==null || feeds.length == 0">
+            <h1 id="no-feeds-section"> No Feeds to display</h1>
         </div>
     </div>
 </div>

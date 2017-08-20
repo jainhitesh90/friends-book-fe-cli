@@ -7,12 +7,8 @@
     <label align="center"><i class="fa fa-exclamation-circle" style="margin-right : 8px"></i> {{message}} </label>
   </div>
 
-  <div *ngIf="loadingData" id="loading">
-    <ul class="circular-progress">
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
+  <div *ngIf="loadingData" class="loading-center-page">
+      <custom-spinner [loadingText]="Fetching"> </custom-spinner>
   </div>
 
   <span defaultOverlayTarget></span>
