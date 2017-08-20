@@ -109,7 +109,7 @@ export class CustomFeedComponent implements OnInit {
 	}
 
 	openProfile(userId: string) {
-		this.router.navigate(['/home/visit-profile'], { queryParams: { id: userId } })
+		this.router.navigate(['/home/profile'], { queryParams: { id: userId } })
 	}
 
 	openFeedUrl(feedModel: FeedModel) {

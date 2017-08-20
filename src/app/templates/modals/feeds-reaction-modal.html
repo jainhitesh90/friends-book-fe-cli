@@ -1,5 +1,5 @@
  <div id="parent">
-    <i id="close-dialog" (click)="closeModal()" class="fa fa-times fa-2x" aria-hidden="true"></i>
+    <span class="glyphicon glyphicon-remove" id="close-dialog" (click)="closeModal()"></span>
      <div *ngIf="feed == null || !showDetails">
         <custom-spinner [loadingText]="Fetching"> </custom-spinner>
     </div> 

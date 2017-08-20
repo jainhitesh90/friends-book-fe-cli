@@ -9,7 +9,7 @@
         <div id="detail">
             <h1 id="user-name"> {{socialUserModel.name}} </h1>
             <h4 id="user-email"> {{socialUserModel.email}}</h4>
-            <h4 style="color : red; cursor : pointer" (click)="logout()"> Logout </h4>
+            <h4 *ngIf="myProfile" style="color : red; cursor : pointer" (click)="logout()"> Logout </h4>
         </div>
     </div>
 </div>

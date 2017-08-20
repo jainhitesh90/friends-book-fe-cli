@@ -7,7 +7,8 @@ import { ApiService } from '../../apiServices/api.service'
 import { FeedModel } from '../../models/feed.model'
 
 @Component({
-	templateUrl: '../../templates/user/single-feed.html'
+	templateUrl: '../../templates/user/single-feed.html',
+	styleUrls: ['../../styles/user/single-feed.css']
 })
 
 export class SingleFeedComponent implements OnInit {

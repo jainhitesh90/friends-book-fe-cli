@@ -11,11 +11,10 @@ import { UserComponent } from './ui/user/user-component'
 import { LoginComponent } from './ui/login'
 import { FeedsComponent } from './ui/user/feeds'
 import { SingleFeedComponent } from './ui/user/single-feed'
-import { MyProfileComponent } from './ui/user/my-profile'
+import { ProfileComponent } from './ui/user/profile'
 import { SearchComponent } from './ui/user/search'
 import { NotificationsComponent } from './ui/user/notifications'
 import { FriendsComponent } from './ui/user/friends'
-import { VisitProfileComponent } from './ui/user/visit-profile'
 import { BookmarkComponent } from './ui/user/bookmarks'
 import { CustomFeedComponent } from './ui/custom-components/feed-component'
 import { CustomSpinner } from './ui/custom-components/custom-spinner'
@@ -32,11 +31,9 @@ import { ShareButtonsModule} from 'ng2-sharebuttons';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { PushNotificationService } from './apiServices/push-notification.service'
-import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   imports: [
-    NgxPaginationModule,
     AngularFireModule.initializeApp(environment.firebase),
     Angular2SocialLoginModule,
     ShareButtonsModule.forRoot(),
@@ -51,8 +48,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
       { path: 'terms', component: TermsComponent },
       { path: 'home', component: UserComponent,
         children: [
-          { path: 'profile', component: MyProfileComponent },
-          { path: 'visit-profile', component: VisitProfileComponent },
+          { path: 'profile', component: ProfileComponent },
           { path: 'feed', component: SingleFeedComponent },
           { path: 'feeds', component: FeedsComponent },
           { path: 'search', component: SearchComponent },
@@ -70,8 +66,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
     LoginComponent,
     SingleFeedComponent,
     FeedsComponent,
-    MyProfileComponent,
-    VisitProfileComponent,
+    ProfileComponent,
     NotificationsComponent,
     FriendsComponent,
     SearchComponent,

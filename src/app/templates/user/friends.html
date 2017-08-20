@@ -31,8 +31,8 @@
         </div>
         <div *ngIf="!fetchingSuggestions" class="outer-div">
             <div align="center" *ngIf="users==null || users.length == 0" id="no-suggestions-section">
-                <img src="./images/sad-smiley.svg" height="auto">
-                <h1> Awww, we dont have any friends suggestions for you right now</h1>
+                <!-- <img src="./images/sad-smiley.svg" height="auto"> -->
+                <h4> We dont have any friends suggestions for you right now </h4>
             </div>
             <div *ngIf="users!=null && users.length > 0">
                 <div *ngFor="let user of users;">

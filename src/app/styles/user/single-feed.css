@@ -1,0 +1,9 @@
+#parent {
+    margin-top : 64px
+}
+
+@media (max-width: 767px) {
+    #parent {
+        margin-top : 24px
+    }
+}

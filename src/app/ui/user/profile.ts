@@ -6,30 +6,34 @@ import { SocialUserModel } from '../../models/social-user-model'
 import { FeedModel } from '../../models/feed.model'
 import { AuthService } from "angular2-social-login";
 import { Utils } from '../../utils/utils'
+import { UserComponent } from './user-component'
 
 @Component({
-	templateUrl: '../../templates/user/visit-profile.html',
-	styleUrls: ['../../styles/user/visit-profile.css']
+	templateUrl: '../../templates/user/profile.html',
+	styleUrls: ['../../styles/user/profile.css']
 })
 
-export class VisitProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit {
 
 	router: Router
 	appComponent: AppComponent
 	socialUserModel: SocialUserModel
 	feeds: FeedModel[]
-	private activatedRoute: ActivatedRoute
-	userId: string
-	fetchingProfile : boolean
-	fetchingFeeds : boolean
+	bookmarkItems: string[]
+	fetchingProfile: boolean
+	fetchingFeeds: boolean
+	mobileView: boolean
 
-	constructor(appComponent: AppComponent, router: Router, private apiService: ApiService, activatedRoute: ActivatedRoute) {
+	userId: string
+	myProfile : boolean
+
+	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService, private activatedRoute: ActivatedRoute) {
 		this.appComponent = appComponent
 		this.router = router
-		this.activatedRoute = activatedRoute
+		userComponent.setSelectedIconBg(2)
 	}
 
-	ngOnInit(): void {
+	ngOnInit() {
 		window.scrollTo(0,0)
 		if (new Utils().isTokenAvailable()) {
 			this.activatedRoute.queryParams.subscribe(params => {
@@ -42,18 +46,20 @@ export class VisitProfileComponent implements OnInit {
 
 	private checkQueryParamResponse(params: any) {
 		this.userId = params['id']
-		if (null != this.userId && this.userId.length > 0) {
-			this.getUserProfile()
-			this.fetchUsersFeeds()
+		console.log("this.userId : " + this.userId == null)
+		if (undefined == this.userId || null == this.userId || this.userId.length == 0) {
+			this.myProfile = true
 		} else {
-			console.log("Something went wrong")
+			this.myProfile = false
 		}
+		this.getProfile()
+		this.fetchFeeds()
 	}
 
-	getUserProfile() {
+	getProfile() {
 		var thisObject = this
 		this.fetchingProfile = true
-		this.apiService.getUsersProfile(Number(this.userId))
+		this.apiService.getUsersProfile(this.userId)
 			.then(response => this.socialUserModel = response)
 			.then(response => this.fetchingProfile = false)
 			.catch(function (e) {
@@ -62,10 +68,10 @@ export class VisitProfileComponent implements OnInit {
 			})
 	}
 
-	fetchUsersFeeds() {
+	fetchFeeds() {
 		var thisObject = this
 		this.fetchingFeeds = true
-		this.apiService.getUsersFeeds(Number(this.userId))
+		this.apiService.getUsersFeeds(this.userId)
 			.then(response => this.feeds = response)
 			.then(response => this.fetchingFeeds = false)
 			.catch(function (e) {
@@ -73,4 +79,13 @@ export class VisitProfileComponent implements OnInit {
 				thisObject.appComponent.showErrorMessage(e)
 			})
 	}
+
+	navigateToHome() {
+		this.router.navigate(['/home/feeds'])
+	}
+
+	logout() {
+        localStorage.clear()
+        this.router.navigate(['/login'])
+    }
 }

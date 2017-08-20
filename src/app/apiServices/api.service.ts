@@ -28,7 +28,7 @@ export class ApiService {
 
     /* User login */
     socialLogin(socialUserModel: SocialUserModel): Promise<SocialUserModel> {
-        var loginUrl =  this.baseUrl + 'user/signup'
+        var loginUrl = this.baseUrl + 'user/signup'
         var json = {
             'email': socialUserModel.email,
             'name': socialUserModel.name,
@@ -111,9 +111,9 @@ export class ApiService {
     }
 
     /* Add a friend */
-    addFriend(socialUserModel:SocialUserModel): Promise<string> {
+    addFriend(socialUserModel: SocialUserModel): Promise<string> {
         var url = this.baseUrl + 'friend/send-request'
-        var json = {'id' : socialUserModel._id }
+        var json = { 'id': socialUserModel._id }
         return this.http
             .post(url, json, this.userOption())
             .toPromise()
@@ -137,9 +137,9 @@ export class ApiService {
     }
 
     /* Remove a friend */
-    unFriend(socialUserModel:SocialUserModel): Promise<string> {
+    unFriend(socialUserModel: SocialUserModel): Promise<string> {
         var url = this.baseUrl + 'friend/un-friend'
-        var json = {'id' : socialUserModel._id }
+        var json = { 'id': socialUserModel._id }
         return this.http
             .post(url, json, this.userOption())
             .toPromise()
@@ -163,9 +163,9 @@ export class ApiService {
     }
 
     /* Accept friend request*/
-    acceptFriend(socialUserModel:SocialUserModel): Promise<string> {
+    acceptFriend(socialUserModel: SocialUserModel): Promise<string> {
         var url = this.baseUrl + 'friend/accept-request'
-        var json = {'id' : socialUserModel._id }
+        var json = { 'id': socialUserModel._id }
         return this.http
             .post(url, json, this.userOption())
             .toPromise()
@@ -189,15 +189,15 @@ export class ApiService {
     }
 
     /* Notification */
-    subscribeNotifications(permission: string, fcmToken: string, deviceId: string){
+    subscribeNotifications(permission: string, fcmToken: string, deviceId: string) {
         var addDeviceUrl = this.baseUrl + 'users/addDevice'
-        var json = { 'deviceId': deviceId, 'fcmToken' : fcmToken }
+        var json = { 'deviceId': deviceId, 'fcmToken': fcmToken }
         return this.http
             .put(addDeviceUrl, json, this.userOption())
             .toPromise()
             .then(this.subscribeNotificationsResponse)
             .catch(this.handleError)
-    } 
+    }
 
     private subscribeNotificationsResponse(res: Response) {
         if (res.status == 200) {
@@ -213,38 +213,16 @@ export class ApiService {
         }
     }
 
-    /* User profile */
+    /* Visit profile */
 
-    getProfile(): Promise<SocialUserModel> {
-        var profileUrl = this.baseUrl + 'users/profile'
+    getUsersProfile(userId: string): Promise<SocialUserModel> {
+        var url;
+        if (null != userId && userId != '')
+            url = this.baseUrl + 'users/other-profile/' + userId
+        else
+            url = this.baseUrl + 'users/profile'
         return this.http
-            .get(profileUrl, this.userOption())
-            .toPromise()
-            .then(this.getProfileResponse)
-            .catch(this.handleError)
-    }
-
-    private getProfileResponse(res: Response) {
-        if (res.status == 200) {
-            var responseStatus = res.json().success as boolean
-            if (responseStatus) {
-                let data = res.json().data as SocialUserModel
-                return data || {}
-            } else {
-                let error = res.json().error as string
-                return Promise.reject(error)
-            }
-        } else {
-            return Promise.reject('Something went wrong!')
-        }
-    }
-
-    /* Visit profile of other */
-
-    getUsersProfile(userId : Number): Promise<SocialUserModel> {
-        var profileUrl = this.baseUrl + 'users/other-profile/' + userId 
-        return this.http
-            .get(profileUrl, this.userOption())
+            .get(url, this.userOption())
             .toPromise()
             .then(this.getUsersProfileResponse)
             .catch(this.handleError)
@@ -293,7 +271,7 @@ export class ApiService {
 
     /* Search api */
 
-    searchFeed (searchText : string): Promise<FeedModel[]> {
+    searchFeed(searchText: string): Promise<FeedModel[]> {
         var searchUrl = this.baseUrl + 'feed/search/' + searchText
         return this.http
             .get(searchUrl, this.userOption())
@@ -319,7 +297,7 @@ export class ApiService {
 
     /* Feeds apis */
 
-    getSingleFeedsById (feedId : string): Promise<FeedModel> {
+    getSingleFeedsById(feedId: string): Promise<FeedModel> {
         var url = this.baseUrl + 'feed/' + feedId
         return this.http
             .get(url, this.userOption())
@@ -343,7 +321,7 @@ export class ApiService {
         }
     }
 
-    getFeedsByIds (feedIds : string[]): Promise<FeedModel[]> {
+    getFeedsByIds(feedIds: string[]): Promise<FeedModel[]> {
         var url = this.baseUrl + 'feed/list-by-id/' + JSON.stringify(feedIds)
         return this.http
             .get(url, this.userOption())
@@ -366,8 +344,12 @@ export class ApiService {
         }
     }
 
-    getUsersFeeds(userId : Number): Promise<FeedModel[]> {
-        var url = this.baseUrl + 'feed/other-feeds/' + userId
+    getUsersFeeds(userId: string): Promise<FeedModel[]> {
+        var url;
+        if (null != userId && userId != '')
+            url = this.baseUrl + 'feed/other-feeds/' + userId
+        else
+            url = this.baseUrl + 'feed/my-feeds'
         return this.http
             .get(url, this.userOption())
             .toPromise()
@@ -389,30 +371,7 @@ export class ApiService {
         }
     }
 
-    getMyFeeds(): Promise<FeedModel[]> {
-        var url = this.baseUrl + 'feed/my-feeds'
-        return this.http
-            .get(url, this.userOption())
-            .toPromise()
-            .then(this.getMyFeedsResponse)
-            .catch(this.handleError)
-    }
-
-    private getMyFeedsResponse(res: Response) {
-        if (res.status == 200) {
-            var responseStatus = res.json().success as boolean
-            let data = res.json().data as FeedModel[]
-            if (responseStatus) {
-                return data || {}
-            } else {
-                return Promise.reject(data)
-            }
-        } else {
-            return Promise.reject('Something went wrong!')
-        }
-    }
-
-    getAllFeeds(pageNumber : number): Promise<FeedModel[]> {
+    getAllFeeds(pageNumber: number): Promise<FeedModel[]> {
         var url = this.baseUrl + 'feed/list/' + pageNumber
         return this.http
             .get(url, this.userOption())
@@ -435,7 +394,7 @@ export class ApiService {
         }
     }
 
-    getMyFriendsFeeds(pageNumber : number): Promise<FeedModel[]> {
+    getMyFriendsFeeds(pageNumber: number): Promise<FeedModel[]> {
         var url = this.baseUrl + 'feed/friends/' + pageNumber
         return this.http
             .get(url, this.userOption())
@@ -488,7 +447,7 @@ export class ApiService {
         }
     }
 
-    updateFeed(feedModel : FeedModel): Promise<FeedModel> {
+    updateFeed(feedModel: FeedModel): Promise<FeedModel> {
         var url = this.baseUrl + 'feed/update/' + feedModel._id
         let input = new FormData();
         var header = new Headers();
@@ -497,7 +456,7 @@ export class ApiService {
         input.append("description", feedModel.description);
         input.append("contentType", feedModel.contentType);
         return this.http
-            .put(url,input, { headers: header })
+            .put(url, input, { headers: header })
             .toPromise()
             .then(this.updateFeedResponse)
             .catch(this.handleError)
@@ -544,7 +503,7 @@ export class ApiService {
 
     /* Likes and comments apis */
 
-    likeFeed(feed : FeedModel): Promise<string> {
+    likeFeed(feed: FeedModel): Promise<string> {
         var blogUpdateUrl = this.baseUrl + 'feed/like/' + feed._id
         var json = {}
         return this.http
@@ -568,7 +527,7 @@ export class ApiService {
         }
     }
 
-    unLikeFeed(feed : FeedModel): Promise<string> {
+    unLikeFeed(feed: FeedModel): Promise<string> {
         var blogUpdateUrl = this.baseUrl + 'feed/unlike/' + feed._id
         var json = {}
         return this.http
@@ -592,9 +551,9 @@ export class ApiService {
         }
     }
 
-    commentFeed(feed : FeedModel): Promise<string> {
+    commentFeed(feed: FeedModel): Promise<string> {
         var blogUpdateUrl = this.baseUrl + 'feed/comment/' + feed._id
-        var json = { newComment : feed.newComment}
+        var json = { newComment: feed.newComment }
         return this.http
             .put(blogUpdateUrl, json, this.userOption())
             .toPromise()
@@ -640,7 +599,7 @@ export class ApiService {
     }
 
     /* Error handling */
-    private handleError(error : any) {
+    private handleError(error: any) {
         console.error('Error fetching api response : ', error)
         return Promise.reject(error)
     }

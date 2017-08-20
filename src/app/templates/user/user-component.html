@@ -4,7 +4,7 @@
         <div id="fixed-header">
             <div style="width : 40%" id="search-bar-div">
                 <input style="width : 80%" placeholder="Search" id="searchText" [(ngModel)]="searchText" name="searchText" type="text" />
-                <span class="fa fa-search searchIcon" (click)="showSearchPage()"></span>
+                <span class="glyphicon glyphicon-search" id="search-icon" (click)="showSearchPage()"></span>
                 <div style="clear : both"> </div>
             </div>
         </div>
@@ -15,11 +15,11 @@
             </div>
             <div style="clear:both"> </div>
             <div style="margin-top : 32px">
-                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex6]" (click)="showFeeds()"> <i class="fa fa-home nav-icon" style="color : #990000" aria-hidden="true"> </i> Feeds </h2>
-                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex8]" (click)="showFriends()"> <i class="fa fa-users nav-icon" style="color : #CCCC00" aria-hidden="true"> </i> Friends </h2>
-                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex7]" (click)="showProfile()"> <i class="fa fa-user-circle nav-icon" style="color : #00CC00" aria-hidden="true"> </i> My Profile </h2>
-                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex9]" *ngIf="bookmarkItems!=null" (click)="openBookmarks()"> <i class="fa fa-bookmark nav-icon" style="color : #FF007F" aria-hidden="true"> </i> Saved <span id="bookmark-count"> ({{bookmarkItems.length}}) </span>                    </h2>
-                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex10]" (click)="showNotifications()"> <i class="fa fa-bell nav-icon" style="color : #00EFFF" aria-hidden="true"> </i> Notifications </h2>
+                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex6]" (click)="showFeeds()"> <span class="glyphicon glyphicon-home" style="color : #990000; margin-right : 8px"> </span> Feeds </h2>
+                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex8]" (click)="showFriends()"> <span class="fa fa-users" style="color : #CCCC00; margin-right : 8px"> </span> Friends </h2>
+                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex7]" (click)="showProfile()"> <span class="glyphicon glyphicon-user" style="color : #00CC00; margin-right : 8px"> </span> My Profile </h2>
+                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex9]" *ngIf="bookmarkItems!=null" (click)="openBookmarks()"> <span class="glyphicon glyphicon-book" style="color : #FF007F; margin-right : 8px"> </span> Saved <span id="bookmark-count"> ({{bookmarkItems.length}}) </span>                    </h2>
+                <h2 class="nav-items" [ngClass]="classListDesktop[classIndex10]" (click)="showNotifications()"> <span class="glyphicon glyphicon-bell" style="color : #00EFFF; margin-right : 8px"></span> Notifications </h2>
             </div>
         </div>
         <div id="center-container">
@@ -35,7 +35,7 @@
         <div id="floating-header">
             <div style="width : 100%" id="search-bar-div">
                 <input style="width : 80%" placeholder="Search" id="searchText" [(ngModel)]="searchText" name="searchText" type="text" />
-                <span class="fa fa-search searchIcon" (click)="showSearchPage()"></span>
+                <span class="glyphicon glyphicon-search" id="search-icon" (click)="showSearchPage()"></span>
                 <div style="clear : both"> </div>
             </div>
         </div>
@@ -48,11 +48,11 @@
         <div align="center" id="new-footer">
             <table style="width : 100%">
                 <tr>
-                    <td align="center" (click)="showFeeds()"> <i [ngClass]="classList[classIndex1]" class="fa fa-home icon" aria-hidden="true"> </i> </td>
-                    <td align="center" (click)="showFriends()"> <i [ngClass]="classList[classIndex3]" class="fa fa-users icon" aria-hidden="true"> </i> </td>
-                    <td align="center" (click)="showProfile()"> <i [ngClass]="classList[classIndex2]" class="fa fa-user-circle icon" aria-hidden="true"></i> </td>
-                    <td align="center" (click)="openBookmarks()"> <i [ngClass]="classList[classIndex4]" class="fa fa-bookmark icon" aria-hidden="true"> </i> </td>
-                    <td align="center" (click)="showNotifications()"> <i [ngClass]="classList[classIndex5]" class="fa fa-bell icon" aria-hidden="true"> </i> </td>
+                    <td align="center" (click)="showFeeds()"> <span [ngClass]="classList[classIndex1]" class="glyphicon glyphicon-home"> </span> </td>
+                    <td align="center" (click)="showFriends()"> <span [ngClass]="classList[classIndex3]" class="fa fa-users"> </span> </td>
+                    <td align="center" (click)="showProfile()"> <span [ngClass]="classList[classIndex2]" class="glyphicon glyphicon-user"></span> </td>
+                    <td align="center" (click)="openBookmarks()"> <span [ngClass]="classList[classIndex4]" class="glyphicon glyphicon-book"> </span> </td>
+                    <td align="center" (click)="showNotifications()"> <span [ngClass]="classList[classIndex5]" class="glyphicon glyphicon-bell"></span> </td>
                 </tr>
             </table>
         </div>

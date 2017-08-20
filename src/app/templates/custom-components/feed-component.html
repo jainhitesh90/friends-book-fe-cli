@@ -9,10 +9,8 @@
             <div>
                 <div style="margin : 8px 0px 8px 0px">
                     <div *ngIf="feed.feedType=='event' || feed.feedType=='blog'" style="float:right; width : 10%">
-                        <i *ngIf="feed.bookmarked" class="fa fa-bookmark fa-2x" style="margin-right : 16px; float : right;cursor : pointer; color : blue"
-                            aria-hidden="true" (click)="toogleBookmark(feed)"></i>
-                        <i *ngIf="!feed.bookmarked" class="fa fa-bookmark fa-2x" style="margin-right : 16px; float : right;cursor : pointer" aria-hidden="true"
-                            (click)="toogleBookmark(feed)"></i>
+                        <span *ngIf="feed.bookmarked" class="glyphicon glyphicon-book" style="margin-right : 16px; float : right;cursor : pointer; color : blue" (click)="toogleBookmark(feed)"></span>
+                        <span *ngIf="!feed.bookmarked" class="glyphicon glyphicon-book" style="margin-right : 16px; float : right;cursor : pointer;" (click)="toogleBookmark(feed)"></span>
                     </div>
                 </div>
                 <img *ngIf="feed.image!=null" src="{{feed.image}}" style="width : 100%; vertical-align: middle">
@@ -42,11 +40,11 @@
             <hr style="margin : 0px; width : 100%">
             <div>
                 <div style="margin-top : 4px">
-                    <label *ngIf="feed.hasLiked" style="font-size : 16px; float : left; cursor : pointer; color : blue" (click)="toggelLike(feed)"> <i class="fa fa-thumbs-up" aria-hidden="true"></i> Like </label>
-                    <label *ngIf="!feed.hasLiked" style="font-size : 16px; float : left; cursor : pointer; color : #90949c" (click)="toggelLike(feed)"> <i class="fa fa-thumbs-up" aria-hidden="true"></i> Like </label>
-                    <label style="font-size : 16px; float : left; cursor : pointer; color : #90949c; margin-left : 8px" (click)="toggleCommentButton(feed)"> <i class="fa fa-comment" aria-hidden="true"></i> Comment </label>
+                    <label *ngIf="feed.hasLiked" style="font-size : 16px; float : left; cursor : pointer; color : blue" (click)="toggelLike(feed)"> <span class="glyphicon glyphicon-thumbs-up"></span> Like </label>
+                    <label *ngIf="!feed.hasLiked" style="font-size : 16px; float : left; cursor : pointer; color : #90949c" (click)="toggelLike(feed)"> <span class="glyphicon glyphicon-thumbs-up"></span> Like </label>
+                    <label style="font-size : 16px; float : left; cursor : pointer; color : #90949c; margin-left : 8px" (click)="toggleCommentButton(feed)"> <span class="glyphicon glyphicon-comment"></span> Comment </label>
                     <label *ngIf="feed.url != null" style="font-size : 16px; cursor : pointer; color : #90949c; margin-right : 16px; float : right"
-                        (click)="share(feed)"> <i class="fa fa-share-alt" aria-hidden="true"></i> Share </label>
+                        (click)="share(feed)"> <span class="glyphicon glyphicon-share"></span> Share </label>
                 </div>
                 <div align="center" *ngIf="feed.showShareOptions && feed.url!= null" style="padding: 8px;margin: 8px;">
                     <share-buttons [url]="feed.url" [showCount]="true"></share-buttons>

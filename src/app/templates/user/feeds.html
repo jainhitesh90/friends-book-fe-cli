@@ -8,11 +8,10 @@
             <div id="div-post-input">
                 <label id="text-photos"> Photo/Video
         <span>
-        <i class="fa fa-picture-o" id="green-text" aria-hidden="true">
+        <span class="glyphicon glyphicon-picture" id="green-text"></span> 
         <span id="span-file-input">
-        <input #imageFileInput type="file" accept="image/*, video/mp4,video/x-m4v,video/*" name="Image" (change)="fileAdded()"/>
+            <input #imageFileInput type="file" accept="image/*, video/mp4,video/x-m4v,video/*" name="Image" (change)="fileAdded()"/>
         </span>
-        </i>
         </span>
         </label>
                 <label *ngIf="fileName != null" style="font-size : 12px"> {{fileName}} </label>

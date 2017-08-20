@@ -89,9 +89,10 @@ input:focus {
 
 td {
     width : 20%;
+    padding : 8px 0px 8px 0px
 }
 
-td i {
+td span {
     color : white;
     font-size: 20px
 }
