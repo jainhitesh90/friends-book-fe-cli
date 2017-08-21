@@ -1,3 +1,29 @@
+#tnc-header {
+    /* width:100%;
+    z-index : 100;  */
+    background : #4267b2; 
+    min-height : 48px; 
+    /* display: flex;  */
+    align-items: center; 
+    color : white;
+    padding-left: 16px;
+    font-size: 16px;
+}
+
+#brand {
+    font-size: 20px;
+    cursor: pointer;
+    padding-top: 4px;
+    float : left
+}
+
+#login {
+    float : right;
+    padding-top: 6px;
+    margin-right: 24px;
+    cursor: pointer;
+}
+
 #parent {
     padding : 16px;
     background: white
@@ -18,4 +44,12 @@ ol {
 
 #revised-date {
     font-size: 14px; line-height:50px;
+}
+
+@media (max-width: 767px) {
+    #login {
+        margin-right: 8px;
+        font-size: 12px;
+        padding-top: 12px;
+    }
 }
