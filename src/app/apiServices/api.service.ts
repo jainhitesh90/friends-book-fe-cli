@@ -11,8 +11,8 @@ declare var Promise: any;
 @Injectable()
 export class ApiService {
 
-    //baseUrl = 'https://friendsbook.herokuapp.com/'
-    baseUrl = 'http://localhost:8080/'
+    baseUrl = 'https://test-friendsbook-api.herokuapp.com/'
+    //baseUrl = 'http://localhost:8080/'
 
     constructor(private http: Http) {
     }
