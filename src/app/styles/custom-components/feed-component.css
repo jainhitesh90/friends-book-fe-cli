@@ -1,5 +1,5 @@
 #parent {
-    background : white; padding : 12px; margin-top : 16px
+    background : white; padding : 8px; margin-top : 16px
 }
 
 #new-comment {
@@ -7,32 +7,41 @@
 }
 
 #feed-owner-div {
-    float : left
+    float : left;
+    margin-bottom: 4px
 }
 
-#feed-owner-div label{
+#fed-owner-data {
+    padding-left : 8px; margin : 0px
+}
+
+#feed-owner-name {
     font-size : 20px; font-weight : 700; cursor : pointer
 }
 
 #feed-owner-div img{
-    width : 40px; height : 40px; margin : 0px 8px 8px 0px
+    width : 40px; height : 40px; margin : 8px 8px 8px 0px;
 }
 
 #bookmark-icon-div {
-    margin : 8px 0px 8px 0px;
+    margin : 0px 0px 8px 0px;
     float:right; width : 10%
 }
 
 .bookmark-icon {
-    margin-right : 16px; float : right;cursor : pointer; 
+    margin : 8px 8px 0px 0px; float : right;cursor : pointer; font-size : 16px
 }
 
 #feed-image {
     width : 100%; vertical-align: middle
 }
 
+#feed-created-date {
+    font-size : 12px !important
+}
+
 #feed-description {
-    font-size : 14px; text-align : left; line-height : 1.2; margin : 8px 0px 8px 0px; float : left
+    font-size : 16px; text-align : left; line-height : 1.2; margin-bottom: 8px; padding : 4px 0px 4px 0px; color : black; max-width : 90%; font-weight: 600; float : left
 }
 
 #title {
@@ -49,11 +58,11 @@
 }
 
 #read-more {
-    font-size : 14px; float : right; margin-right : 16px; cursor : pointer
+    font-size : 12px; cursor : pointer
 }
 
 #feed-detail-div {
-    float : right; margin-right : 16px;
+    float : right; margin : 0px 16px 4px 0px;
 }
 
 .like-count {
@@ -96,6 +105,42 @@ hr {
     margin-right : 16px; font-size : 16px; cursor : pointer; color : #90949c; text-align : center
 }
 
+#event-div {
+    margin : 8px 0px 8px 0px; padding : 8px; border : 0.3px solid gray
+}
+
+#event-table {
+    width : 100%
+}
+
+#event-date {
+    width : 20%
+}
+
+#event-time {
+    color : red;
+}
+
+#event-short-time {
+    text-align : left
+}
+
+#event-venue {
+    width : 60%
+}
+
+#event-venue-text {
+    text-align : left; font-weight : 600; white-space: nowrap; max-width: 30em; overflow: hidden; text-overflow: ellipsis; 
+}
+
+#event-price {
+    width : 20%;
+}
+
+#event-price-text {
+    color : green;
+}
+
 @media (max-width: 767px) {
     .half {
         width : 45%
@@ -107,5 +152,13 @@ hr {
 
     .action-button{
         margin-right : 8px;
+    }
+
+    #event-venue-text {
+        max-width: 15em; 
+    }
+
+    #read-more {
+        font-size : 10px; 
     }
 }

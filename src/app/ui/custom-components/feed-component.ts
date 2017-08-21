@@ -37,8 +37,10 @@ export class CustomFeedComponent implements OnInit {
 				this.feedLikedIndex = 0
 			if (this.feed.bookmarked)
 				this.feedBookmarkedIndex = 0
-			if (this.feed.feedType == 'blog')
+			if (this.feed.feedType == 'event') {
+				console.log("yo event")
 				this.likeText = 'Interested'
+			}
 			else
 				this.likeText = 'Like'
 		}
@@ -65,7 +67,6 @@ export class CustomFeedComponent implements OnInit {
 				})
 		}
 		feedModel.hasLiked = !feedModel.hasLiked //toggle in FE
-		console.log(this.feedLikedIndex)
 	}
 
 	addComment(feedModel: FeedModel) {
@@ -75,8 +76,8 @@ export class CustomFeedComponent implements OnInit {
 			this.apiService.commentFeed(feedModel)
 				.then(response => feedModel.newComment = '')
 				.then(response => ++feedModel.commentsCount)
-				// .then(response => feedModel.addingComment = false)
-				// .then(response => this.toggleCommentButton(feedModel))
+				.then(response => feedModel.addingComment = false)
+				.then(response => this.toggleCommentButton(feedModel))
 				.catch(function (e) {
 					console.log("Error : " + e)
 					feedModel.addingComment = false

@@ -2,17 +2,25 @@
     <div>
         <div>
             <div *ngIf="feed.feedOwner!=null" id="feed-owner-div">
-                <img src="{{feed.feedOwner.image}}" class='circle-picture' /> <span> <label *ngIf="feed.feedOwner.name!=null" (click) = "openProfile(feed.feedOwner.userId)"> {{feed.feedOwner.name}}</label> </span>                <br />
+                <table>
+                    <td>
+                        <img src="{{feed.feedOwner.image}}" class='circle-picture' />
+                    </td>
+                    <td id="feed-owner-data">
+                        <h6 id="feed-owner-name" *ngIf="feed.feedOwner.name!=null" (click)="openProfile(feed.feedOwner.userId)"> {{feed.feedOwner.name}}</h6>
+                        <h6 id="feed-created-date"> {{feed.createdAt | date: 'EEE'}} {{feed.createdAt | date: 'shortTime'}} </h6>
+                    </td>
+                </table>
             </div>
             <div style="clear : both"> </div>
             <div>
+                <label *ngIf="feed.description != null" id="feed-description"> {{feed.description}} </label>
                 <div id="bookmark-icon-div">
                     <div *ngIf="feed.feedType=='event' || feed.feedType=='blog'">
                         <span class="glyphicon glyphicon-book bookmark-icon" [ngClass]="class[feedBookmarkedIndex]" (click)="toogleBookmark(feed)"></span>
                     </div>
                 </div>
                 <img *ngIf="feed.image!=null" src="{{feed.image}}" id="feed-image">
-                <label *ngIf="feed.description != null" id="feed-description"> {{feed.description}} </label>
                 <div align="center" *ngIf="feed.contentType != null">
                     <img *ngIf="feed.contentType == 'image'" src="{{feed.contentUrl}}" id="content-image" />
                     <video *ngIf="feed.contentType == 'video'" width="300" height="180" controls>
@@ -20,9 +28,27 @@
                     </video>
                 </div>
             </div>
-            <label *ngIf="feed.venue != null" id="title"> <b id="value"> Venue : </b> {{feed.venue}} </label>
-            <label *ngIf="feed.price != null" id="title"> <b id="value"> Price : </b> {{feed.price}} </label>
-            <label *ngIf="feed.url != null" id="read-more" class="theme-color" (click)="openFeedUrl(feed)"> Read More </label>
+            <div *ngIf="feed.venue != null && feed.time != null" id="event-div">
+                <table id="event-table">
+                    <td id="event-date">
+                        <div align="center">
+                            <h3 id="event-time"> {{feed.time | date: 'MMM'}} </h3>
+                            <h3> {{feed.time | date: 'dd'}} </h3>
+                        </div>
+                    </td>
+                    <td id="event-venue">
+                        <div align="center" id="event-venue-text">{{feed.venue}}
+                            <h5 id="event-short-time">{{feed.time | date: 'EEEE'}} {{feed.time | date: 'shortTime'}}</h5>
+                        </div>
+                    </td>
+                    <td id="event-price">
+                        <div align="center">
+                            <h3 id="event-price-text"> Rs {{feed.price}} </h3>
+                            <h5 *ngIf="feed.url != null" id="read-more" class="theme-color" (click)="openFeedUrl(feed)"> Read More </h5>
+                        </div>
+                    </td>
+                </table>
+            </div>
             <div style="clear : both"> </div>
         </div>
         <div>
@@ -37,7 +63,7 @@
             <div>
                 <div id="like-comment-buttons-section">
                     <div *ngIf="feed.feedType!='post'">
-                        <label class="action-button one-third" [ngClass]="class[feedLikedIndex]" (click)="toggelLike(feed)"> <span class="glyphicon glyphicon-thumbs-up"></span> Like </label>
+                        <label class="action-button one-third" [ngClass]="class[feedLikedIndex]" (click)="toggelLike(feed)"> <span class="glyphicon glyphicon-thumbs-up"></span> {{likeText}} </label>
                         <label class="action-button one-third" (click)="toggleCommentButton(feed)"> <span class="glyphicon glyphicon-comment"></span> Comment </label>
                         <label class="action-button one-third" (click)="share(feed)"> <span class="glyphicon glyphicon-share"></span> Share </label>
                     </div>
