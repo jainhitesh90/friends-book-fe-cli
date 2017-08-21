@@ -5,7 +5,7 @@ export class FeedModel {
 
     /* generic fields */
     description: string
-    image: string
+    image: string /* Event and blog image*/
     url: string
 
     /* event fields */

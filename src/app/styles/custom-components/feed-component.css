@@ -36,6 +36,10 @@
     width : 100%; vertical-align: middle
 }
 
+#video-content {
+    /* margin-top : 32px  */
+}
+
 #feed-created-date {
     font-size : 12px !important
 }
@@ -155,10 +159,22 @@ hr {
     }
 
     #event-venue-text {
-        max-width: 15em; 
+        max-width: 16em; 
     }
 
     #read-more {
         font-size : 10px; 
+    }
+}
+
+@media (min-width: 768px) and (max-width: 994px) {
+    #event-venue-text {
+        max-width: 16em; 
+    }
+}
+
+@media (min-width: 995px) and (max-width: 1200px) {
+    #event-venue-text {
+        max-width: 22em; 
     }
 }

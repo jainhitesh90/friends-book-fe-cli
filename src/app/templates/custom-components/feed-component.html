@@ -14,20 +14,23 @@
             </div>
             <div style="clear : both"> </div>
             <div>
-                <label *ngIf="feed.description != null" id="feed-description"> {{feed.description}} </label>
+                <h6 *ngIf="feed.description != null" id="feed-description"> {{feed.description}} </h6>
                 <div id="bookmark-icon-div">
                     <div *ngIf="feed.feedType=='event' || feed.feedType=='blog'">
                         <span class="glyphicon glyphicon-book bookmark-icon" [ngClass]="class[feedBookmarkedIndex]" (click)="toogleBookmark(feed)"></span>
                     </div>
                 </div>
-                <img *ngIf="feed.image!=null" src="{{feed.image}}" id="feed-image">
+                <br />
+                <div style="clear : both"> </div>
                 <div align="center" *ngIf="feed.contentType != null">
                     <img *ngIf="feed.contentType == 'image'" src="{{feed.contentUrl}}" id="content-image" />
-                    <video *ngIf="feed.contentType == 'video'" width="300" height="180" controls>
+                    <video *ngIf="feed.contentType == 'video'" id="video-content" width="80%" height="auto" controls>
                         <source src="{{feed.contentUrl}}" type="video/mp4"> Your browser does not support the video tag.
                     </video>
                 </div>
             </div>
+            <div style="clear : both"> </div>
+            <img *ngIf="feed.image!=null" src="{{feed.image}}" id="feed-image">
             <div *ngIf="feed.venue != null && feed.time != null" id="event-div">
                 <table id="event-table">
                     <td id="event-date">
