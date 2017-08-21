@@ -32,13 +32,14 @@ export class FeedsComponent implements OnInit, OnDestroy {
 	fetchingFeeds: boolean
 	newUser: boolean
 	lastFeeds: boolean
+	requestNewFeeds: boolean
 
-	selectedFeedCategory = 'allFeeds'
+	selectedFeedCategory : string
 
 	onChange(selectedItem: any) {
 		this.initialize()
 		this.selectedFeedCategory = selectedItem
-		this.refreshFeeds()
+		this.fetchFeeds(this.selectedFeedCategory)
 	}
 
 	constructor(appComponent: AppComponent, private userComponent: UserComponent, router: Router, private apiService: ApiService, private pushNotificationService: PushNotificationService, private zone: NgZone) {
@@ -51,21 +52,10 @@ export class FeedsComponent implements OnInit, OnDestroy {
 			let docHeight = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
 			let windowBottom = windowHeight + window.pageYOffset;
 			if (windowBottom >= docHeight) {
-				if (!this.lastFeeds)
-					this.refreshFeeds()
+				if (!this.lastFeeds && this.requestNewFeeds)
+					this.fetchFeeds(this.selectedFeedCategory)
 			}
 		};
-	}
-
-	refreshFeeds() {
-		switch (this.selectedFeedCategory) {
-			case 'friendsFeeds':
-				this.fetchFriendsFeeds()
-				break;
-			case 'allFeeds':
-				this.fetchAllFeeds()
-				break;
-		}
 	}
 
 	ngAfterViewInit() {
@@ -76,7 +66,7 @@ export class FeedsComponent implements OnInit, OnDestroy {
 		window.scrollTo(0, 0)
 		if (new Utils().isTokenAvailable()) {
 			this.newFeed = new FeedModel()
-			this.fetchAllFeeds()
+			this.fetchFeeds('allFeeds')
 			this.pushNotificationService.requestNotificationPermission();
 			if (localStorage.getItem('newUser') == 'true')
 				this.newUser = true
@@ -123,33 +113,38 @@ export class FeedsComponent implements OnInit, OnDestroy {
 		this.fileName = null
 	}
 
-	fetchAllFeeds() {
+	fetchFeeds(type: string) {
 		this.pageNumber = this.pageNumber + 1
 		var thisObject = this
 		this.fetchingFeeds = true
-		this.apiService.getAllFeeds(this.pageNumber)
-			.then(response => this.zone.run(() => { this.feedResponse(response) }))
-			.catch(function (e) {
-				thisObject.lastFeeds = true
-				thisObject.fetchingFeeds = false
-				thisObject.appComponent.showErrorMessage(e)
-			})
+		this.requestNewFeeds = false
+		switch (type) {
+			case 'allFeeds':
+				this.apiService.getAllFeeds(this.pageNumber)
+					.then(response => this.zone.run(() => { this.feedResponse(response) }))
+					.catch(function (e) {
+						thisObject.errorResponse(e)
+					})
+				break;
+			case 'friendsFeeds':
+				this.apiService.getMyFriendsFeeds(this.pageNumber)
+					.then(response => this.zone.run(() => { this.feedResponse(response) }))
+					.catch(function (e) {
+						thisObject.errorResponse(e)
+					})
+				break;
+		}
 	}
 
-	fetchFriendsFeeds() {
-		this.pageNumber = this.pageNumber + 1
-		var thisObject = this
-		this.fetchingFeeds = true
-		this.apiService.getMyFriendsFeeds(this.pageNumber)
-			.then(response => this.zone.run(() => { this.feedResponse(response) }))
-			.catch(function (e) {
-				thisObject.lastFeeds = true
-				thisObject.fetchingFeeds = false
-				thisObject.appComponent.showErrorMessage(e)
-			})
+	errorResponse(e: any) {
+		this.lastFeeds = true
+		this.fetchingFeeds = false
+		this.requestNewFeeds = true
+		this.appComponent.showErrorMessage(e)
 	}
 
 	feedResponse(response: any) {
+		this.requestNewFeeds = true
 		var newFeedlength = response.length
 		if (newFeedlength < 5) {
 			this.lastFeeds = true
@@ -182,9 +177,12 @@ export class FeedsComponent implements OnInit, OnDestroy {
 	}
 
 	initialize() {
+		this.selectedFeedCategory = 'allFeeds'
 		this.feeds = null
 		this.pageNumber = -1
 		this.lastFeeds = false
+		/* request new paginated feeds only if previous request is successful (later on replace this with rxJs) */
+		this.requestNewFeeds = true
 	}
 
 	ngOnDestroy() {
