@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Headers, Http, Response, RequestOptions, HttpModule } from '@angular/http'
 import { URLSearchParams } from "@angular/http";
 import { ApiService } from './api.service'
-import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { FirebaseApp } from "angularfire2";
 import * as firebase from 'firebase';
 import 'rxjs/add/operator/toPromise';
