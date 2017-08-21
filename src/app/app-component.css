@@ -1,6 +1,6 @@
 #wrapper {
   min-height:100%;
-  position:relative;
+  /* position:relative; */
 }
 
 #progress-bar-holder-div {
@@ -14,20 +14,22 @@ margin-bottom: -8px !important;
 }
 
 .display-msg {
- z-index : 9999999; 
- padding-left: 8px; 
- padding-right : 8px; 
- padding-bottom : 0px; 
- position: absolute;  
- right: 0;
- top: 0;
- left: 0;
+    z-index : 9999999; 
+    padding-left: 8px; 
+    padding-right : 8px; 
+    padding-bottom : 0px; 
+    position: absolute;  
+    border-radius: 16px;
+    
+    margin: auto;
+    right: 1%;
+    min-width: 25%;
 }
 
 .display-msg label {
  font-size: 14px; 
  color : #ffffff; 
- margin : 8px;
+ margin : 4px;
 }
 
 .display-msg img {
@@ -48,4 +50,23 @@ margin-right : 8px;
 
 .icon-msg {
   margin-right : 8px
+}
+
+@media (min-width: 767px) {
+  .display-msg {
+    top: 1%;
+    right: 2%;
+    margin : auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .display-msg {
+    bottom: 15%;
+    right: 0;
+    left: 0;
+    margin : auto;
+    min-width: 50%;
+    max-width: 75%;
+  }
 }
