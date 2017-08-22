@@ -36,7 +36,7 @@ export class UserComponent implements OnInit {
     constructor(appComponent: AppComponent, router: Router, private cdr: ChangeDetectorRef) {
         this.appComponent = appComponent
         this.router = router
-        this.router.navigate(['/home/feeds']) //resolve this bug later
+        this.mobileView = false
     }
 
     ngOnInit() {
@@ -54,11 +54,11 @@ export class UserComponent implements OnInit {
     }
 
     onResize(event) {
-        if (event.target.innerWidth >= new Utils().mobileWidth) {
-            this.mobileView = false;
-        } else {
-            this.mobileView = true;
-        }
+        // if (event.target.innerWidth >= new Utils().mobileWidth) {
+        //     this.mobileView = false;
+        // } else {
+        //     this.mobileView = true;
+        // }
     }
 
     public updateBookmarkCount() {
