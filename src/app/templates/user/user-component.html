@@ -1,6 +1,6 @@
 <div id="parent">
     <!-- Web view -->
-    <div *ngIf="!mobileView" (window:resize)="onResize($event)">
+    <!-- <div *ngIf="!mobileView" (window:resize)="onResize($event)">
         <div class="fixed-header">
             <div id="search-bar-div-web">
                 <input class="search-input" placeholder="Search" id="searchText" [(ngModel)]="searchText" name="searchText" type="text" />
@@ -11,7 +11,6 @@
         <div id="left-container">
             <div *ngIf="socialUserModel!=null" id="user-div" (click)="showProfile()">
                 <img src="{{socialUserModel.image}}" class='circle-picture' id='dp'>
-                <!-- <label id="user-name"> {{socialUserModel.name}} </label> -->
             </div>
             <div style="clear:both"> </div>
             <div id="side-drawer">
@@ -28,10 +27,10 @@
             </div>
         </div>
         <div style="clear:both"> </div>
-    </div>
+    </div> -->
 
     <!-- Mobile view -->
-    <div *ngIf="mobileView" (window:resize)="onResize($event)">
+    <div (window:resize)="onResize($event)">
         <div id="floating-header">
             <div id="search-bar-div-mob">
                 <input class="search-input" placeholder="Search" id="searchText" [(ngModel)]="searchText" name="searchText" type="text" />
