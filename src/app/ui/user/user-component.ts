@@ -54,11 +54,11 @@ export class UserComponent implements OnInit {
     }
 
     onResize(event) {
-        // if (event.target.innerWidth >= new Utils().mobileWidth) {
-        //     this.mobileView = false;
-        // } else {
-        //     this.mobileView = true;
-        // }
+        if (event.target.innerWidth >= new Utils().mobileWidth) {
+            this.mobileView = false;
+        } else {
+            this.mobileView = true;
+        }
     }
 
     public updateBookmarkCount() {

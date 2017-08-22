@@ -4,7 +4,7 @@ import { AppComponent } from '../app-component'
 import { ApiService } from '../apiServices/api.service'
 
 import { Router } from '@angular/router'
-import { Component, OnDestroy, OnInit} from '@angular/core'
+import { Component, OnDestroy, OnInit, NgZone} from '@angular/core'
 import { AuthService } from "angular2-social-login"
 import { SocialUserModel } from '../models/social-user-model'
 
@@ -27,7 +27,7 @@ export class LoginComponent implements OnDestroy {
     description : string
     logging : boolean
 
-    constructor(router: Router, private appComponent: AppComponent, private apiService: ApiService, public _auth: AuthService) {
+    constructor(router: Router, private appComponent: AppComponent, private apiService: ApiService, private zone:NgZone, public _auth: AuthService) {
         this.router = router
         this.socialUserModel = new SocialUserModel()
     }
@@ -65,10 +65,10 @@ export class LoginComponent implements OnDestroy {
     }
 
     navigateToHome(socialUserModel : SocialUserModel) {
-        this.router.navigate(['/home/feeds'])
         this.logging = false
         if (socialUserModel.newUser)
             localStorage.setItem('newUser', 'true')
+        this.zone.run(() => this.router.navigate(['/home/feeds']));
     }
 
     ngOnDestroy(){

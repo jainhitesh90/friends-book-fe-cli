@@ -56,15 +56,8 @@ export class BookmarkComponent implements OnInit {
 
 	retrieveBookmarkArray() {
 		for (var i = 0; i < this.feeds.length; i++) {
-				//if (bookmarkItems.indexOf(this.feeds[i]._id) > -1)
-					this.feeds[i].bookmarked = true
+			this.feeds[i].bookmarked = true
 		}
-		// var bookmarkItems = JSON.parse(localStorage.getItem("bookmarkList"))
-		// if (bookmarkItems != null)
-		// 	for (var i = 0; i < this.feeds.length; i++) {
-		// 		if (bookmarkItems.indexOf(this.feeds[i]._id) > -1)
-		// 			this.feeds[i].bookmarked = true
-		// 	}
 	}
 
 	public childComponentResponse(event: any) {
@@ -73,9 +66,6 @@ export class BookmarkComponent implements OnInit {
 			if (this.feeds[i]._id === feedModel._id)
 				this.feeds.splice(i, 1)
 		}
-		// var index = this.feeds.indexOf(feedModel)
-		// if (index > -1)
-		// 	this.feeds.splice(index, 1)
 		this.userComponent.updateBookmarkCount()
 	}
 

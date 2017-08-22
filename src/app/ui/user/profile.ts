@@ -46,7 +46,6 @@ export class ProfileComponent implements OnInit {
 
 	private checkQueryParamResponse(params: any) {
 		this.userId = params['id']
-		console.log("this.userId : " + this.userId == null)
 		if (undefined == this.userId || null == this.userId || this.userId.length == 0) {
 			this.myProfile = true
 		} else {
