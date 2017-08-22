@@ -33,10 +33,10 @@ export class LoginComponent implements OnDestroy {
     }
 
     signIn(provider : any) {
+        this.logging = true
         this.sub = this._auth.login(provider).subscribe(
             (data) => {
                 var thisObject = this
-                this.logging = true
                 this.setSocialUserModel(data, provider)
                 this.apiService.socialLogin(this.socialUserModel)
                     .then(response => this.navigateToHome(response))
@@ -44,6 +44,8 @@ export class LoginComponent implements OnDestroy {
                         thisObject.logging = false
                         thisObject.appComponent.showErrorMessage(e)
                     })
+            }, (error)=> {
+                this.logging = false
             }
         )
     }
