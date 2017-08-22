@@ -146,7 +146,7 @@ export class FeedsComponent implements OnInit, OnDestroy {
 	feedResponse(response: any) {
 		this.requestNewFeeds = true
 		var newFeedlength = response.length
-		if (newFeedlength < 5) {
+		if (newFeedlength < 10) {
 			this.lastFeeds = true
 		}
 		if (this.feeds == null)
