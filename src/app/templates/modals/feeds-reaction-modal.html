@@ -5,8 +5,7 @@
     </div> 
     <div *ngIf="feed != null && showDetails">
         <div *ngIf="feed.likesList!=null && feed.likesList.length > 0" id="like-section">
-            <h4 *ngIf="feed.likesList.length == 1" class="like"> <b> {{feed.likesList[0]['feedOwner']['name']}} </b> is {{feed.activity_line}}</h4>
-            <h4 *ngIf="feed.likesList.length > 1" class="like"> <b> {{feed.likesList[0]['feedOwner']['name']}} </b> and <b> {{feed.likesList.length-1}} </b> others are {{feed.activity_line}}</h4>
+            <h4 class="like"> {{feed.activity_line}} </h4>
         </div>
         <div *ngIf="feed.commentsList!=null && feed.commentsList.length > 0" id="comment-section">
             <div *ngFor="let comment of feed.commentsList">
