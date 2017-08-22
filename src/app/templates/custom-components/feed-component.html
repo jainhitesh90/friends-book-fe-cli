@@ -1,5 +1,5 @@
-<div *ngIf="feed!=null" id="parent">
-    <div>
+<div *ngIf="feed!=null && feed.description !='undefined'" id="parent">
+    <div >
         <div>
             <div *ngIf="feed.feedOwner!=null" id="feed-owner-div">
                 <table>
