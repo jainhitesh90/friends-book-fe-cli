@@ -117,4 +117,8 @@ export class FriendsComponent implements OnInit {
 				thisObject.appComponent.showErrorMessage(e)
 			})
 	}
+
+	openProfile(userId: string) {
+		this.router.navigate(['/home/profile'], { queryParams: { id: userId } })
+	}
 }

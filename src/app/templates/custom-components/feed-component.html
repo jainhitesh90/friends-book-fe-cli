@@ -24,13 +24,15 @@
                 <div style="clear : both"> </div>
                 <div align="center" *ngIf="feed.contentType != null">
                     <img *ngIf="feed.contentType == 'image'" src="{{feed.contentUrl}}" id="content-image" />
-                    <video *ngIf="feed.contentType == 'video'" id="video-content" width="80%" height="auto" controls>
+                    <video *ngIf="feed.contentType == 'video'" id="video-content" width="100%" height="auto" controls>
                         <source src="{{feed.contentUrl}}" type="video/mp4"> Your browser does not support the video tag.
                     </video>
                 </div>
             </div>
             <div style="clear : both"> </div>
-            <img *ngIf="feed.image!=null" src="{{feed.image}}" id="feed-image">
+            <div align="center"> 
+                <img *ngIf="feed.image!=null" src="{{feed.image}}" id="feed-image" (click)="openFeedUrl(feed)">
+            </div>
             <div *ngIf="feed.venue != null && feed.time != null" id="event-div">
                 <table id="event-table">
                     <td id="event-date">
@@ -52,6 +54,7 @@
                     </td>
                 </table>
             </div>
+            <h5 *ngIf="feed.feedType=='blog' && feed.url != null" id="read-more" class="theme-color blog-read-more" (click)="openFeedUrl(feed)"> Read More </h5>
             <div style="clear : both"> </div>
         </div>
         <div>

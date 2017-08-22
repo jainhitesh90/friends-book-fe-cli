@@ -37,10 +37,8 @@ export class CustomFeedComponent implements OnInit {
 				this.feedLikedIndex = 0
 			if (this.feed.bookmarked)
 				this.feedBookmarkedIndex = 0
-			if (this.feed.feedType == 'event') {
-				console.log("yo event")
+			if (this.feed.feedType == 'event')
 				this.likeText = 'Interested'
-			}
 			else
 				this.likeText = 'Like'
 		}
