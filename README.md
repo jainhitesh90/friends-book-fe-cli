@@ -1,4 +1,4 @@
 # Angular CLI app 'FriendsBook'
 
 ## APP Link
-View live app Here(https://friends-book-cli-test.herokuapp.com/)
+View live app https://friendsbook.herokuapp.com
