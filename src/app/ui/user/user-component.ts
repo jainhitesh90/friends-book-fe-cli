@@ -22,16 +22,16 @@ export class UserComponent implements OnInit {
     classList = ["selected-icon-colors", "un-selected-icon-colors"]
     classListDesktop = ["selected-tab-bg", "un-selected-tab-bg"]
 
-    classIndex1: Number
-    classIndex2: Number
-    classIndex3: Number
-    classIndex4: Number
-    classIndex5: Number
-    classIndex6: Number
-    classIndex7: Number
-    classIndex8: Number
-    classIndex9: Number
-    classIndex10: Number
+    classIndex1: number
+    classIndex2: number
+    classIndex3: number
+    classIndex4: number
+    classIndex5: number
+    classIndex6: number
+    classIndex7: number
+    classIndex8: number
+    classIndex9: number
+    classIndex10: number
 
     constructor(appComponent: AppComponent, router: Router, private cdr: ChangeDetectorRef) {
         this.appComponent = appComponent
@@ -94,7 +94,7 @@ export class UserComponent implements OnInit {
             this.appComponent.showErrorMessage("Please enter some text to search")
     }
 
-    setSelectedIconBg(pos: Number) {
+    setSelectedIconBg(pos: number) {
         this.unselectAllIcons()
         switch (pos) {
             case 1:

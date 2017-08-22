@@ -43,7 +43,7 @@ import { PushNotificationService } from './apiServices/push-notification.service
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: '/home/feeds', pathMatch: 'full' }, 
+      { path: '', redirectTo: '/home/feeds', pathMatch: 'full' },  
       { path: 'login', component: LoginComponent },
       { path: 'terms', component: TermsComponent },
       { path: 'home', component: UserComponent,
@@ -57,7 +57,8 @@ import { PushNotificationService } from './apiServices/push-notification.service
           { path: 'bookmarks', component: BookmarkComponent },
           { path: 'friends', component: FriendsComponent },
         ]
-      }
+      },
+      { path: '**', redirectTo: 'login', pathMatch: 'full' }, 
     ], { useHash: true }),
   ],
   declarations: [
