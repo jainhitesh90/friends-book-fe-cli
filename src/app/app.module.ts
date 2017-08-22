@@ -57,7 +57,7 @@ import { PushNotificationService } from './apiServices/push-notification.service
           { path: 'friends', component: FriendsComponent },
         ]
       }
-    ]),
+    ], { useHash: true }),
   ],
   declarations: [
     AppComponent,

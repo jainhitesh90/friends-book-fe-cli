@@ -23,16 +23,8 @@
         <div style="clear:both"> </div>
     </div>
 
-    <div align="center" class="center-hor-loader" *ngIf="fetchingFeeds">
-        <custom-spinner [loadingText]="Fetching"> </custom-spinner>
-    </div>
-
-    <div *ngIf="!fetchingFeeds">
-        <!-- <div align="center" *ngIf="feeds == null" id="no-post-section">
-            <img src="./images/sad-smiley.svg" height="auto">
-            <h1> Awww, we dont have any Feeds right now</h1>
-        </div> -->
-        <div *ngIf="newUser" class="alert alert-dismissible alert-success" id="first-time-alert">
+    <div>
+        <div *ngIf="newUser" class="alert alert-dismissible alert-success">
             <button type="button" class="close" data-dismiss="alert" (click)="dismissAlert()">&times; </button> <strong> You are seeing feeds from everyone. </strong>
         </div>
         <div>
@@ -52,7 +44,12 @@
             </div>
         </div>
         <div align="center" *ngIf="feeds==null || feeds.length == 0" id="no-post-section">
-            <h1 id="no-feeds-section"> No Feeds to display</h1>
+            <h1 id="no-feeds-section" *ngIf="!fetchingFeeds"> No Feeds to display</h1>
         </div>
     </div>
+
+    <div align="center" class="center-hor-loader" *ngIf="fetchingFeeds">
+        <custom-spinner [loadingText]="Fetching"> </custom-spinner>
+    </div>
+
 </div>

@@ -2,17 +2,6 @@
     background : #e9ebee; 
 }
 
-#fixed-header {
-    width:100%;
-    position: fixed;
-    top: 0;
-    z-index : 100; 
-    background : #4267b2; 
-    height : 48px; 
-    display: flex; 
-    align-items: center; 
-}
-
 #search-bar-div-web {
     float : left;
     width : 40%

@@ -1,7 +1,7 @@
 <div id="parent">
     <!-- Web view -->
     <div *ngIf="!mobileView" (window:resize)="onResize($event)">
-        <div id="fixed-header">
+        <div class="fixed-header">
             <div id="search-bar-div-web">
                 <input class="search-input" placeholder="Search" id="searchText" [(ngModel)]="searchText" name="searchText" type="text" />
                 <span class="glyphicon glyphicon-search" id="search-icon" (click)="showSearchPage()"></span>

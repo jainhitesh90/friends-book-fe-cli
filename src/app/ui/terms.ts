@@ -16,4 +16,8 @@ export class TermsComponent  {
 		this.appComponent = appComponent
 		this.router = router
 	}
+
+	navigateToLoginPage() {
+		this.router.navigate(['/login'])
+	}
 }
