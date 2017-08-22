@@ -50,7 +50,7 @@ export class PushNotificationService {
         this.firebaseMessaginInstance.getToken()
             .then(function (fcmToken: any) {
                 if (fcmToken) {
-                    var checkSentToken = window.localStorage.getItem('sentToServer')
+                    var checkSentToken = window.localStorage.getItem('pushRegistered')
                     if (!_this.isTokenSentToServer()) {
                         _this.apiService.subscribeNotifications('subscribed', fcmToken, device);
                         _this.setTokenSentToServer(true);
@@ -80,13 +80,12 @@ export class PushNotificationService {
     }
 
     public setTokenSentToServer(sent: any) {
-        window.localStorage.setItem('sentToServer', sent ? (1).toString() : (0).toString());
+        window.localStorage.setItem('pushRegistered', sent ? (1).toString() : (0).toString());
     }
 
     requestNotificationPermission() {
         this.firebaseMessaginInstance.requestPermission()
             .then(() => {
-                console.log("REQUEST GRANTED !");
                 var thisObject = this
                 this.firebaseMessaginInstance.getToken()
                     .then((fcmToken) => {
@@ -104,7 +103,9 @@ export class PushNotificationService {
                         thisObject.setTokenSentToServer(false);
                     });
             })
-            .catch((error) => { console.log("REQUEST DENIED !") });
+            .catch((error) => { 
+                console.log(error) 
+            });
     }
 
     private deleteToken() {
@@ -116,7 +117,7 @@ export class PushNotificationService {
                         thisObject.setTokenSentToServer(false);
                     })
                     .catch(function (err: any) {
-                        console.log('Unable to delete token. ', err);
+                        console.log('Could not delete token. ', err);
                     });
                 // [END delete_token]
             })
@@ -126,7 +127,7 @@ export class PushNotificationService {
     }
 
     isTokenSentToServer() {
-        var checkToken = parseInt(window.localStorage.getItem('sentToServer'));
+        var checkToken = parseInt(window.localStorage.getItem('pushRegistered'));
         return checkToken == 1;
     }
 }

@@ -48,6 +48,7 @@ import { PushNotificationService } from './apiServices/push-notification.service
       { path: 'terms', component: TermsComponent },
       { path: 'home', component: UserComponent,
         children: [
+          { path: '', redirectTo: '/home/feeds', pathMatch: 'full' }, 
           { path: 'profile', component: ProfileComponent },
           { path: 'feed', component: SingleFeedComponent },
           { path: 'feeds', component: FeedsComponent },

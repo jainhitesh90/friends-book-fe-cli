@@ -36,6 +36,7 @@ export class UserComponent implements OnInit {
     constructor(appComponent: AppComponent, router: Router, private cdr: ChangeDetectorRef) {
         this.appComponent = appComponent
         this.router = router
+        this.router.navigate(['/home/feeds']) //resolve this bug later
     }
 
     ngOnInit() {

@@ -65,10 +65,10 @@ export class LoginComponent implements OnDestroy {
     }
 
     navigateToHome(socialUserModel : SocialUserModel) {
+        this.router.navigate(['/home/feeds'])
         this.logging = false
         if (socialUserModel.newUser)
             localStorage.setItem('newUser', 'true')
-        this.router.navigate(['/home/feeds'])
     }
 
     ngOnDestroy(){

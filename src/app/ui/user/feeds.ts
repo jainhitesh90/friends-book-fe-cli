@@ -58,10 +58,6 @@ export class FeedsComponent implements OnInit, OnDestroy {
 		};
 	}
 
-	ngAfterViewInit() {
-		this.userComponent.setSelectedIconBg(1)
-	}
-
 	ngOnInit() {
 		window.scrollTo(0, 0)
 		if (new Utils().isTokenAvailable()) {
@@ -73,6 +69,10 @@ export class FeedsComponent implements OnInit, OnDestroy {
 		} else {
 			this.router.navigate(['/login'])
 		}
+	}
+
+	ngAfterViewInit() {
+		this.userComponent.setSelectedIconBg(1)
 	}
 
 	fileAdded() {
