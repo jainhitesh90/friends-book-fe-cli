@@ -30,9 +30,8 @@
             <custom-spinner [loadingText]="Fetching"> </custom-spinner>
         </div>
         <div *ngIf="!fetchingSuggestions" class="outer-div">
-            <div align="center" *ngIf="users==null || users.length == 0" id="no-suggestions-section">
-                <!-- <img src="./images/sad-smiley.svg" height="auto"> -->
-                <h4> We dont have any friends suggestions for you right now </h4>
+            <div align="center" *ngIf="users==null || users.length == 0">
+                <h1 id="no-friends-text"> We dont have any friends suggestions for you right now </h1>
             </div>
             <div *ngIf="users!=null && users.length > 0">
                 <div *ngFor="let user of users;">
