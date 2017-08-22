@@ -14,21 +14,8 @@
     font-weight: 600
 }
 
-#div-parent {
-    /* padding : 16px */
-}
-
 #div-friends {
     margin-top : 64px
-}
-
-#div-others {
-    /* padding : 8px; 
-    margin : 8px */
-}
-
-.outer-div {
-    /* margin-top : -24px */
 }
 
 .friends{
@@ -44,7 +31,7 @@
 }
 
 .friend-img {
-    width : 48px; height : 48px; float : left;
+    width : 48px; height : 48px; float : left; cursor : pointer
 }
 
 .friend-name {

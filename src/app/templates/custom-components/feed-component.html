@@ -59,8 +59,8 @@
         </div>
         <div>
             <div id="feed-detail-div" (click)="toggleFeedDetail(feed)">
-                <label *ngIf="feed.likesCount == 1" class="like-count theme-color"> <b> {{feed.likesCount}} </b> Like </label>
-                <label *ngIf="feed.likesCount > 1" class="like-count theme-color"> <b> {{feed.likesCount}} </b> Likes </label>
+                <label *ngIf="feed.likesCount == 1" class="like-count theme-color"> <b> {{feed.likesCount}} </b> {{likeText}} </label>
+                <label *ngIf="feed.likesCount > 1" class="like-count theme-color"> <b> {{feed.likesCount}} </b> {{likeText}} </label>
                 <label *ngIf="feed.commentsCount == 1" class="comment-count theme-color"> <b> {{feed.commentsCount}} </b> Comment </label>
                 <label *ngIf="feed.commentsCount > 1" class="comment-count theme-color"> <b> {{feed.commentsCount}} </b> Comments </label>
                 <div style="clear : both"> </div>

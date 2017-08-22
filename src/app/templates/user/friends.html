@@ -10,9 +10,9 @@
             </div>
             <div *ngIf="friends!=null && friends.length > 0">
                 <div *ngFor="let friend of friends;">
-                    <div class="div-friends-bg" *ngIf="friend!=null" (click)="openProfile(friend._id)">
-                        <img src="{{friend.image}}" class='circle-picture friend-img'>
-                        <h4 class="friend-name"> {{friend.name}} </h4>
+                    <div class="div-friends-bg" *ngIf="friend!=null">
+                        <img src="{{friend.image}}" class='circle-picture friend-img' (click)="openProfile(friend._id)">
+                        <h4 class="friend-name" (click)="openProfile(friend._id)"> {{friend.name}} </h4>
                         <button class="friends-action-button" *ngIf="friend.friendStatus == 'Recieved'" (click)="acceptFriend(friend)"> Accept </button>
                         <button class="friends-action-button" *ngIf="friend.friendStatus == 'Recieved'" (click)="unFriend(friend)"> Decline </button>
                         <button class="friends-action-button" *ngIf="friend.friendStatus == 'Sent'" (click)="unFriend(friend)"> Cancel Request </button>

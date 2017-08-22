@@ -43,6 +43,27 @@ export class FeedsReactionModal implements ModalComponent<CustomTermsModalContex
     toggleFeedResponse(response: FeedModel, feedModel: FeedModel) {
         feedModel.likesList = response.likesList
         feedModel.commentsList = response.commentsList
+        if (feedModel.feedType == 'event') {
+            if (feedModel.likesList.length == 0) {
+                feedModel.activity_line = ''
+            } else if (feedModel.likesList.length == 1) {
+                feedModel.activity_line = feedModel.likesList[0]['feedOwner']['name'] + ' is interested in the event'
+            } else if (feedModel.likesList.length == 2) {
+                feedModel.activity_line = feedModel.likesList[0]['feedOwner']['name'] + ' and ' + feedModel.likesList[1]['feedOwner']['name'] + ' are interested in the event'
+            } else {
+                feedModel.activity_line = feedModel.likesList[0]['feedOwner']['name'] + ' and ' + (feedModel.likesList.length - 1) + ' others are interested in the event'
+            }
+        } else {
+            if (feedModel.likesList.length == 0) {
+                feedModel.activity_line = ''
+            } else if (feedModel.likesList.length == 1) {
+                feedModel.activity_line = feedModel.likesList[0]['feedOwner']['name'] + ' liked the post'
+            } else if (feedModel.likesList.length == 2) {
+                feedModel.activity_line = feedModel.likesList[0]['feedOwner']['name'] + ' and ' + feedModel.likesList[1]['feedOwner']['name'] + ' liked the post'
+            } else {
+                feedModel.activity_line = feedModel.likesList[0]['feedOwner']['name'] + ' and ' + (feedModel.likesList.length - 1) + ' others liked the post'
+            }
+        }
         this.showDetails = true
     }
 
