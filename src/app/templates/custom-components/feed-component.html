@@ -67,13 +67,13 @@
             </div>
             <hr>
             <div>
-                <div id="like-comment-buttons-section">
+                <div align="left" id="like-comment-buttons-section">
                     <div *ngIf="feed.feedType!='post'">
                         <label class="action-button one-third" [ngClass]="class[feedLikedIndex]" (click)="toggelLike(feed)"> <span class="glyphicon glyphicon-thumbs-up"></span> {{likeText}} </label>
                         <label class="action-button one-third" (click)="toggleCommentButton(feed)"> <span class="glyphicon glyphicon-comment"></span> Comment </label>
                         <label class="action-button one-third" (click)="share(feed)"> <span class="glyphicon glyphicon-share"></span> Share </label>
                     </div>
-                    <div *ngIf="feed.feedType=='post'">
+                    <div align="left" *ngIf="feed.feedType=='post'">
                         <label class="action-button half" [ngClass]="class[feedLikedIndex]" (click)="toggelLike(feed)"> <span class="glyphicon glyphicon-thumbs-up"></span> Like </label>
                         <label class="action-button half" (click)="toggleCommentButton(feed)"> <span class="glyphicon glyphicon-comment"></span> Comment </label>
                     </div>
