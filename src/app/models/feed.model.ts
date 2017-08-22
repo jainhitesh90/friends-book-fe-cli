@@ -44,7 +44,9 @@ export class FeedModel {
     /* Bookmark */
     bookmarked : boolean
 
-	addingComment : boolean
+    addingComment : boolean
+    
+    activity_line : string
 }
 
 export class feedOwner {
