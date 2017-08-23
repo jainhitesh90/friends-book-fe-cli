@@ -46,7 +46,6 @@
 }
 
 .blog-read-more {
-    padding: 8px !important;
     cursor: pointer;
     float : right;
 }
@@ -122,6 +121,10 @@ hr {
 
 #event-div {
     margin : 8px 0px 8px 0px; padding : 8px; border : 0.3px solid gray
+}
+
+#blog-div {
+    margin : 8px 0px 8px 0px; padding : 8px 8px 16px 8px; border : 0.3px solid gray
 }
 
 #event-table {

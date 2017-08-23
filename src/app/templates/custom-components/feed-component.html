@@ -30,11 +30,12 @@
                 </div>
             </div>
             <div style="clear : both"> </div>
-            <div *ngIf="feed.feedType=='blog'" id="event-div">
+            <div *ngIf="feed.feedType=='blog'" id="blog-div">
                 <div align="center">
                     <img *ngIf="feed.image!=null" src="{{feed.image}}" id="feed-image" (click)="openFeedUrl(feed)">
                 </div>
                 <h4 *ngIf="feed.shortContent != null && feed.shortContent != ''" style="padding-top : 4px"> {{feed.shortContent}} </h4>
+                <h5 *ngIf="feed.url != null" id="read-more" class="theme-color blog-read-more" (click)="openFeedUrl(feed)">Read More </h5>
             </div>
             <div *ngIf="feed.feedType=='event'">
                 <div align="center">
@@ -63,8 +64,7 @@
                 </div>
             </div>
 
-            <h5 *ngIf="feed.feedType=='blog' && feed.url != null" id="read-more" class="theme-color blog-read-more" (click)="openFeedUrl(feed)">
-            Read More </h5>
+            
             <div style="clear : both"> </div>
         </div>
         <div>
