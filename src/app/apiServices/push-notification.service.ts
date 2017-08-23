@@ -29,7 +29,7 @@ export class PushNotificationService {
                 registration.showNotification(payload.notification.title, options);
             });
             self.addEventListener('notificationclick', function (event: any) {
-                router.navigate(['/home/notifications'])
+                window.open('https://friendsbook.herokuapp.com/#/home/notifications')
                 event.notification.close();
             });
             notification.onclick = function (event) {
