@@ -29,8 +29,8 @@ export class PushNotificationService {
                 registration.showNotification(payload.notification.title, options);
             });
             self.addEventListener('notificationclick', function (event: any) {
-                const clickedNotification = event.notification;
-                clickedNotification.close();
+                router.navigate(['/home/notifications'])
+                event.notification.close();
             });
             notification.onclick = function (event) {
                 router.navigate(['/home/notifications'])
