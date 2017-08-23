@@ -19,6 +19,7 @@ export class PushNotificationService {
         let _this = this;
 
         this.firebaseMessaginInstance.onMessage(function (payload: any) {
+            console.log("Notification recieved")
             var options = {
                 'body': payload.notification.body,
                 'icon': payload.notification.icon,
@@ -55,7 +56,6 @@ export class PushNotificationService {
                         _this.apiService.subscribeNotifications('subscribed', fcmToken, device);
                         _this.setTokenSentToServer(true);
                     }
-
                 } else {
                     _this.setTokenSentToServer(false);
                 }
@@ -95,16 +95,16 @@ export class PushNotificationService {
                                 this.apiService.subscribeNotifications('subscribed', fcmToken, device);
                                 thisObject.setTokenSentToServer(true);
                             }
-
                         } else {
                             thisObject.setTokenSentToServer(false);
                         }
                     }).catch(function (err) {
+                        console.log("error : " + err)
                         thisObject.setTokenSentToServer(false);
                     });
             })
             .catch((error) => { 
-                console.log(error) 
+                console.log("requestNotificationPermission error : " + error) 
             });
     }
 
