@@ -113,7 +113,7 @@ export class ApiService {
     /* Add a friend */
     addFriend(socialUserModel: SocialUserModel): Promise<string> {
         var url = this.baseUrl + 'friend/send-request'
-        var json = { 'id': socialUserModel._id }
+        var json = { 'id': socialUserModel.userId }
         return this.http
             .post(url, json, this.userOption())
             .toPromise()
@@ -139,7 +139,7 @@ export class ApiService {
     /* Remove a friend */
     unFriend(socialUserModel: SocialUserModel): Promise<string> {
         var url = this.baseUrl + 'friend/un-friend'
-        var json = { 'id': socialUserModel._id }
+        var json = { 'id': socialUserModel.userId }
         return this.http
             .post(url, json, this.userOption())
             .toPromise()
@@ -165,7 +165,7 @@ export class ApiService {
     /* Accept friend request*/
     acceptFriend(socialUserModel: SocialUserModel): Promise<string> {
         var url = this.baseUrl + 'friend/accept-request'
-        var json = { 'id': socialUserModel._id }
+        var json = { 'id': socialUserModel.userId }
         return this.http
             .post(url, json, this.userOption())
             .toPromise()

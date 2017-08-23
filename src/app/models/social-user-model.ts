@@ -1,5 +1,5 @@
 export class SocialUserModel {
-    _id : string
+    userId : string
     email : string
     name : string
     image : string
@@ -11,10 +11,4 @@ export class SocialUserModel {
 
     /* Friends */
     friendStatus : string
-}
-
-export class pendingFriendRequest {
-    _id: string
-    name : string
-    image : string
 }
