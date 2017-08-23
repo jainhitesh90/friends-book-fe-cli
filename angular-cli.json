@@ -12,7 +12,8 @@
         "images",
         "favicon.ico",
         "service-worker.js",
-        "manifest.json"
+        "manifest.json",
+        "firebase-messaging-sw.js"
       ],
       "index": "index.html",
       "main": "main.ts",
