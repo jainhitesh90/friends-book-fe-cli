@@ -1,7 +1,7 @@
 /*Fire base messaging service worker starts */
 importScripts("https://www.gstatic.com/firebasejs/4.0.0/firebase-app.js");
 importScripts('https://www.gstatic.com/firebasejs/4.0.0/firebase-messaging.js');
-importScripts('src/js/sw-offline-google-analytics.js');
+importScripts('./js/sw-offline-google-analytics.js');
 
 //Initialize the Offline Google analytics
 goog.offlineGoogleAnalytics.initialize();
