@@ -82,28 +82,32 @@ export class FeedsComponent implements OnInit, OnDestroy {
 	}
 
 	uploadFeed() {
-		var thisObject = this
-		var fileToUpload = null
-		let fileImage = this.imageFileInput.nativeElement;
-		if (fileImage.files && fileImage.files[0]) {
-			if (fileImage.files[0].type.indexOf('image') !== -1) {
-				this.newFeed.contentType = "image"
-				this.newFeed.content = fileImage.files[0];
-			} else if (fileImage.files[0].type.indexOf('video') !== -1) {
-				this.newFeed.contentType = "video"
-				this.newFeed.content = fileImage.files[0];
+		if (this.newFeed.description != null && this.newFeed.description != '') {
+			var thisObject = this
+			var fileToUpload = null
+			let fileImage = this.imageFileInput.nativeElement;
+			if (fileImage.files && fileImage.files[0]) {
+				if (fileImage.files[0].type.indexOf('image') !== -1) {
+					this.newFeed.contentType = "image"
+					this.newFeed.content = fileImage.files[0];
+				} else if (fileImage.files[0].type.indexOf('video') !== -1) {
+					this.newFeed.contentType = "video"
+					this.newFeed.content = fileImage.files[0];
+				}
+			} else {
+				this.newFeed.contentType = "text"
 			}
+			this.newFeed.feedType = "post"
+			this.uploadingFeed = true
+			this.apiService.addFeed(this.newFeed)
+				.then(response => this.uploadFeedResponse())
+				.catch(function (e) {
+					thisObject.appComponent.showErrorMessage(e)
+					thisObject.uploadingFeed = false
+				})
 		} else {
-			this.newFeed.contentType = "text"
+			this.appComponent.showErrorMessage("Please describe your post")
 		}
-		this.newFeed.feedType = "post"
-		this.uploadingFeed = true
-		this.apiService.addFeed(this.newFeed)
-			.then(response => this.uploadFeedResponse())
-			.catch(function (e) {
-				thisObject.appComponent.showErrorMessage(e)
-				thisObject.uploadingFeed = false
-			})
 	}
 
 	uploadFeedResponse() {

@@ -1,5 +1,5 @@
 <div *ngIf="feed!=null && feed.description !='undefined'" id="parent">
-    <div >
+    <div>
         <div>
             <div *ngIf="feed.feedOwner!=null" id="feed-owner-div">
                 <table>
@@ -30,31 +30,41 @@
                 </div>
             </div>
             <div style="clear : both"> </div>
-            <div align="center"> 
-                <img *ngIf="feed.image!=null" src="{{feed.image}}" id="feed-image" (click)="openFeedUrl(feed)">
+            <div *ngIf="feed.feedType=='blog'" id="event-div">
+                <div align="center">
+                    <img *ngIf="feed.image!=null" src="{{feed.image}}" id="feed-image" (click)="openFeedUrl(feed)">
+                </div>
+                <h4 *ngIf="feed.shortContent != null && feed.shortContent != ''" style="padding-top : 4px"> {{feed.shortContent}} </h4>
             </div>
-            <div *ngIf="feed.venue != null && feed.time != null" id="event-div">
-                <table id="event-table">
-                    <td id="event-date">
-                        <div align="center">
-                            <h3 id="event-time"> {{feed.time | date: 'MMM'}} </h3>
-                            <h3> {{feed.time | date: 'dd'}} </h3>
-                        </div>
-                    </td>
-                    <td id="event-venue">
-                        <div align="center" id="event-venue-text">{{feed.venue}}
-                            <h5 id="event-short-time">{{feed.time | date: 'EEEE'}} {{feed.time | date: 'shortTime'}}</h5>
-                        </div>
-                    </td>
-                    <td id="event-price">
-                        <div align="center">
-                            <h3 id="event-price-text"> Rs {{feed.price}} </h3>
-                            <h5 *ngIf="feed.url != null" id="read-more" class="theme-color" (click)="openFeedUrl(feed)"> Buy Now </h5>
-                        </div>
-                    </td>
-                </table>
+            <div *ngIf="feed.feedType=='event'">
+                <div align="center">
+                    <img *ngIf="feed.image!=null" src="{{feed.image}}" id="feed-image" (click)="openFeedUrl(feed)">
+                </div>
+                <div *ngIf="feed.venue != null && feed.time != null" id="event-div">
+                    <table id="event-table">
+                        <td id="event-date">
+                            <div align="center">
+                                <h3 id="event-time"> {{feed.time | date: 'MMM'}} </h3>
+                                <h3> {{feed.time | date: 'dd'}} </h3>
+                            </div>
+                        </td>
+                        <td id="event-venue">
+                            <div align="center" id="event-venue-text">{{feed.venue}}
+                                <h5 id="event-short-time">{{feed.time | date: 'EEEE'}} {{feed.time | date: 'shortTime'}}</h5>
+                            </div>
+                        </td>
+                        <td id="event-price">
+                            <div align="center">
+                                <h3 id="event-price-text"> Rs {{feed.price}} </h3>
+                                <h5 *ngIf="feed.url != null" id="read-more" class="theme-color" (click)="openFeedUrl(feed)"> Buy Now </h5>
+                            </div>
+                        </td>
+                    </table>
+                </div>
             </div>
-            <h5 *ngIf="feed.feedType=='blog' && feed.url != null" id="read-more" class="theme-color blog-read-more" (click)="openFeedUrl(feed)"> Read More </h5>
+
+            <h5 *ngIf="feed.feedType=='blog' && feed.url != null" id="read-more" class="theme-color blog-read-more" (click)="openFeedUrl(feed)">
+            Read More </h5>
             <div style="clear : both"> </div>
         </div>
         <div>

@@ -32,7 +32,7 @@ export class AppComponent {
       this.message = msg
       this.showSuccessToast = true
       window.scrollTo(0, 0)
-      setTimeout(() => { this.showSuccessToast = false }, 4000)
+      setTimeout(() => { this.showSuccessToast = false }, 2000)
     }
   }
 
@@ -41,7 +41,7 @@ export class AppComponent {
       this.message = msg
       this.showErrorToast = true
       window.scrollTo(0, 0)
-      setTimeout(() => { this.showErrorToast = false }, 4000)
+      setTimeout(() => { this.showErrorToast = false }, 2000)
     }
   }
 

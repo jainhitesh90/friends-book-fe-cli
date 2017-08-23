@@ -7,6 +7,7 @@ export class FeedModel {
     description: string
     image: string /* Event and blog image*/
     url: string
+    shortContent : string
 
     /* event fields */
     venue: string
