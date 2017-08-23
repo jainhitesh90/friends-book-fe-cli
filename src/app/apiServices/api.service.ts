@@ -11,8 +11,8 @@ declare var Promise: any;
 @Injectable()
 export class ApiService {
 
-    baseUrl = 'https://friendsbook-api.herokuapp.com/'
-    //baseUrl = 'http://localhost:8080/'
+    //baseUrl = 'https://friendsbook-api.herokuapp.com/'
+    baseUrl = 'http://localhost:8080/'
 
     constructor(private http: Http) {
     }
@@ -189,9 +189,9 @@ export class ApiService {
     }
 
     /* Notification */
-    subscribeNotifications(permission: string, fcmToken: string, deviceId: string) {
+    subscribeNotifications(permission: string, fcmToken: string) {
         var addDeviceUrl = this.baseUrl + 'users/addDevice'
-        var json = { 'deviceId': deviceId, 'fcmToken': fcmToken }
+        var json = {'fcmToken': fcmToken }
         return this.http
             .put(addDeviceUrl, json, this.userOption())
             .toPromise()
@@ -201,6 +201,7 @@ export class ApiService {
 
     private subscribeNotificationsResponse(res: Response) {
         if (res.status == 200) {
+            localStorage.removeItem("fcmToken")
             var responseStatus = res.json().success as boolean
             if (responseStatus) {
                 return res.json().message || {}

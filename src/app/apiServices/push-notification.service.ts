@@ -29,8 +29,8 @@ export class PushNotificationService {
                 registration.showNotification(payload.notification.title, options);
             });
             self.addEventListener('notificationclick', function (event: any) {
-                window.open('https://friendsbook.herokuapp.com/#/home/notifications')
-                event.notification.close();
+                const clickedNotification = event.notification;
+                clickedNotification.close();
             });
             notification.onclick = function (event) {
                 router.navigate(['/home/notifications'])
@@ -41,7 +41,7 @@ export class PushNotificationService {
             this.firebaseMessaginInstance.getToken()
                 .then(function (refreshedToken: any) {
                     _this.setTokenSentToServer(false);
-                    _this.apiService.subscribeNotifications('subscribed', refreshedToken, device);
+                    _this.apiService.subscribeNotifications('subscribed', refreshedToken);
                 }).catch(function (err: string) {
                     console.log('Unable to retrieve refreshed token ', err);
                 });
@@ -50,9 +50,10 @@ export class PushNotificationService {
         this.firebaseMessaginInstance.getToken()
             .then(function (fcmToken: any) {
                 if (fcmToken) {
+                    localStorage.setItem("fcmToken", fcmToken)
                     var checkSentToken = window.localStorage.getItem('pushRegistered')
                     if (!_this.isTokenSentToServer() && _this.authTokenPresent) {
-                        _this.apiService.subscribeNotifications('subscribed', fcmToken, device);
+                        _this.apiService.subscribeNotifications('subscribed', fcmToken);
                         _this.setTokenSentToServer(true);
                     }
                 } else {
@@ -83,28 +84,34 @@ export class PushNotificationService {
     }
 
     requestNotificationPermission() {
-        this.firebaseMessaginInstance.requestPermission()
-            .then(() => {
-                var thisObject = this
-                this.firebaseMessaginInstance.getToken()
-                    .then((fcmToken) => {
-                        if (fcmToken) {
-                            if (!this.isTokenSentToServer() && this.authTokenPresent) {
-                                let device = this.checkDeviceType();
-                                this.apiService.subscribeNotifications('subscribed', fcmToken, device);
-                                thisObject.setTokenSentToServer(true);
+        console.log("in requestNotificationPermission")
+        if (localStorage.getItem("fcmToken")!= null && this.authTokenPresent) {
+            this.apiService.subscribeNotifications('subscribed', localStorage.getItem("fcmToken"));
+            this.setTokenSentToServer(true);
+        } else {
+            this.firebaseMessaginInstance.requestPermission()
+                .then(() => {
+                    var thisObject = this
+                    this.firebaseMessaginInstance.getToken()
+                        .then((fcmToken) => {
+                            if (fcmToken) {
+                                if (!this.isTokenSentToServer() && this.authTokenPresent) {
+                                    let device = this.checkDeviceType();
+                                    this.apiService.subscribeNotifications('subscribed', fcmToken);
+                                    thisObject.setTokenSentToServer(true);
+                                }
+                            } else {
+                                thisObject.setTokenSentToServer(false);
                             }
-                        } else {
+                        }).catch(function (err) {
+                            console.log("error : " + err)
                             thisObject.setTokenSentToServer(false);
-                        }
-                    }).catch(function (err) {
-                        console.log("error : " + err)
-                        thisObject.setTokenSentToServer(false);
-                    });
-            })
-            .catch((error) => { 
-                console.log("requestNotificationPermission error : " + error) 
-            });
+                        });
+                })
+                .catch((error) => {
+                    console.log("requestNotificationPermission error : " + error)
+                });
+        }
     }
 
     private deleteToken() {
@@ -130,7 +137,7 @@ export class PushNotificationService {
         return checkToken == 1;
     }
 
-    authTokenPresent(){
+    authTokenPresent() {
         return localStorage.getItem('authToken') != null
     }
 }
