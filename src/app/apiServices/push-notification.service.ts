@@ -19,7 +19,6 @@ export class PushNotificationService {
         let _this = this;
 
         this.firebaseMessaginInstance.onMessage(function (payload: any) {
-            console.log("Notification recieved")
             var options = {
                 'body': payload.notification.body,
                 'icon': payload.notification.icon,
@@ -52,7 +51,7 @@ export class PushNotificationService {
             .then(function (fcmToken: any) {
                 if (fcmToken) {
                     var checkSentToken = window.localStorage.getItem('pushRegistered')
-                    if (!_this.isTokenSentToServer()) {
+                    if (!_this.isTokenSentToServer() && _this.authTokenPresent) {
                         _this.apiService.subscribeNotifications('subscribed', fcmToken, device);
                         _this.setTokenSentToServer(true);
                     }
@@ -90,7 +89,7 @@ export class PushNotificationService {
                 this.firebaseMessaginInstance.getToken()
                     .then((fcmToken) => {
                         if (fcmToken) {
-                            if (!this.isTokenSentToServer()) {
+                            if (!this.isTokenSentToServer() && this.authTokenPresent) {
                                 let device = this.checkDeviceType();
                                 this.apiService.subscribeNotifications('subscribed', fcmToken, device);
                                 thisObject.setTokenSentToServer(true);
@@ -129,5 +128,9 @@ export class PushNotificationService {
     isTokenSentToServer() {
         var checkToken = parseInt(window.localStorage.getItem('pushRegistered'));
         return checkToken == 1;
+    }
+
+    authTokenPresent(){
+        return localStorage.getItem('authToken') != null
     }
 }
