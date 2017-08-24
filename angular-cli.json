@@ -14,7 +14,7 @@
         "favicon.ico",
         "service-worker.js",
         "manifest.json",
-        "index.html",
+        "offline.html",
         "firebase-messaging-sw.js"
       ],
       "index": "index.html",
