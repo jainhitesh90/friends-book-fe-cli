@@ -36,8 +36,8 @@
             <div *ngIf="users!=null && users.length > 0">
                 <div *ngFor="let user of users;">
                     <div class="div-friends-bg" *ngIf="user!=null">
-                        <img src="{{user.image}}" class='circle-picture friend-img'>
-                        <h4 class="friend-name"> {{user.name}} </h4>
+                        <img src="{{user.image}}" (click)="openProfile(user.userId)" class='circle-picture friend-img'>
+                        <h4 class="friend-name" (click)="openProfile(user.userId)"> {{user.name}} </h4>
                         <button class="friends-action-button" (click)="addFriend(user)"> Add Friend </button>
                         <div style="clear : both"> </div>
                     </div>
